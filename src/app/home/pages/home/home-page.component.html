@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+
+    <title>Home</title>
+  </head>
+  <body>
+    <div class="container_ph">
+      <header>
+        <nav class="navBar">
+          <div class="nav_container">
+            <img
+              src="../../../../assets/icons/ubication-icon.png"
+              alt="logo"
+              class="logo"
+            />
+            <select class="select_ciudad" name="ciudad" id="ciudad">
+              <option hidden selected>ciudad</option>
+              <option value="item 1" *ngFor="let item of ciudades">
+                {{ item.departamento }}
+              </option>
+            </select>
+            <input type="checkbox" id="check" />
+            <label for=""
+              ><span class="material-icons-outlined bell">
+                notifications
+              </span></label
+            >
+            <label for="check" class="bar-btn"
+              ><span class="material-icons settings"> settings </span>
+            </label>
+            <ul class="nav-menu">
+              <li>
+                <img
+                  src="icons/ubication-icon.png"
+                  class="menu_logo"
+                  alt=""
+                /><a href="#">Mi Perfil</a>
+              </li>
+              <li>
+                <img
+                  src="icons/ubication-icon.png"
+                  class="menu_logo"
+                  alt=""
+                /><a href="#">Mis beneficios</a>
+              </li>
+              <li>
+                <img
+                  src="icons/ubication-icon.png"
+                  class="menu_logo"
+                  alt=""
+                /><a href="#">Soporte</a>
+              </li>
+              <li>
+                <img
+                  src="icons/ubication-icon.png"
+                  class="menu_logo"
+                  alt=""
+                /><a href="#">Contáctenos</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <div class="middle-menu">
+        <div class="menu_text">
+          <h1 class="menu_title">Beneficios en</h1>
+          <br />
+          <h2 class="menu_content">
+            estas son las categorias de beneficios que tenemos para ti
+          </h2>
+        </div>
+        <div class="grid-layout">
+          <div class="card">
+            <img
+              src="../../../../assets/icons/Captura_preview_rev_1.png"
+              alt="Avatar"
+            />
+            <div class="container_card">
+              <h4 class="card-title"><b> Servicios medicos</b></h4>
+              <p class="card-subtitle">Aqui puedes agendar todas tus citas</p>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              src="../../../../assets/icons/Captura_preview_rev_1.png"
+              alt="Avatar"
+            />
+            <div class="container_card">
+              <h4 class="card-title"><b> Servicios medicos</b></h4>
+              <p class="card-subtitle">Aqui puedes agendar todas tus citas</p>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              src="../../../../assets/icons/Captura_preview_rev_1.png"
+              alt="Avatar"
+            />
+            <div class="container_card">
+              <h4 class="card-title"><b> Servicios medicos</b></h4>
+              <p class="card-subtitle">Aqui puedes agendar todas tus citas</p>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              src="../../../../assets/icons/Captura_preview_rev_1.png"
+              alt="Avatar"
+            />
+            <div class="container_card">
+              <h4 class="card-title"><b> Servicios medicos</b></h4>
+              <p class="card-subtitle">Aqui puedes agendar todas tus citas</p>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              src="../../../../assets/icons/Captura_preview_rev_1.png"
+              alt="Avatar"
+            />
+            <div class="container_card">
+              <h4 class="card-title"><b> Servicios medicos</b></h4>
+              <p class="card-subtitle">Aqui puedes agendar todas tus citas</p>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              src="../../../../assets/icons/Captura_preview_rev_1.png"
+              alt="Avatar"
+            />
+            <div class="container_card">
+              <h4 class="card-title"><b> Servicios medicos</b></h4>
+              <p class="card-subtitle">Aqui puedes agendar todas tus citas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-menu">
+        <div class="menu-btn menu-btn_1">
+          <img
+            src="../../../../assets/icons/icon-citas-t.png"
+            height="40px"
+            width="40px"
+            alt=""
+          />
+        </div>
+        <div class="menu-btn menu-btn_2">
+          <img
+            src="../../../../assets/icons/icon-promocion-t.png"
+            height="40px"
+            width="40px"
+            alt=""
+          />
+        </div>
+        <div class="menu-btn menu-btn_3">
+          <img
+            src="../../../../assets/icons/icon-tarjeta.PNG"
+            height="35px"
+            width="40px"
+            alt=""
+          />
+        </div>
+        <div class="menu-btn menu-btn_4">
+          <img
+            src="../../../../assets/icons/icon-whats.PNG"
+            height="40px"
+            width="40px"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
