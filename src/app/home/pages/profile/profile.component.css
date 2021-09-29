@@ -1,0 +1,451 @@
+@font-face {
+  font-family: "Cocogoose";
+  src: url(../../../../assets/fonts/Cocogoose-Pro-Ultralight-trial.ttf);
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: "Cocogoose";
+}
+
+@media (min-width: 320px) {
+  /* smartphones, iPhone, portrait 480x320 phones */
+
+  /* contenedor principal */
+  .container_mi {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+  }
+
+  /* barra de navegacion principal */
+  header {
+    width: 100%;
+  }
+  .navBar {
+    background-color: green;
+    height: 12vh;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .nav_container {
+    width: 100%;
+  }
+
+  /* logo de ubicacion */
+  .logo {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    margin-left: -10px;
+  }
+
+  /* selector de ciudades */
+  .select_ciudad {
+    width: 38%;
+    margin-left: -4%;
+    margin-right: 15%;
+    outline: none;
+    color: white;
+    border: 1px solid transparent;
+    background-color: transparent;
+    border-bottom: 1px solid white;
+  }
+  option:not(:first-of-type) {
+    color: black;
+  }
+
+  /* logo de notificaciones */
+  .bell {
+    vertical-align: middle;
+    color: white;
+    font-size: 40px !important;
+  }
+  /* logo de opciones */
+  .settings {
+    margin-top: 5px;
+    font-size: 40px !important;
+    vertical-align: middle;
+  }
+
+  /* color de los iconos */
+  .material-icons {
+    color: white;
+  }
+
+  /* menu de opciones */
+  .bar-btn {
+    font-size: 25px;
+    margin-right: 20px;
+    cursor: Pointer;
+  }
+  /* contenedor del menu */
+  .nav-menu {
+    position: fixed;
+    width: 100%;
+    top: 100px;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.6),
+        rgba(255, 255, 255, 0.8)
+      ),
+      url("../../../../assets/images/family-background.png");
+    background-size: cover;
+    background-position: bottom;
+    text-align: center;
+    transition: all 0.5%;
+  }
+  /* estilos de los elementos del menu */
+  .nav-menu li {
+    display: none;
+    color: black;
+    width: 100%;
+    border-bottom: 2px solid green;
+    margin: 5% 5% 5% 0;
+    line-height: 30px;
+    padding-bottom: 2%;
+    text-align: start;
+    transition: all 0.5s;
+  }
+  /* estilos de los links del menu */
+  .nav-menu li a {
+    color: green;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .nav-menu li a.active,
+  .nav-menu li a:hover {
+    color: rgb(248, 8, 8);
+    transition: 0.5s;
+  }
+
+  #check {
+    display: none;
+  }
+  #check:checked ~ .nav-menu {
+    height: 100vh;
+    margin-top: -20px;
+  }
+  #check:checked ~ .nav-menu li {
+    display: block;
+  }
+
+  /* menu central */
+  .middle-menu {
+    padding: 20px;
+    width: 100vw;
+    height: 90vh;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.6),
+        rgba(255, 255, 255, 0.8)
+      ),
+      url("../../../../assets/images/background-3.PNG");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-flow: column;
+    gap: 10%;
+  }
+
+  /* menu de el fondo */
+
+  .menu_logo {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    margin-left: -10px;
+  }
+
+  .children_p {
+    background-color: transparent;
+    padding: 10px;
+    width: 90%;
+    border-radius: 20px;
+    display: flex;
+    flex-flow: nowrap;
+    gap: 5px;
+    justify-content: center;
+  }
+  .profile-photo {
+    height: 150px;
+    width: 15s0px;
+    background: #ccc;
+    overflow: hidden;
+    border-radius: 100px;
+    margin-top: -50px;
+    margin-left: 20px;
+  }
+  .profile-photo img {
+    width: 150px;
+    height: 160px;
+    object-fit: cover;
+  }
+
+  .profile-data {
+    width: 90%;
+    height: 50%;
+    background-color: transparent;
+    box-shadow: 2px 5px 5px 5px silver;
+    margin-left: 20px;
+    margin-top: -40px;
+    border-radius: 10px;
+    padding-top: 5%;
+  }
+  .profile-data label {
+    margin-left: 10px;
+    font-size: 9px;
+    color: green;
+  }
+
+  .profile-data input {
+    margin-left: 10px;
+    margin-bottom: 5px;
+    width: 90%;
+    border: hidden;
+    outline: none;
+    background-color: transparent;
+    border-bottom: 1px solid green;
+    font-family: "Cocogoose";
+    font-size: 12px;
+  }
+
+  .btn-update {
+    margin-top: 30%;
+    margin-left: 20%;
+    border-radius: 20px;
+    border: hidden;
+    outline: none;
+    height: 30px;
+    width: 60%;
+    color: white;
+    background-color: green;
+  }
+}
+@media (min-width: 374px) {
+  .select_ciudad {
+    width: 33%;
+    margin-right: 28%;
+  }
+  .btn-update {
+    margin-top: 20%;
+  }
+  .profile-photo {
+    margin-left: 50px;
+    width: 130px;
+    height: 140px;
+  }
+  .profile-photo img {
+    width: 130px;
+    height: 140px;
+    object-fit: cover;
+  }
+
+  .profile-data {
+    height: 55%;
+  }
+}
+@media (min-width: 399px) {
+  .nav_container {
+    width: 100%;
+  }
+
+  .bell {
+    font-size: 40px !important;
+  }
+  .settings {
+    font-size: 40px !important;
+    margin-left: 10px;
+  }
+  .select_ciudad {
+    width: 35%;
+    margin-right: 38%;
+  }
+
+  .menu_logo {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+  }
+
+  /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+}
+
+@media (min-width: 424px) {
+  .select_ciudad {
+    width: 33%;
+    margin-right: 29%;
+    margin-left: -2%;
+  }
+
+  .btn-update {
+    margin-top: 20%;
+    margin-left: 25%;
+    border-radius: 20px;
+    border: hidden;
+    outline: none;
+    height: 30px;
+    width: 50%;
+    color: white;
+    background-color: green;
+  }
+  .profile-photo {
+    margin-left: 50px;
+    width: 150px;
+    height: 160px;
+  }
+  .profile-photo img {
+    width: 150px;
+    height: 160px;
+    object-fit: cover;
+  }
+}
+
+@media (min-width: 550px) {
+  .select_ciudad {
+    width: 30%;
+    margin-right: 50%;
+    margin-left: -2%;
+  }
+
+  /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+}
+
+@media (min-width: 767px) {
+  .profile-data {
+    margin-left: 5%;
+  }
+  .btn-update {
+    margin-top: 5%;
+  }
+  .profile-data input {
+    width: 95%;
+  }
+  .profile-photo {
+    margin-left: 130px;
+    width: 160px;
+    height: 170px;
+  }
+  .profile-photo img {
+    width: 160px;
+    height: 170px;
+    object-fit: cover;
+  }
+}
+
+@media (min-width: 961px) {
+  .logo {
+    margin-right: 1%;
+  }
+  .select_ciudad {
+    width: 20%;
+    margin-right: 64%;
+  }
+  .bottom-menu {
+    display: none;
+  }
+  .middle-menu {
+    height: 100vh;
+  }
+  * {
+    overflow: hidden;
+  }
+  .profile-photo {
+    margin: 0;
+    margin-bottom: 30px;
+  }
+  .profile-data {
+    height: 40%;
+    margin-top: -90px;
+  }
+  .general-information {
+    margin-top: -75px;
+  }
+  .profile-photo {
+    margin-left: 150px;
+    width: 190px;
+    height: 200px;
+  }
+  .profile-photo img {
+    width: 190px;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+}
+@media (min-width: 1025px) {
+  .logo {
+    margin-right: 1%;
+  }
+  .select_ciudad {
+    width: 25%;
+    margin-right: 60%;
+  }
+
+  .general-information {
+    margin-top: -60px;
+  }
+
+  .profile-data {
+    width: 90%;
+    height: 42%;
+  }
+
+  /* big landscape tablets, laptops, and desktops */
+}
+@media (min-width: 1250px) {
+  .select_ciudad {
+    width: 15%;
+    margin-right: 73%;
+  }
+  .general-information {
+    margin-top: -75px;
+  }
+
+  .general-information {
+    margin-top: -60px;
+  }
+
+  .profile-data {
+    width: 25%;
+    height: 40%;
+    margin-left: 38%;
+    padding-top: 20px;
+  }
+
+  .profile-photo {
+    margin-left: 150px;
+    width: 190px;
+    height: 200px;
+  }
+  .profile-photo img {
+    width: 190px;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .middle-menu {
+    background-image: none;
+  }
+  .btn-update {
+    width: 40%;
+    margin-left: 30%;
+  }
+
+  .profile-data input {
+    width: 85%;
+    margin-left: 7%;
+  }
+  .profile-data label {
+    margin-left: 7%;
+  }
+  /* hi-res laptops and desktops */
+}

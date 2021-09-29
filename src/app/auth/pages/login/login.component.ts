@@ -20,15 +20,22 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
   miFormulario: FormGroup = this.fb.group({
     identificacion: ['', [Validators.required]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
+    contrasena: ['', [Validators.required, Validators.minLength(6)]],
   });
 
   login() {
-    console.log(this.miFormulario.value);
-    this.authService.login(this.miFormulario.value).subscribe((resp: any) => {
-      this.router.navigateByUrl(`/app/homePage`);
-      localStorage.setItem('jwt', resp.token);
-      console.log(resp);
-    });
+    this.authService.login(this.miFormulario.value).subscribe(
+      (resp: any) => {
+        if (resp.error === true) {
+          alert('usuario y/o contraseña incorrectos');
+        } else {
+          this.router.navigateByUrl(`/app/homePage`);
+          localStorage.setItem('jwt', resp.token);
+        }
+      },
+      (err) => {
+        alert(err.error.msg);
+      }
+    );
   }
 }

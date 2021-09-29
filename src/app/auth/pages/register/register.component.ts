@@ -32,6 +32,7 @@ export class RegisterComponent {
     apellidos: ['', [Validators.required]],
     sexo: ['', [Validators.required]],
     correo: ['', [Validators.required]],
+    telefono: ['', [Validators.required]],
     contrasena: ['', [Validators.required, Validators.minLength(6)]],
     fecha_nacimiento: ['', [Validators.required]],
     departamento: ['', [Validators.required]],
@@ -45,9 +46,14 @@ export class RegisterComponent {
   }
 
   registro() {
-    this.authService.registro(this.miFormulario.value).subscribe((resp) => {
-      console.log(resp);
-      this.router.navigateByUrl(`/auth/login`);
-    });
+    this.authService.registro(this.miFormulario.value).subscribe(
+      (resp) => {
+        console.log(resp);
+        this.router.navigateByUrl(`/auth/login`);
+      },
+      (err) => {
+        alert(err.error.msg);
+      }
+    );
   }
 }

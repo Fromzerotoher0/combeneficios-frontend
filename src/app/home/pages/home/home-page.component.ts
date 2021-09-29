@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-home-page',
@@ -8,12 +9,16 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HomePageComponent implements OnInit {
   ciudades: any = [];
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private jwtHelper: JwtHelperService
+  ) {
     this.authService.getDepartamentos().subscribe((resp: any) => {
       this.ciudades = resp.results;
       console.log(this.ciudades);
     });
   }
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+  }
 }
