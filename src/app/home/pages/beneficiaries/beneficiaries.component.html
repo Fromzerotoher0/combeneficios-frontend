@@ -72,7 +72,7 @@
         <div class="beneficiarios-container">
           <div class="beneficiario-info" *ngFor="let item of beneficiaries">
             <div class="beneficiario-photo">
-              <img src="images/foto-perfil.jpg" alt="" />
+              <img src="{{ item.imgUrl }}" alt="" />
             </div>
             <div class="beneficiario-name">
               <p>{{ item.nombres }}{{ " " + item.apellidos }}</p>

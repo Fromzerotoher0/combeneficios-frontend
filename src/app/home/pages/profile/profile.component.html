@@ -75,11 +75,8 @@
         <h2>Mi Perfil</h2>
         <div class="general-information">
           <div class="children_p">
-            <div class="profile-photo">
-              <img
-                src="../../../../assets/images/foto-perfil.jpg"
-                alt="foto medico"
-              />
+            <div class="profile-photo" *ngFor="let item of user">
+              <img src="{{ user }}" alt="foto medico" />
             </div>
           </div>
         </div>

@@ -79,6 +79,14 @@
               placeholder="fecha_nacimiento"
               formControlName="fecha_nacimiento"
             />
+            <p></p>
+            <input
+              formControlName="image"
+              id="file"
+              type="file"
+              class="form-control"
+              (change)="onFileChange($event)"
+            /><br />
             <select
               class="select_registro"
               name="departamento"

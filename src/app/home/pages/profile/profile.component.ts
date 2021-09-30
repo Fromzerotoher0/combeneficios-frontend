@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  user: any = '';
+  user: any = [];
   constructor(
     private jwtHelper: JwtHelperService,
     private userService: UserService,
@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
       this.miFormulario.controls.apellidos.setValue(resp.results[0].apellidos);
       this.miFormulario.controls.email.setValue(resp.results[0].email);
       this.miFormulario.controls.telefono.setValue(resp.results[0].telefono);
+      this.user.push(resp.results[0].imgUrl);
       console.log(resp.results[0]);
     });
   }
