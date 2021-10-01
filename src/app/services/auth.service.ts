@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -9,21 +7,29 @@ import { catchError, map } from 'rxjs/operators';
 export class AuthService {
   constructor(private http: HttpClient) {}
   getDepartamentos() {
-    return this.http.get('http://localhost:3000/departamentos');
+    return this.http.get(
+      'https://combeneficios.herokuapp.com/api/departamentos'
+    );
   }
 
   cargarCiudades(departamento: any) {
-    return this.http.post('http://localhost:3000/ciudades', {
+    return this.http.post('https://combeneficios.herokuapp.com/api/ciudades', {
       departamento: departamento,
     });
   }
 
   registro(body: any) {
     console.log(body);
-    return this.http.post('http://localhost:3000/register', body);
+    return this.http.post(
+      'https://combeneficios.herokuapp.com/api/register',
+      body
+    );
   }
 
   login(body: any) {
-    return this.http.post('http://localhost:3000/login', body);
+    return this.http.post(
+      'https://combeneficios.herokuapp.com/api/login',
+      body
+    );
   }
 }

@@ -7,6 +7,6 @@ export class MailService {
   constructor(private http: HttpClient) {}
 
   contacto(body: any) {
-    return this.http.post('http://localhost:3000/mail', body);
+    return this.http.post('https://combeneficios.herokuapp.com/api/mail', body);
   }
 }

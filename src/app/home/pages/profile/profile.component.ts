@@ -38,7 +38,8 @@ export class ProfileComponent implements OnInit {
     this.userService
       .updateUser(token.id, this.miFormulario.value)
       .subscribe((resp) => {
-        console.log(resp);
+        alert('datos actualizados');
+        location.reload();
       });
   }
 }

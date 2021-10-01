@@ -40,8 +40,9 @@ export class ContactComponent implements OnInit {
 
   contacto() {
     this.mailService.contacto(this.miFormulario.value).subscribe((Res) => {
-      console.log('email enviado');
-      this.miFormulario.reset();
+      alert('peticion enviada');
+      this.miFormulario.controls.asunto.setValue('');
+      this.miFormulario.controls.mensaje.setValue('');
     });
   }
 }
