@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BeneficiariesComponent } from './pages/beneficiaries/beneficiaries.component';
 import { ContactComponent } from './pages/contact/contact.component';
-import { CredentialComponent } from './pages/credential/credential.component';
 import { HomePageComponent } from './pages/home/home-page.component';
 import { MedicServicesComponent } from './pages/medic-services/medic-services.component';
 import { ProfileComponent } from './pages/profile/profile.component';
@@ -25,9 +23,7 @@ const routes: Routes = [
         component: SupportComponent,
       },
       { path: 'perfil', component: ProfileComponent },
-      { path: 'tarjeta', component: CredentialComponent },
       { path: 'servicios-medicos', component: MedicServicesComponent },
-      { path: 'beneficiarios', component: BeneficiariesComponent },
       {
         path: '**',
         redirectTo: 'homePage',

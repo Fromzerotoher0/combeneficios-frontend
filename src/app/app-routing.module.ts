@@ -17,6 +17,15 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     canLoad: [AuthGuard],
   },
+  {
+    path: 'beneficiarios',
+    loadChildren: () =>
+      import('./beneficiaries/beneficiaries.module').then(
+        (m) => m.BeneficiariesModule
+      ),
+    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
+  },
   { path: '**', redirectTo: 'auth' },
 ];
 @NgModule({

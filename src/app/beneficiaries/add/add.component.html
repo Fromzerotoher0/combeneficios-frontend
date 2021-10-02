@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="container_pr">
+      <div class="register_container">
+        <h1 class="register_title">Registro de Usuario</h1>
+        <div class="register_form">
+          <form
+            (ngSubmit)="registro()"
+            autocomplete="off"
+            [formGroup]="miFormulario"
+          >
+            <select class="select_registro" formControlName="tipo_id">
+              <option [ngValue]="undefined" hidden selected>
+                tipo de identificacion
+              </option>
+              <option *ngFor="let item of tipo_id">
+                {{ item }}
+              </option>
+            </select>
+            <input
+              class="text_input"
+              placeholder="Numero de documento"
+              formControlName="nro_documento"
+              type="text"
+            />
+            <input
+              class="text_input"
+              placeholder="Nombres"
+              formControlName="nombres"
+              type="text"
+            />
+            <input
+              class="text_input"
+              placeholder="Apellidos"
+              formControlName="apellidos"
+              type="text"
+            />
+            <select class="select_registro" formControlName="sexo">
+              <option [ngValue]="undefined" hidden selected>sexo</option>
+              <option *ngFor="let item of sexo">
+                {{ item }}
+              </option>
+            </select>
+            <select class="select_registro" formControlName="parentesco">
+              <option [ngValue]="undefined" hidden selected>parentesco</option>
+              <option *ngFor="let item of parentesco">
+                {{ item | parentesco }}
+              </option>
+            </select>
+            <input
+              class="text_input"
+              placeholder="correo"
+              formControlName="correo"
+              type="email"
+            />
+            <input
+              class="text_input"
+              placeholder="contrasena"
+              formControlName="contrasena"
+              type="password"
+            />
+            <input
+              class="text_input"
+              placeholder="telefono"
+              formControlName="telefono"
+              type="text"
+            />
+            <input
+              type="date"
+              class="date_input"
+              placeholder="fecha_nacimiento"
+              formControlName="fecha_nacimiento"
+            />
+            <p></p>
+            <input
+              formControlName="image"
+              id="file"
+              type="file"
+              class="form-control"
+              (change)="onFileChange($event)"
+            /><br />
+            <select
+              class="select_registro"
+              name="departamento"
+              formControlName="departamento"
+              (change)="cargarCiudades($any($event.target).value)"
+            >
+              <option value="" selected disabled hidden>Departamento</option>
+              <option
+                *ngFor="let departamento of departamentos"
+                [value]="departamento.id_departamento"
+              >
+                {{ departamento.departamento }}
+              </option>
+            </select>
+            <select class="select_registro" formControlName="ciudad">
+              <option value="" selected disabled hidden>Municipio</option>
+              <option
+                *ngFor="let ciudad of ciudades"
+                value="{{ ciudad.municipio }}"
+              >
+                {{ ciudad.municipio }}
+              </option>
+            </select>
+            <input
+              type="submit"
+              [disabled]="!miFormulario.valid"
+              class="btn"
+              value="REGISTRARSE"
+            />
+
+            <p class="change_Page">
+              <a routerLink="/auth/login">Iniciar sesion</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div>
+      <span>valid</span>
+      <pre>{{ miFormulario.valid }}</pre>
+    </div>
+  </body>
+</html>

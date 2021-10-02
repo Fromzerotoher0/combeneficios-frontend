@@ -9,7 +9,7 @@ export class UserService {
 
   getUser(id: any) {
     console.log(id);
-    return this.http.post('https://combeneficios.herokuapp.com/api/user', {
+    return this.http.post('http://45.63.109.10:7000/api/user', {
       id: id,
     });
   }
@@ -17,7 +17,7 @@ export class UserService {
   updateUser(id: any, body: any) {
     console.log(body.telefono);
 
-    return this.http.put('https://combeneficios.herokuapp.com/api/user', {
+    return this.http.put('http://45.63.109.10:7000/api/user', {
       id: id,
       nombres: body.nombres,
       apellidos: body.apellidos,
@@ -27,11 +27,8 @@ export class UserService {
   }
 
   getBeneficiaries(id: any) {
-    return this.http.post(
-      'https://combeneficios.herokuapp.com/api/beneficiaries',
-      {
-        id: id,
-      }
-    );
+    return this.http.post('http://45.63.109.10:7000/api/beneficiaries', {
+      id: id,
+    });
   }
 }

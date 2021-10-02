@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Cocogoose";
-  src: url(../../../../assets/fonts/Cocogoose-Pro-Ultralight-trial.ttf);
+  src: url(../../../assets/fonts/Cocogoose-Pro-Ultralight-trial.ttf);
 }
 *,
 *::after,
@@ -98,7 +98,7 @@
         rgba(255, 255, 255, 0.6),
         rgba(255, 255, 255, 0.8)
       ),
-      url("../../../../assets/images/family-background.png");
+      url("../../../assets/images/family-background.png");
     background-size: cover;
     background-position: bottom;
     text-align: center;
@@ -149,7 +149,7 @@
         rgba(255, 255, 255, 0.6),
         rgba(255, 255, 255, 0.8)
       ),
-      url("../../../../assets/images/background-3.PNG");
+      url("../../../assets/images/background-3.PNG");
     background-size: cover;
     background-position: center;
     display: flex;

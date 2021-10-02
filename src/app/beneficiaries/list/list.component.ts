@@ -3,11 +3,11 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-beneficiaries',
-  templateUrl: './beneficiaries.component.html',
-  styleUrls: ['./beneficiaries.component.css'],
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.css'],
 })
-export class BeneficiariesComponent implements OnInit {
+export class ListComponent implements OnInit {
   user: any = [];
   beneficiaries: any = [];
   constructor(
