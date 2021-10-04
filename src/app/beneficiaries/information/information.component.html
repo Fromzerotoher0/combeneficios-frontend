@@ -16,7 +16,11 @@
       <header>
         <nav class="navBar">
           <div class="nav_container">
-            <img src="icons/ubication-icon.png" alt="logo" class="logo" />
+            <img
+              src="../../../../assets/icons/ubication-icon.png"
+              alt="logo"
+              class="logo"
+            />
             <select class="select_ciudad" name="ciudad" id="ciudad">
               <option hidden selected>ciudad</option>
               <option value="item 1">Barranquilla</option>
@@ -37,28 +41,28 @@
             <ul class="nav-menu">
               <li>
                 <img
-                  src="icons/ubication-icon.png"
+                  src="../../../../assets/icons/ubication-icon.png"
                   class="menu_logo"
                   alt=""
                 /><a href="#">Mi Perfil</a>
               </li>
               <li>
                 <img
-                  src="icons/ubication-icon.png"
+                  src="../../../../assets/icons/ubication-icon.png"
                   class="menu_logo"
                   alt=""
                 /><a href="#">Mis beneficios</a>
               </li>
               <li>
                 <img
-                  src="icons/ubication-icon.png"
+                  src="../../../../assets/icons/ubication-icon.png"
                   class="menu_logo"
                   alt=""
                 /><a href="#">Soporte</a>
               </li>
               <li>
                 <img
-                  src="icons/ubication-icon.png"
+                  src="../../../../assets/icons/ubication-icon.png"
                   class="menu_logo"
                   alt=""
                 /><a href="#">Contáctenos</a>
@@ -68,34 +72,34 @@
         </nav>
       </header>
       <div class="middle-menu">
-        <h2>Mis Beneficiarios</h2>
-        <div class="beneficiarios-container">
-          <div class="beneficiario-info" *ngFor="let item of beneficiaries">
-            <div class="beneficiario-photo">
-              <img src="{{ item.imgUrl }}" alt="" />
-            </div>
-            <div class="beneficiario-name">
-              <p>{{ item.nombres }}{{ " " + item.apellidos }}</p>
-              <p>{{ item.parentesco_id | parentesco }}</p>
-            </div>
-            <div class="btn-container">
-              <button class="btn-beneficiario">
-                <a
-                  style="color: white"
-                  [routerLink]="['/beneficiarios', item.id]"
-                >
-                  <strong> ver detalles </strong>
-                </a>
-              </button>
+        <h2>Mi Perfil</h2>
+        <div class="general-information">
+          <div class="children_p">
+            <div class="profile-photo" *ngFor="let item of user">
+              <img src="{{ user }}" alt="foto medico" />
             </div>
           </div>
-
-          <button
-            [routerLink]="'/beneficiarios/agregar'"
-            class="add-beneficiario"
+        </div>
+        <div class="profile-data">
+          <form
+            (ngSubmit)="update()"
+            autocomplete="off"
+            [formGroup]="miFormulario"
           >
-            <strong>Agregar beneficiario</strong>
-          </button>
+            <label for="nombres">nombres</label><br />
+            <input type="text" id="nombres" formControlName="nombres" /><br />
+            <label for="nombres">Apellidos</label><br />
+            <input
+              type="text"
+              id="apellidos"
+              formControlName="apellidos"
+            /><br />
+            <label for="correo">Correo Electronico</label><br />
+            <input type="text" formControlName="email" id="correo" /><br />
+            <label for="telefono">Telefono</label><br />
+            <input type="text" formControlName="telefono" id="telefono" />
+            <button class="btn-update">Guardar Cambios</button>
+          </form>
         </div>
       </div>
     </div>

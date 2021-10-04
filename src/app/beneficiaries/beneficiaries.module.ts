@@ -6,6 +6,7 @@ import { ParentescoPipe } from '../pipes/parentesco.pipe';
 import { CredentialComponent } from './credential/credential.component';
 import { AddComponent } from './add/add.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { InformationComponent } from './information/information.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ParentescoPipe,
     CredentialComponent,
     AddComponent,
+    InformationComponent,
   ],
   imports: [CommonModule, BeneficiariesRoutingModule, ReactiveFormsModule],
 })

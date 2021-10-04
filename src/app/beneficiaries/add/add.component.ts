@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-add',
@@ -15,11 +17,13 @@ export class AddComponent {
   formData: FormData = new FormData();
   tipo_id = ['Cedula', 'Pasaporte', 'Tarjeta de identidad'];
   sexo = ['Masculino', 'Femenino', 'otro'];
-  parentesco = [1, 2, 3, 4, 5, 6];
+  parentesco = [2, 3, 4, 5, 6];
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private jwtHelper: JwtHelperService,
+    private userService: UserService
   ) {
     this.authService.getDepartamentos().subscribe((resp: any) => {
       this.departamentos = resp.results;
@@ -74,6 +78,8 @@ export class AddComponent {
   }
 
   registro() {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+
     const uploadData = new FormData();
     uploadData.append('tipo_id', this.miFormulario.get('tipo_id')!.value);
     uploadData.append(
@@ -91,16 +97,17 @@ export class AddComponent {
       this.miFormulario.get('fecha_nacimiento')!.value
     );
     uploadData.append('image', this.miFormulario.get('image')!.value);
+    uploadData.append('parentesco', this.miFormulario.get('parentesco')!.value);
     uploadData.append(
       'departamento',
       this.miFormulario.get('departamento')!.value
     );
+    uploadData.append('titular_id', token.id);
     uploadData.append('ciudad', this.miFormulario.get('ciudad')!.value);
 
-    this.authService.registro(uploadData).subscribe(
+    this.userService.registerBeneficiaries(uploadData).subscribe(
       (resp) => {
         console.log(resp);
-        this.router.navigateByUrl(`/auth/login`);
       },
       (err) => {
         alert(err.error.msg);

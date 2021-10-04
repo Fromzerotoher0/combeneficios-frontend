@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
+import { departamento } from 'src/app/interfaces/departamento.interface';
 
 @Component({
   selector: 'app-register',
@@ -27,6 +28,7 @@ export class RegisterComponent {
     });
   }
 
+  //formulario reactivo para obtener los datos del usuario a registrar
   miFormulario: FormGroup = this.fb.group({
     tipo_id: ['', [Validators.required]],
     nro_documento: ['', [Validators.required, Validators.minLength(6)]],
@@ -42,12 +44,13 @@ export class RegisterComponent {
     ciudad: ['', [Validators.required]],
   });
 
-  cargarCiudades(departamento: any) {
+  cargarCiudades(departamento: departamento) {
     this.authService.cargarCiudades(departamento).subscribe((resp: any) => {
       this.ciudades = resp.results;
     });
   }
 
+  //metodo para obtener una imagen y validar que tenga los formatos correctos
   onFileChange(event: any) {
     let fileList: FileList = event.target.files;
     if (fileList.length > 0) {
@@ -73,6 +76,8 @@ export class RegisterComponent {
   }
 
   registro() {
+    //formData para poder enviar una imagen con el formulario
+    //se le asignan los valores del formulario reactivo
     const uploadData = new FormData();
     uploadData.append('tipo_id', this.miFormulario.get('tipo_id')!.value);
     uploadData.append(

@@ -57,7 +57,7 @@
             </select>
             <select class="select_registro" formControlName="parentesco">
               <option [ngValue]="undefined" hidden selected>parentesco</option>
-              <option *ngFor="let item of parentesco">
+              <option *ngFor="let item of parentesco" value="{{ item }}">
                 {{ item | parentesco }}
               </option>
             </select>

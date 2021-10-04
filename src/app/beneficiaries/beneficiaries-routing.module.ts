@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddComponent } from './add/add.component';
 import { CredentialComponent } from './credential/credential.component';
+import { InformationComponent } from './information/information.component';
 import { ListComponent } from './list/list.component';
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
         path: 'agregar',
         component: AddComponent,
       },
+      { path: ':id', component: InformationComponent },
     ],
   },
 ];
