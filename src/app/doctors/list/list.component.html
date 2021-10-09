@@ -101,7 +101,7 @@
 
         <div class="flex-layout_medic">
           <div class="content">
-            <div class="children">
+            <div class="children" *ngFor="let item of doctors">
               <div class="medic-photo">
                 <img
                   src="../../../../assets/images/foto-perfil.jpg"
@@ -110,8 +110,10 @@
               </div>
               <div class="medic-information">
                 <div class="medic-information__text">
-                  <p><strong>CARLOS PEREZ</strong></p>
-                  <p>Ginecologo</p>
+                  <p>
+                    <strong>{{ item.nombres }} {{ item.apellidos }}</strong>
+                  </p>
+                  <p>{{ item.especializacion }}</p>
                   <p class="medic-information__space">
                     Consultas realizadas : 1
                   </p>
@@ -135,7 +137,12 @@
                   </p>
                 </div>
               </div>
-              <button class="medic-profile">Perfil</button>
+              <button
+                [routerLink]="['/medicos', item.id]"
+                class="medic-profile"
+              >
+                Perfil
+              </button>
             </div>
           </div>
         </div>

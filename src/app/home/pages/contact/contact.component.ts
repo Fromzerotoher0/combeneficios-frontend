@@ -32,7 +32,7 @@ export class ContactComponent implements OnInit {
     asunto: ['', [Validators.required]],
     nombre: ['', [Validators.required]],
     telefono: ['', [Validators.required]],
-    email: ['', [Validators.required]],
+    correo: ['', [Validators.required]],
     mensaje: ['', [Validators.required]],
   });
 

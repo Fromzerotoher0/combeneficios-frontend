@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
-import { HomeModule } from './home/home.module';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -25,6 +25,20 @@ const routes: Routes = [
       ),
     canActivate: [AuthGuard],
     canLoad: [AuthGuard],
+  },
+  {
+    path: 'medicos',
+    loadChildren: () =>
+      import('./doctors/doctors.module').then((m) => m.DoctorsModule),
+    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
+  },
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('./admin/admin.module').then((m) => m.AdminModule),
+    canActivate: [AuthGuard, AdminGuard],
+    canLoad: [AuthGuard, AdminGuard],
   },
   { path: '**', redirectTo: 'auth' },
 ];

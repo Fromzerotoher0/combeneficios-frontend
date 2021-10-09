@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+
+    <title>Home</title>
+  </head>
+  <body>
+    <div class="container_mi">
+      <header>
+        <nav class="navBar">
+          <div class="nav_container">
+            <img
+              src="../../../assets/icons/ubication-icon.png"
+              alt="logo"
+              class="logo"
+            />
+            <select class="select_ciudad" name="ciudad" id="ciudad">
+              <option hidden selected>ciudad</option>
+              <option value="item 1">Barranquilla</option>
+              <option value="item 2">Santa Marta</option>
+              <option value="item 3">Medellin</option>
+              <option value="item 1">Bogota</option>
+              <option value="item 1">Barrancabermeja</option>
+            </select>
+            <input type="checkbox" id="check" />
+            <label for=""
+              ><span class="material-icons-outlined bell">
+                notifications
+              </span></label
+            >
+            <label for="check" class="bar-btn"
+              ><span class="material-icons settings"> settings </span>
+            </label>
+            <ul class="nav-menu">
+              <li>
+                <img
+                  src="../../../assets/icons/ubication-icon.png"
+                  class="menu_logo"
+                  alt=""
+                /><a href="#">Mi Perfil</a>
+              </li>
+              <li>
+                <img
+                  src="../../../assets/icons/ubication-icon.png"
+                  class="menu_logo"
+                  alt=""
+                /><a href="#">Mis beneficios</a>
+              </li>
+              <li>
+                <img
+                  src="../../../assets/icons/ubication-icon.png"
+                  class="menu_logo"
+                  alt=""
+                /><a href="#">Soporte</a>
+              </li>
+              <li>
+                <img
+                  src="../../../assets/icons/ubication-icon.png"
+                  class="menu_logo"
+                  alt=""
+                /><a href="#">Contáctenos</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <div class="middle-menu" *ngFor="let item of doctor">
+        <div class="general-information">
+          <div class="children_m">
+            <div class="medic-photo">
+              <img
+                src="../../../assets/images/foto-perfil.jpg"
+                alt="foto medico"
+              />
+            </div>
+            <div class="medic-information">
+              <div class="medic-information__text">
+                <p>
+                  <strong>{{ item.nombres }} {{ item.apellidos }}</strong>
+                </p>
+                <p class="medic-information__space">Ginecologo</p>
+                <p>
+                  <img src="../../../assets/icons/Polígono 2.png" alt="" /><img
+                    src="../../../assets/icons/Polígono 2.png"
+                    alt=""
+                  /><img
+                    src="../../../assets/icons/Polígono 2.png"
+                    alt=""
+                  /><img
+                    src="../../../assets/icons/Polígono 2 copia 4.png"
+                    alt=""
+                  /><img
+                    src="../../../assets/icons/Polígono 2 copia 4.png"
+                    alt=""
+                  />
+                </p>
+              </div>
+            </div>
+            <p class="medic-price">$50000</p>
+          </div>
+        </div>
+        <div class="specialization-information">
+          <div class="specialization-information_1">
+            <div class="information_data">
+              <h2 class="information_title">Informacion Basica</h2>
+              <br />
+              <p><strong>direccion</strong><br />{{ item.direccion }}</p>
+              <br />
+              <p><strong>modalidad de cita</strong><br /></p>
+              <p>{{ item.modalidad_cita }}</p>
+            </div>
+            <div>
+              <img
+                src="../../../assets/icons/location_logo.png"
+                alt="logo ubicacion"
+              />
+              <p></p>
+              <p class="consultas">
+                <strong>consultas realizadas </strong>: 37
+              </p>
+            </div>
+          </div>
+          <div class="specialization-information_2">
+            <div class="specialization-container">
+              <p class="specialization-information_2__title">
+                <strong>Estudios Realizados</strong>
+              </p>
+              <div class="size" *ngFor="let item of pregrade">
+                <p>
+                  <strong>{{ item.titulo }}</strong>
+                </p>
+                <p>{{ item.universidad }}</p>
+                <p>obtencion {{ item.fecha_obtencion }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="specialization-information_3">
+            <div class="specialization-information_3-container">
+              <p class="specialization-information_3__title">
+                <strong>Especializaciones Realizadas</strong>
+              </p>
+
+              <div class="size" *ngFor="let item of especialization">
+                <p>
+                  <strong>{{ item.titulo }}</strong>
+                </p>
+                <p>{{ item.universidad }}</p>
+                <p>Año {{ item.fecha_obtencion }}</p>
+              </div>
+
+              <button class="btn-cita"><strong>Agendar Cita</strong></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

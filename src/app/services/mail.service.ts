@@ -7,6 +7,6 @@ export class MailService {
   constructor(private http: HttpClient) {}
 
   contacto(body: any) {
-    return this.http.post('http://45.63.109.10:7000/api/mail', body);
+    return this.http.post('http://localhost:7000/api/mail', body);
   }
 }

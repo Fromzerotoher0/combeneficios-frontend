@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
@@ -11,12 +10,14 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate, CanLoad {
+export class AdminGuard implements CanActivate, CanLoad {
   constructor(private router: Router, private jwtHelper: JwtHelperService) {}
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -25,14 +26,12 @@ export class AuthGuard implements CanActivate, CanLoad {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.jwtHelper.isTokenExpired(localStorage.getItem('jwt')!) === true) {
-      localStorage.removeItem('jwt');
-      this.router.navigateByUrl(`/auth/login`);
-    }
-    if (localStorage.getItem('jwt')) {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    if (token.tipo_usuario === 1) {
       return true;
     } else {
-      this.router.navigateByUrl(`/auth/login`);
+      alert('no tienes permisos para acceder a esta pagina');
+      this.router.navigateByUrl(`/app/homePage`);
       return false;
     }
   }
@@ -44,14 +43,12 @@ export class AuthGuard implements CanActivate, CanLoad {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.jwtHelper.isTokenExpired(localStorage.getItem('jwt')!) === true) {
-      localStorage.removeItem('jwt');
-      this.router.navigateByUrl(`/auth/login`);
-    }
-    if (localStorage.getItem('jwt')) {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    if (token.tipo_usuario === 1) {
       return true;
     } else {
-      this.router.navigateByUrl(`/auth/login`);
+      alert('no tienes permisos para acceder a esta pagina');
+      this.router.navigateByUrl(`/app/homePage`);
       return false;
     }
   }

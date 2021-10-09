@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomePageComponent } from './pages/home/home-page.component';
-import { MedicServicesComponent } from './pages/medic-services/medic-services.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SupportComponent } from './pages/support/support.component';
 
@@ -23,7 +22,6 @@ const routes: Routes = [
         component: SupportComponent,
       },
       { path: 'perfil', component: ProfileComponent },
-      { path: 'servicios-medicos', component: MedicServicesComponent },
       {
         path: '**',
         redirectTo: 'homePage',

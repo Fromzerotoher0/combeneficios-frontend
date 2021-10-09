@@ -1,0 +1,550 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: sans-serif;
+}
+
+@media (min-width: 320px) {
+  /* smartphones, iPhone, portrait 480x320 phones */
+
+  /* contenedor principal */
+  .container_mi {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+  }
+
+  /* barra de navegacion principal */
+  header {
+    width: 100%;
+  }
+  .navBar {
+    background-color: green;
+    height: 12vh;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .nav_container {
+    width: 100%;
+  }
+
+  /* logo de ubicacion */
+  .logo {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    margin-left: -10px;
+  }
+
+  /* selector de ciudades */
+  .select_ciudad {
+    width: 38%;
+    margin-left: -4%;
+    margin-right: 15%;
+    outline: none;
+    color: white;
+    border: 1px solid transparent;
+    background-color: transparent;
+    border-bottom: 1px solid white;
+  }
+  option:not(:first-of-type) {
+    color: black;
+  }
+
+  /* logo de notificaciones */
+  .bell {
+    vertical-align: middle;
+    color: white;
+    font-size: 40px !important;
+  }
+  /* logo de opciones */
+  .settings {
+    margin-top: 5px;
+    font-size: 40px !important;
+    vertical-align: middle;
+  }
+
+  /* color de los iconos */
+  .material-icons {
+    color: white;
+  }
+
+  /* menu de opciones */
+  .bar-btn {
+    font-size: 25px;
+    margin-right: 20px;
+    cursor: Pointer;
+  }
+  /* contenedor del menu */
+  .nav-menu {
+    position: fixed;
+    width: 100%;
+    top: 100px;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.6),
+        rgba(255, 255, 255, 0.8)
+      ),
+      url("../../../assets/images/family-background.png");
+    background-size: cover;
+    background-position: bottom;
+    text-align: center;
+    transition: all 0.5%;
+  }
+  /* estilos de los elementos del menu */
+  .nav-menu li {
+    display: none;
+    color: black;
+    width: 100%;
+    border-bottom: 2px solid green;
+    margin: 5% 5% 5% 0;
+    line-height: 30px;
+    padding-bottom: 2%;
+    text-align: start;
+    transition: all 0.5s;
+  }
+  /* estilos de los links del menu */
+  .nav-menu li a {
+    color: green;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .nav-menu li a.active,
+  .nav-menu li a:hover {
+    color: rgb(248, 8, 8);
+    transition: 0.5s;
+  }
+
+  #check {
+    display: none;
+  }
+  #check:checked ~ .nav-menu {
+    height: 100vh;
+    margin-top: -20px;
+  }
+  #check:checked ~ .nav-menu li {
+    display: block;
+  }
+
+  /* menu central */
+  .middle-menu {
+    padding: 20px;
+    width: 100vw;
+    height: 90vh;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.6),
+        rgba(255, 255, 255, 0.8)
+      ),
+      url("../../../assets/images/background-3.PNG");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-flow: column;
+    gap: 10%;
+  }
+
+  /* menu de el fondo */
+
+  .menu_logo {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    margin-left: -10px;
+  }
+
+  .children_m {
+    background-color: transparent;
+    padding: 10px;
+    width: 100%;
+    border-radius: 20px;
+    display: flex;
+    flex-flow: nowrap;
+    gap: 5px;
+    justify-content: center;
+  }
+  .medic-photo {
+    height: 90px;
+    width: 181px;
+    background: #ccc;
+    margin-left: -20px;
+    overflow: hidden;
+    border-radius: 100px;
+  }
+  .medic-photo img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+  .medic-information {
+    height: 80px;
+    width: 220px;
+    margin-top: 15px;
+  }
+
+  .medic-information__text p {
+    font-family: "Cocogoose";
+    font-size: 12px;
+    color: #054d99;
+  }
+
+  .medic-information__text img {
+    width: 20px;
+    height: 20px;
+    margin-left: -1px;
+  }
+  .medic-information__space {
+    margin-bottom: 5px;
+  }
+
+  .medic-price {
+    margin-top: 60px;
+  }
+
+  .specialization-information {
+    background-color: transparent;
+    border-radius: 20px;
+    margin-top: -30px;
+    height: 90vh;
+    width: 85vw;
+    display: flex;
+    flex-flow: column;
+    box-shadow: 2px 5px 10px 2px silver;
+  }
+  .specialization-information_1 {
+    border-bottom: 2px solid blue;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+    margin-left: 20px;
+    padding-bottom: 10px;
+    width: 90%;
+  }
+
+  .specialization-information_1 div {
+    width: 70%;
+    font-size: 9px;
+  }
+  .specialization-information_1 .information_title {
+    color: blue;
+  }
+
+  .specialization-information_1 img {
+    width: 65px;
+    height: 65px;
+    margin-left: 85px;
+    margin-bottom: 27px;
+  }
+
+  .information_data {
+    margin-left: 14px;
+  }
+
+  .information_data img {
+    width: 74px;
+    margin-left: 70px;
+  }
+
+  .specialization-information_2 {
+    border-bottom: 2px solid blue;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    margin-left: 20px;
+    width: 90%;
+  }
+  .specialization-container {
+    margin-bottom: 10px;
+  }
+
+  .specialization-information_2 .size {
+    font-size: 9px;
+  }
+  .specialization-information_2 .specialization-information_2__title {
+    margin-top: 10px;
+    color: blue;
+  }
+  .specialization-information_3-container {
+    margin-left: 20px;
+  }
+  .specialization-information_3__title {
+    color: blue;
+  }
+  .specialization-information_3 .size {
+    font-size: 9px;
+  }
+
+  .specialization-information_3 .btn-cita {
+    margin-left: 30%;
+    margin-top: 30px;
+    width: 40%;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: blue;
+    color: white;
+  }
+}
+@media (min-width: 374px) {
+  .select_ciudad {
+    width: 33%;
+    margin-right: 28%;
+  }
+  .medic-photo {
+    height: 140px;
+    width: px;
+    background: #ccc;
+    margin-left: 1px;
+    overflow: hidden;
+    border-radius: 100px;
+  }
+  .medic-photo img {
+    width: 140px;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .information_data {
+    margin-left: 0px;
+  }
+
+  .consultas {
+    margin-top: -20px;
+  }
+
+  .specialization-information {
+    height: 42vh;
+  }
+}
+@media (min-width: 399px) {
+  .nav_container {
+    width: 100%;
+  }
+
+  .bell {
+    font-size: 40px !important;
+  }
+  .settings {
+    font-size: 40px !important;
+    margin-left: 10px;
+  }
+  .select_ciudad {
+    width: 35%;
+    margin-right: 38%;
+  }
+
+  .menu_logo {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+  }
+
+  /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+}
+
+@media (min-width: 424px) {
+  .select_ciudad {
+    width: 33%;
+    margin-right: 29%;
+    margin-left: -2%;
+  }
+
+  .specialization-information {
+    height: 57%;
+  }
+
+  .specialization-information_1 img {
+    margin-bottom: 10px;
+  }
+  .medic-photo {
+    height: 120px;
+    width: 130px;
+    background: #ccc;
+    margin-left: -20px;
+    overflow: hidden;
+    border-radius: 100px;
+  }
+  .medic-photo img {
+    width: 120px;
+    height: 130px;
+    object-fit: cover;
+  }
+}
+
+@media (min-width: 550px) {
+  .select_ciudad {
+    width: 30%;
+    margin-right: 50%;
+    margin-left: -2%;
+  }
+  /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+}
+@media (min-width: 740px) {
+  .specialization-information_1 img {
+    margin-left: 220px;
+  }
+}
+
+@media (min-width: 767px) {
+  .specialization-information {
+    margin-left: 55px;
+  }
+  .specialization-information_1 img {
+    margin-left: 220px;
+  }
+  .consultas {
+    margin-left: 145px;
+  }
+
+  .medic-photo {
+    height: 130px;
+    width: 140px;
+  }
+  .medic-photo img {
+    height: 130px;
+    width: 140px;
+  }
+
+  .specialization-information_3 .btn-cita {
+    width: 25%;
+  }
+  /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+}
+
+@media (min-width: 961px) {
+  .logo {
+    margin-right: 1%;
+  }
+  .select_ciudad {
+    width: 20%;
+    margin-right: 64%;
+  }
+  .bottom-menu {
+    display: none;
+  }
+  .middle-menu {
+    height: 100vh;
+  }
+  * {
+    overflow: hidden;
+  }
+  .specialization-information {
+    height: 50vh;
+    width: 82vw;
+    margin-left: 60px;
+    margin-top: -40px;
+  }
+  .specialization-information_1 img {
+    margin-left: 31vw;
+  }
+  .consultas {
+    margin-left: 23vw;
+  }
+
+  .medic-photo {
+    height: 130px;
+    width: 140px;
+  }
+  .medic-photo img {
+    height: 130px;
+    width: 140px;
+  }
+  .specialization-information_1 {
+    padding-left: 10px;
+    margin-left: 20px;
+    width: 78vw;
+  }
+  .specialization-information_2 {
+    padding-left: 10px;
+    width: 78vw;
+  }
+  .specialization-information_3 {
+    padding-left: 10px;
+  }
+  .specialization-information_3 .btn-cita {
+    width: 25%;
+    margin-left: 35%;
+  }
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+}
+@media (min-width: 1025px) {
+  .logo {
+    margin-right: 1%;
+  }
+  .select_ciudad {
+    width: 25%;
+    margin-right: 60%;
+  }
+  /* big landscape tablets, laptops, and desktops */
+}
+@media (min-width: 1250px) {
+  .select_ciudad {
+    width: 15%;
+    margin-right: 73%;
+  }
+  .specialization-information {
+    height: 45vh;
+    width: 34vw;
+    margin-left: 34%;
+  }
+
+  .specialization-information_1 img {
+    margin-left: 31vw;
+    width: 70px;
+  }
+  .consultas {
+    margin-left: 3.5vw;
+    margin-top: -12px;
+  }
+
+  .medic-photo {
+    height: 130px;
+    width: 140px;
+  }
+  .medic-photo img {
+    height: 130px;
+    width: 140px;
+  }
+  .specialization-information_1 {
+    padding-left: 10px;
+    margin-left: 20px;
+    width: 31vw;
+  }
+
+  .specialization-information_1 div {
+    width: 70%;
+    font-size: 9px;
+    height: 88px;
+  }
+
+  .specialization-information_1 img {
+    margin-left: 55%;
+  }
+
+  .specialization-information_2 {
+    padding-left: 10px;
+    width: 31vw;
+  }
+  .specialization-information_3 {
+    padding-left: 10px;
+  }
+  .specialization-information_3__title {
+    margin-top: 5px;
+  }
+
+  .specialization-information_3 .btn-cita {
+    width: 35%;
+    margin-left: 30%;
+  }
+  /* hi-res laptops and desktops */
+}

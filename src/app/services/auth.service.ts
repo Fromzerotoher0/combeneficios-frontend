@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   registro(body: any) {
-    return this.http.post('http://45.63.109.10:7000/api/register', body);
+    return this.http.post('http://localhost:7000/api/auth/register', body);
   }
 
   login(body: LoginBody): Observable<Login> {

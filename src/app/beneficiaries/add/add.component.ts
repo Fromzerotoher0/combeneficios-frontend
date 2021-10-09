@@ -108,6 +108,7 @@ export class AddComponent {
     this.userService.registerBeneficiaries(uploadData).subscribe(
       (resp) => {
         console.log(resp);
+        this.router.navigateByUrl(`/beneficiarios/lista`);
       },
       (err) => {
         alert(err.error.msg);

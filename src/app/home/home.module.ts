@@ -6,7 +6,6 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SupportComponent } from './pages/support/support.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { MedicServicesComponent } from './pages/medic-services/medic-services.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +13,6 @@ import { MedicServicesComponent } from './pages/medic-services/medic-services.co
     ContactComponent,
     SupportComponent,
     ProfileComponent,
-    MedicServicesComponent,
   ],
   imports: [CommonModule, homeRoutingModule, ReactiveFormsModule],
 })

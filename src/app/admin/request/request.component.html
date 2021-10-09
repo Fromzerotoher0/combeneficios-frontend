@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <title>solicitudes</title>
+  </head>
+  <body>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">solicitud</th>
+          <th scope="col">id usuario</th>
+          <th scope="col">nombres</th>
+          <th scope="col">apellidos</th>
+          <th scope="col">documento</th>
+          <th scope="col">asunto</th>
+          <th scope="col">direccion</th>
+          <th scope="col">modalidad</th>
+          <th style="width: 10.66%" scope="col">especializacion</th>
+          <th style="width: 13.66%; text-align: center" scope="col">
+            Acciones
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of solicitud; index as i">
+          <td>{{ i + 1 }}</td>
+          <td>{{ item.users_id }}</td>
+          <td>{{ item.nombres }}</td>
+          <td>{{ item.apellidos }}</td>
+          <td>{{ item.documento }}</td>
+          <td>{{ item.asunto }}</td>
+          <td>{{ item.direccion }}</td>
+          <td>{{ item.modalidad }}</td>
+          <td>{{ item.especializaciones_id }}</td>
+          <td>
+            <button
+              (click)="
+                approve(
+                  item.users_id,
+                  item.direccion,
+                  item.correo,
+                  item.modalidad,
+                  item.especializaciones_id
+                )
+              "
+              type="button"
+              class="btn btn-primary"
+            >
+              aceptar
+            </button>
+            <button
+              type="button"
+              (click)="reject(item.users_id, item.correo)"
+              class="btn btn-danger"
+            >
+              rechazar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
