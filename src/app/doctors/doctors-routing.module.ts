@@ -5,6 +5,7 @@ import { DoctorComponent } from './doctor/doctor.component';
 import { ListComponent } from './list/list.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { DoctorGuard } from '../guards/doctor.guard';
+import { RequestComponent } from './request/request.component';
 const routes: Routes = [
   {
     path: '',
@@ -16,6 +17,12 @@ const routes: Routes = [
       {
         path: 'servicios',
         component: ListComponent,
+      },
+      {
+        path: 'estudio',
+        component: RequestComponent,
+        canActivate: [DoctorGuard],
+        canLoad: [DoctorGuard],
       },
       {
         path: 'agenda',

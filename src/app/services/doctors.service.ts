@@ -46,4 +46,11 @@ export class DoctorsService {
   getEspecs() {
     return this.http.get('http://localhost:7000/api/doctors/especializaciones');
   }
+
+  studyrequest(body: any) {
+    return this.http.post(
+      'http://localhost:7000/api/doctors/medico/agregarEspecializacion',
+      body
+    );
+  }
 }

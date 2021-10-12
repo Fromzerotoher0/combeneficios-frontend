@@ -6,9 +6,10 @@ import { DoctorComponent } from './doctor/doctor.component';
 import { AddComponent } from './add/add.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ScheduleComponent } from './schedule/schedule.component';
+import { RequestComponent } from './request/request.component';
 
 @NgModule({
-  declarations: [ListComponent, DoctorComponent, AddComponent, ScheduleComponent],
+  declarations: [ListComponent, DoctorComponent, AddComponent, ScheduleComponent, RequestComponent],
   imports: [CommonModule, DoctorsRoutingModule, ReactiveFormsModule],
 })
 export class DoctorsModule {}
