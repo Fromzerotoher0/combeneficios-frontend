@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 import { DoctorsService } from '../../services/doctors.service';
 
 @Component({
@@ -10,10 +11,12 @@ import { DoctorsService } from '../../services/doctors.service';
 export class DoctorComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
-    private doctorService: DoctorsService
+    private doctorService: DoctorsService,
+    private userService: UserService
   ) {}
   doctor_id: any;
   doctor: any;
+  doctorData: any;
   pregrade: any;
   especialization: any;
   ngOnInit(): void {

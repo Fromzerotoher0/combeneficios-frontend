@@ -11,17 +11,13 @@ import { departamento } from '../interfaces/departamento.interface';
 export class AuthService {
   constructor(private http: HttpClient) {}
   getDepartamentos() {
-    return this.http.get('http://45.63.109.10:7000/api/departamentos');
+    return this.http.get('http://localhost:7000/api/users/departamentos');
   }
 
   cargarCiudades(departamento: departamento) {
-    return this.http.post('http://45.63.109.10:7000/api/ciudades', {
+    return this.http.post('http://localhost:7000/api/users/ciudades', {
       departamento: departamento,
     });
-  }
-
-  cargarParentesco() {
-    return this.http.get('http://45.63.109.10:7000/api/parentesco');
   }
 
   registro(body: any) {
@@ -29,6 +25,6 @@ export class AuthService {
   }
 
   login(body: LoginBody): Observable<Login> {
-    return this.http.post<Login>('http://45.63.109.10:7000/api/login', body);
+    return this.http.post<Login>('http://localhost:7000/api/auth/login', body);
   }
 }

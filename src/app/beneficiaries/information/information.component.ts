@@ -25,7 +25,6 @@ export class InformationComponent implements OnInit {
       this.miFormulario.controls.email.setValue(resp.results[0].email);
       this.miFormulario.controls.telefono.setValue(resp.results[0].telefono);
       this.user.push(resp.results[0].imgUrl);
-      console.log(resp.results[0]);
     });
   }
 
@@ -38,12 +37,20 @@ export class InformationComponent implements OnInit {
   ngOnInit(): void {}
 
   update() {
+    this.user = [];
     this.beneficiary_id = this.activatedRoute.snapshot.params['id'];
     this.userService
       .updateUser(this.beneficiary_id, this.miFormulario.value)
       .subscribe((resp) => {
         alert('datos actualizados');
-        location.reload();
       });
+
+    this.userService.getUser(this.beneficiary_id).subscribe((resp: any) => {
+      this.miFormulario.controls.nombres.setValue(resp.results[0].nombres);
+      this.miFormulario.controls.apellidos.setValue(resp.results[0].apellidos);
+      this.miFormulario.controls.email.setValue(resp.results[0].email);
+      this.miFormulario.controls.telefono.setValue(resp.results[0].telefono);
+      this.user.push(resp.results[0].imgUrl);
+    });
   }
 }

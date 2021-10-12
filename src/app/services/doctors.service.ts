@@ -8,22 +8,25 @@ export class DoctorsService {
   constructor(private http: HttpClient) {}
 
   getDoctors() {
-    return this.http.get('http://localhost:7000/api/medicos');
+    return this.http.get('http://localhost:7000/api/doctors/medicos');
   }
   getDoctor(id: any) {
-    return this.http.post('http://localhost:7000/api/medico', {
+    return this.http.post('http://localhost:7000/api/doctors/medico', {
       id: id,
     });
   }
   getPregrade(id: any) {
-    http: return this.http.post('http://localhost:7000/api/medico/estudios', {
-      id: id,
-    });
+    http: return this.http.post(
+      'http://localhost:7000/api/doctors/medico/estudios',
+      {
+        id: id,
+      }
+    );
   }
 
   getEspecialization(id: any) {
     http: return this.http.post(
-      'http://localhost:7000/api/medico/especializacion',
+      'http://localhost:7000/api/doctors/medico/especializacion',
       {
         id: id,
       }
@@ -31,7 +34,7 @@ export class DoctorsService {
   }
 
   register(id: any, body: any) {
-    return this.http.post('http://localhost:7000/api/solicitud', {
+    return this.http.post('http://localhost:7000/api/doctors/solicitud', {
       id: id,
       asunto: body.asunto,
       direccion: body.direccion,
@@ -41,6 +44,6 @@ export class DoctorsService {
   }
 
   getEspecs() {
-    return this.http.get('http://localhost:7000/api/especializaciones');
+    return this.http.get('http://localhost:7000/api/doctors/especializaciones');
   }
 }

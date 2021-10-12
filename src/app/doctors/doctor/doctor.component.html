@@ -75,10 +75,7 @@
         <div class="general-information">
           <div class="children_m">
             <div class="medic-photo">
-              <img
-                src="../../../assets/images/foto-perfil.jpg"
-                alt="foto medico"
-              />
+              <img src="{{ item.imgUrl }}" alt="foto medico" />
             </div>
             <div class="medic-information">
               <div class="medic-information__text">
@@ -103,7 +100,7 @@
                 </p>
               </div>
             </div>
-            <p class="medic-price">$50000</p>
+            <p class="medic-price"></p>
           </div>
         </div>
         <div class="specialization-information">
@@ -137,7 +134,7 @@
                   <strong>{{ item.titulo }}</strong>
                 </p>
                 <p>{{ item.universidad }}</p>
-                <p>obtencion {{ item.fecha_obtencion }}</p>
+                <p>{{ item.fecha_obtencion | date }}</p>
               </div>
             </div>
           </div>
@@ -152,7 +149,7 @@
                   <strong>{{ item.titulo }}</strong>
                 </p>
                 <p>{{ item.universidad }}</p>
-                <p>Año {{ item.fecha_obtencion }}</p>
+                <p>{{ item.fecha_obtencion | date: "dd/MM/yyyy" }}</p>
               </div>
 
               <button class="btn-cita"><strong>Agendar Cita</strong></button>

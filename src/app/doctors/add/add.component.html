@@ -88,15 +88,6 @@
               formControlName="asunto"
               placeholder="Asunto"
             />
-            <select class="select" formControlName="especializacion">
-              <option value="" selected disabled hidden>Especializacion</option>
-              <option
-                value="{{ item.id }}"
-                *ngFor="let item of especializaciones"
-              >
-                {{ item.descripcion }}
-              </option>
-            </select>
             <select class="select" formControlName="modalidad">
               <option value="" selected disabled hidden>Modalidad</option>
               <option value="{{ item }}" *ngFor="let item of modalidad">
