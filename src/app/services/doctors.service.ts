@@ -53,4 +53,8 @@ export class DoctorsService {
       body
     );
   }
+
+  getUniversity() {
+    return this.http.get('http://localhost:7000/api/doctors/universidades');
+  }
 }

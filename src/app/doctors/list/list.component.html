@@ -84,38 +84,34 @@
           </div>
         </div>
         <div class="filter">
-          <select name="ciudad" id="ciudad">
-            <option hidden selected>Seleccione especialidad</option>
-            <option value="item 1">Barranquilla</option>
-            <option value="item 2">Santa Marta</option>
-            <option value="item 3">Medellin</option>
-            <option value="item 1">Bogota</option>
-            <option value="item 1">Barrancabermeja</option>
+          <select [(ngModel)]="selectedBrand" (change)="valueSelected()">
+            <option value="all">todas las especializaciones</option>
+            <option *ngFor="let item of especializaciones">
+              {{ item.descripcion }}
+            </option>
           </select>
 
           <input
             type="text"
+            [(ngModel)]="term"
             placeholder=" Filtrar por especialista o especialidad"
           />
         </div>
 
         <div class="flex-layout_medic">
           <div class="content">
-            <div class="children" *ngFor="let item of doctors">
+            <div class="children" *ngFor="let item of doctors | filter: term">
               <div class="medic-photo">
-                <img
-                  src="../../../../assets/images/foto-perfil.jpg"
-                  alt="foto medico"
-                />
+                <img src="{{ item.imgUrl }}" alt="foto medico" />
               </div>
               <div class="medic-information">
                 <div class="medic-information__text">
                   <p>
                     <strong>{{ item.nombres }} {{ item.apellidos }}</strong>
                   </p>
-                  <p>{{ item.especializacion }}</p>
+                  <p>{{ item.descripcion }}</p>
                   <p class="medic-information__space">
-                    Consultas realizadas : 1
+                    Consultas realizadas : {{ item.id }}
                   </p>
                   <p>
                     <img

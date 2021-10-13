@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <title>solicitudes</title>
+  </head>
+  <body>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">solicitud</th>
+          <th scope="col">id medico</th>
+          <th scope="col">nombres</th>
+          <th scope="col">apellidos</th>
+          <th scope="col">documento</th>
+          <th scope="col">certificado</th>
+          <th scope="col">fecha obtencion</th>
+          <th scope="col">especializacion</th>
+          <th scope="col">universidad</th>
+          <th style="width: 13.66%; text-align: center" scope="col">
+            Acciones
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of solicitud; index as i">
+          <td>{{ i + 1 }}</td>
+          <td>{{ item.medico_id }}</td>
+          <td>{{ item.nombres }}</td>
+          <td>{{ item.apellidos }}</td>
+          <td>{{ item.documento }}</td>
+          <td>{{ item.imgUrl }}</td>
+          <td>{{ item.fecha_obtencion | date }}</td>
+          <td>{{ item.descripcion }}</td>
+          <td>{{ item.universidad }}</td>
+          <td>
+            <button
+              (click)="
+                approve(
+                  item.descripcion,
+                  item.universidad,
+                  item.medico_id,
+                  item.fecha_obtencion
+                )
+              "
+              type="button"
+              class="btn btn-primary"
+            >
+              aceptar
+            </button>
+            <button
+              type="button"
+              (click)="reject()"
+              class="btn btn-danger ml-1"
+            >
+              rechazar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

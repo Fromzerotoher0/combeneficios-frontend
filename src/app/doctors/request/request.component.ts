@@ -18,14 +18,20 @@ export class RequestComponent implements OnInit {
       this.especializaciones = resp.results;
       console.log(this.especializaciones);
     });
+    this.doctorService.getUniversity().subscribe((resp: any) => {
+      this.universidad = resp.results;
+      console.log(this.universidad);
+    });
   }
-
+  especializaciones: any;
+  universidad: any;
   ngOnInit(): void {}
   miFormulario: FormGroup = this.fb.group({
     especializaciones_id: ['', [Validators.required]],
     image: ['', [Validators.required]],
+    universidad: ['', [Validators.required]],
+    fecha_obtencion: ['', [Validators.required]],
   });
-  especializaciones: any;
 
   onFileChange(event: any) {
     let fileList: FileList = event.target.files;
@@ -60,6 +66,14 @@ export class RequestComponent implements OnInit {
       this.miFormulario.get('especializaciones_id')!.value
     );
     uploadData.append('image', this.miFormulario.get('image')!.value);
+    uploadData.append(
+      'universidad',
+      this.miFormulario.get('universidad')!.value
+    );
+    uploadData.append(
+      'fecha_obtencion',
+      this.miFormulario.get('fecha_obtencion')!.value
+    );
 
     this.doctorService.studyrequest(uploadData).subscribe(
       (resp) => {

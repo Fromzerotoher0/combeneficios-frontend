@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RequestComponent } from './request/request.component';
+import { StudyRequestComponent } from './study-request/study-request.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,7 @@ const routes: Routes = [
         path: 'solicitudes',
         component: RequestComponent,
       },
+      { path: 'solicitudEstudio', component: StudyRequestComponent },
     ],
   },
 ];

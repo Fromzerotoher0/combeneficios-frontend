@@ -96,6 +96,19 @@
                 {{ item.descripcion }}
               </option>
             </select>
+            <select class="select" formControlName="universidad">
+              <option value="" selected disabled hidden>universidad</option>
+              <option
+                value="{{ item.Nombre_Institucion }} - sede
+              {{ item.Municipio_Domicilio }}"
+                *ngFor="let item of universidad"
+              >
+                {{ item.Nombre_Institucion }} - sede
+                {{ item.Municipio_Domicilio }}
+              </option>
+            </select>
+            <input formControlName="fecha_obtencion" type="date" />fecha de
+            obtencion
             <input type="submit" class="submit" value="Enviar" />
           </form>
         </div>
