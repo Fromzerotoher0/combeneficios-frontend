@@ -73,10 +73,26 @@ export class AdminService {
     return this.http.post(
       'http://localhost:7000/api/admin/aceptarEstudio',
       {
+        users_id: body.users_id,
         titulo: body.titulo,
         medico_id: body.medico_id,
         universidad: body.universidad,
         fecha_obtencion: body.fecha_obtencion,
+      },
+      { headers: header }
+    );
+  }
+
+  rechazarEspecializacion(body: any) {
+    let header = new HttpHeaders({
+      'Content-Type': 'application/json',
+      authorization: 'Bearer ' + localStorage.getItem('jwt'),
+    });
+    return this.http.post(
+      'http://localhost:7000/api/admin/rechazarEstudio',
+      {
+        users_id: body.users_id,
+        medico_id: body.medico_id,
       },
       { headers: header }
     );

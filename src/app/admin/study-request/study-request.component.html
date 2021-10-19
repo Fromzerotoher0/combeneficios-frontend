@@ -45,6 +45,7 @@
             <button
               (click)="
                 approve(
+                  item.users_id,
                   item.descripcion,
                   item.universidad,
                   item.medico_id,
@@ -58,7 +59,7 @@
             </button>
             <button
               type="button"
-              (click)="reject()"
+              (click)="reject(item.users_id, item.medico_id)"
               class="btn btn-danger ml-1"
             >
               rechazar

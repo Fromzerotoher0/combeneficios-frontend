@@ -27,6 +27,7 @@ export class RequestComponent implements OnInit {
   universidad: any;
   ngOnInit(): void {}
   miFormulario: FormGroup = this.fb.group({
+    users_id: ['', [Validators.required]],
     especializaciones_id: ['', [Validators.required]],
     image: ['', [Validators.required]],
     universidad: ['', [Validators.required]],

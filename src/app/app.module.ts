@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [AppComponent, SearchFilterPipe],
@@ -18,6 +20,8 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
         tokenGetter: () => localStorage.getItem('jwt'),
       },
     }),
+    BrowserAnimationsModule,
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
