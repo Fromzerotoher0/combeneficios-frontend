@@ -16,12 +16,14 @@ export class ProfileComponent implements OnInit {
   ) {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     this.userService.getUser(token.id).subscribe((resp: any) => {
-      this.miFormulario.controls.nombres.setValue(resp.results[0].nombres);
-      this.miFormulario.controls.apellidos.setValue(resp.results[0].apellidos);
-      this.miFormulario.controls.email.setValue(resp.results[0].email);
-      this.miFormulario.controls.telefono.setValue(resp.results[0].telefono);
-      this.user.push(resp.results[0].imgUrl);
-      console.log(resp.results[0]);
+      console.log(resp);
+
+      this.miFormulario.controls.nombres.setValue(resp.result[0].nombres);
+      this.miFormulario.controls.apellidos.setValue(resp.result[0].apellidos);
+      this.miFormulario.controls.email.setValue(resp.result[0].email);
+      this.miFormulario.controls.telefono.setValue(resp.result[0].telefono);
+      this.user.push(resp.result[0].imgUrl);
+      console.log(resp.result[0]);
     });
   }
 

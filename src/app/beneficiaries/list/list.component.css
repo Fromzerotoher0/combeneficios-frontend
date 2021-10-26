@@ -12,6 +12,20 @@
   font-family: "Cocogoose";
 }
 
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar.mat-primary {
+  background: green;
+  color: #fff;
+}
+
+.mat-toolbar {
+  background: green;
+  color: #fff;
+}
+
 @media (min-width: 320px) {
   /* smartphones, iPhone, portrait 480x320 phones */
 

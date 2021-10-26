@@ -20,11 +20,13 @@ export class ContactComponent implements OnInit {
   ) {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     this.userService.getUser(token.id).subscribe((resp: any) => {
+      console.log(resp);
+
       this.miFormulario.controls.nombre.setValue(
-        resp.results[0].nombres + ' ' + resp.results[0].apellidos
+        resp.result[0].nombres + ' ' + resp.result[0].apellidos
       );
-      this.miFormulario.controls.telefono.setValue(resp.results[0].telefono);
-      this.miFormulario.controls.email.setValue(resp.results[0].email);
+      this.miFormulario.controls.telefono.setValue(resp.result[0].telefono);
+      this.miFormulario.controls.correo.setValue(resp.result[0].email);
     });
   }
 
@@ -37,6 +39,11 @@ export class ContactComponent implements OnInit {
   });
 
   ngOnInit(): void {}
+
+  perfil() {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    this.router.navigateByUrl(`/beneficiarios/${token.id}`);
+  }
 
   contacto() {
     this.mailService.contacto(this.miFormulario.value).subscribe((Res) => {

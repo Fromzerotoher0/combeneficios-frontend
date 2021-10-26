@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserService } from 'src/app/services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-information',
@@ -16,15 +16,18 @@ export class InformationComponent implements OnInit {
     private jwtHelper: JwtHelperService,
     private userService: UserService,
     private fb: FormBuilder,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {
     this.beneficiary_id = this.activatedRoute.snapshot.params['id'];
     this.userService.getUser(this.beneficiary_id).subscribe((resp: any) => {
-      this.miFormulario.controls.nombres.setValue(resp.results[0].nombres);
-      this.miFormulario.controls.apellidos.setValue(resp.results[0].apellidos);
-      this.miFormulario.controls.email.setValue(resp.results[0].email);
-      this.miFormulario.controls.telefono.setValue(resp.results[0].telefono);
-      this.user.push(resp.results[0].imgUrl);
+      console.log(resp);
+
+      this.miFormulario.controls.nombres.setValue(resp.result[0].nombres);
+      this.miFormulario.controls.apellidos.setValue(resp.result[0].apellidos);
+      this.miFormulario.controls.email.setValue(resp.result[0].email);
+      this.miFormulario.controls.telefono.setValue(resp.result[0].telefono);
+      this.user.push(resp.result[0].imgUrl);
     });
   }
 
@@ -46,11 +49,16 @@ export class InformationComponent implements OnInit {
       });
 
     this.userService.getUser(this.beneficiary_id).subscribe((resp: any) => {
-      this.miFormulario.controls.nombres.setValue(resp.results[0].nombres);
-      this.miFormulario.controls.apellidos.setValue(resp.results[0].apellidos);
-      this.miFormulario.controls.email.setValue(resp.results[0].email);
-      this.miFormulario.controls.telefono.setValue(resp.results[0].telefono);
-      this.user.push(resp.results[0].imgUrl);
+      this.miFormulario.controls.nombres.setValue(resp.result[0].nombres);
+      this.miFormulario.controls.apellidos.setValue(resp.result[0].apellidos);
+      this.miFormulario.controls.email.setValue(resp.result[0].email);
+      this.miFormulario.controls.telefono.setValue(resp.result[0].telefono);
+      this.user.push(resp.result[0].imgUrl);
     });
+  }
+
+  perfil() {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    this.router.navigateByUrl(`/beneficiarios/${token.id}`);
   }
 }

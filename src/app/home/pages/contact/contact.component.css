@@ -9,6 +9,24 @@
   padding: 0;
 }
 
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar.mat-primary {
+  background: green;
+  color: #fff;
+}
+
+.mat-toolbar {
+  background: green;
+  color: #fff;
+}
+
+.logout {
+  margin-right: 70px !important;
+}
+
 @media (min-width: 320px) {
   /* smartphones, iPhone, portrait 480x320 phones */
 
@@ -39,7 +57,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    overflow: hidden;
+    overflow: auto;
   }
 
   .nav_container {

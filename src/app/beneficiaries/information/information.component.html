@@ -12,96 +12,100 @@
     <title>Home</title>
   </head>
   <body>
-    <div class="container_mi">
-      <header>
-        <nav class="navBar">
-          <div class="nav_container">
-            <img
-              src="../../../../assets/icons/ubication-icon.png"
-              alt="logo"
-              class="logo"
-            />
-            <select class="select_ciudad" name="ciudad" id="ciudad">
-              <option hidden selected>ciudad</option>
-              <option value="item 1">Barranquilla</option>
-              <option value="item 2">Santa Marta</option>
-              <option value="item 3">Medellin</option>
-              <option value="item 1">Bogota</option>
-              <option value="item 1">Barrancabermeja</option>
-            </select>
-            <input type="checkbox" id="check" />
-            <label for=""
-              ><span class="material-icons-outlined bell">
-                notifications
-              </span></label
-            >
-            <label for="check" class="bar-btn"
-              ><span class="material-icons settings"> settings </span>
-            </label>
-            <ul class="nav-menu">
-              <li>
-                <img
-                  src="../../../../assets/icons/ubication-icon.png"
-                  class="menu_logo"
-                  alt=""
-                /><a href="#">Mi Perfil</a>
-              </li>
-              <li>
-                <img
-                  src="../../../../assets/icons/ubication-icon.png"
-                  class="menu_logo"
-                  alt=""
-                /><a href="#">Mis beneficios</a>
-              </li>
-              <li>
-                <img
-                  src="../../../../assets/icons/ubication-icon.png"
-                  class="menu_logo"
-                  alt=""
-                /><a href="#">Soporte</a>
-              </li>
-              <li>
-                <img
-                  src="../../../../assets/icons/ubication-icon.png"
-                  class="menu_logo"
-                  alt=""
-                /><a href="#">Contáctenos</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
-      <div class="middle-menu">
-        <h2>Mi Perfil</h2>
-        <div class="general-information">
-          <div class="children_p">
-            <div class="profile-photo" *ngFor="let item of user">
-              <img src="{{ user }}" alt="foto medico" />
+    <mat-sidenav-container fullscreen>
+      <mat-sidenav #sidenav mode="push">
+        <mat-toolbar color="primary">
+          <span>menu</span>
+          <span class="spacer"></span>
+          <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </mat-toolbar>
+
+        <mat-nav-list>
+          <a [routerLink]="['/home']" mat-list-item (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">home</mat-icon
+            ><span>Pagina principal</span></a
+          >
+          <a [routerLink]="['/home']" mat-list-item (click)="perfil()"
+            ><mat-icon mat-list-icon style="color: gray">person</mat-icon
+            ><span>Mi perfil</span></a
+          >
+          <a
+            [routerLink]="['/beneficiarios/lista']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">group</mat-icon
+            ><span>Mis Beneficiarios</span></a
+          >
+
+          <a
+            [routerLink]="['/app/soporte']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">settings</mat-icon
+            ><span>soporte</span></a
+          >
+          <a
+            [routerLink]="['/app/contacto']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">contact_mail</mat-icon
+            ><span>contacto</span></a
+          >
+        </mat-nav-list>
+      </mat-sidenav>
+
+      <mat-toolbar>
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="spacer"></span>
+        <button
+          mat-icon-button
+          class="example-icon favorite-icon"
+          aria-label="notificaciones"
+        >
+          <mat-icon>notifications</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" aria-label="cerrar sesion">
+          <mat-icon>logout</mat-icon>
+        </button>
+      </mat-toolbar>
+
+      <div class="container_mi">
+        <div class="middle-menu">
+          <h2>Mi Perfil</h2>
+          <div class="general-information">
+            <div class="children_p">
+              <div class="profile-photo" *ngFor="let item of user">
+                <img src="{{ user }}" alt="foto medico" />
+              </div>
             </div>
           </div>
-        </div>
-        <div class="profile-data">
-          <form
-            (ngSubmit)="update()"
-            autocomplete="off"
-            [formGroup]="miFormulario"
-          >
-            <label for="nombres">nombres</label><br />
-            <input type="text" id="nombres" formControlName="nombres" /><br />
-            <label for="nombres">Apellidos</label><br />
-            <input
-              type="text"
-              id="apellidos"
-              formControlName="apellidos"
-            /><br />
-            <label for="correo">Correo Electronico</label><br />
-            <input type="text" formControlName="email" id="correo" /><br />
-            <label for="telefono">Telefono</label><br />
-            <input type="text" formControlName="telefono" id="telefono" />
-            <button class="btn-update" type="submit">Guardar Cambios</button>
-          </form>
+          <div class="profile-data">
+            <form
+              (ngSubmit)="update()"
+              autocomplete="off"
+              [formGroup]="miFormulario"
+            >
+              <label for="nombres">nombres</label><br />
+              <input type="text" id="nombres" formControlName="nombres" /><br />
+              <label for="nombres">Apellidos</label><br />
+              <input
+                type="text"
+                id="apellidos"
+                formControlName="apellidos"
+              /><br />
+              <label for="correo">Correo Electronico</label><br />
+              <input type="text" formControlName="email" id="correo" /><br />
+              <label for="telefono">Telefono</label><br />
+              <input type="text" formControlName="telefono" id="telefono" />
+              <button class="btn-update" type="submit">Guardar Cambios</button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </mat-sidenav-container>
   </body>
 </html>

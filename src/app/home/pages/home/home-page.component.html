@@ -13,168 +13,70 @@
     <title>Home</title>
   </head>
   <body>
-    <div class="container_ph">
-      <header>
-        <nav class="navBar">
-          <div class="nav_container">
-            <img
-              src="../../../../assets/icons/ubication-icon.png"
-              alt="logo"
-              class="logo"
-            />
-            <select class="select_ciudad" name="ciudad" id="ciudad">
-              <option hidden selected>ciudad</option>
-              <option value="item 1" *ngFor="let item of ciudades">
-                {{ item.departamento }}
-              </option>
-            </select>
-            <input type="checkbox" id="check" />
-            <label for=""
-              ><span class="material-icons-outlined bell">
-                notifications
-              </span></label
-            >
-            <label for="check" class="bar-btn"
-              ><span class="material-icons settings"> settings </span>
-            </label>
-            <ul class="nav-menu">
-              <li>
-                <img
-                  src="../../../../assets/icons/ubication-icon.png"
-                  class="menu_logo"
-                  alt=""
-                /><a href="#">Mi Perfil</a>
-              </li>
-              <li>
-                <img
-                  src="../../../../assets/icons/ubication-icon.png"
-                  class="menu_logo"
-                  alt=""
-                /><a href="#">Mis beneficios</a>
-              </li>
-              <li>
-                <img
-                  src="../../../../assets/icons/ubication-icon.png"
-                  class="menu_logo"
-                  alt=""
-                /><a href="#">Soporte</a>
-              </li>
-              <li>
-                <img
-                  src="../../../../assets/icons/ubication-icon.png"
-                  class="menu_logo"
-                  alt=""
-                /><a href="#">Contáctenos</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
-      <div class="middle-menu">
-        <div class="menu_text">
-          <h1 class="menu_title">Beneficios en</h1>
-          <br />
-          <h2 class="menu_content">
-            estas son las categorias de beneficios que tenemos para ti
-          </h2>
-        </div>
-        <div class="grid-layout">
-          <div class="card">
-            <img
-              src="../../../../assets/icons/Captura_preview_rev_1.png"
-              alt="Avatar"
-            />
-            <div class="container_card">
-              <h4 class="card-title"><b> Servicios medicos</b></h4>
-              <p class="card-subtitle">Aqui puedes agendar todas tus citas</p>
-            </div>
-          </div>
-          <div class="card">
-            <img
-              src="../../../../assets/icons/Captura_preview_rev_1.png"
-              alt="Avatar"
-            />
-            <div class="container_card">
-              <h4 class="card-title"><b> Servicios medicos</b></h4>
-              <p class="card-subtitle">Aqui puedes agendar todas tus citas</p>
-            </div>
-          </div>
-          <div class="card">
-            <img
-              src="../../../../assets/icons/Captura_preview_rev_1.png"
-              alt="Avatar"
-            />
-            <div class="container_card">
-              <h4 class="card-title"><b> Servicios medicos</b></h4>
-              <p class="card-subtitle">Aqui puedes agendar todas tus citas</p>
-            </div>
-          </div>
-          <div class="card">
-            <img
-              src="../../../../assets/icons/Captura_preview_rev_1.png"
-              alt="Avatar"
-            />
-            <div class="container_card">
-              <h4 class="card-title"><b> Servicios medicos</b></h4>
-              <p class="card-subtitle">Aqui puedes agendar todas tus citas</p>
-            </div>
-          </div>
-          <div class="card">
-            <img
-              src="../../../../assets/icons/Captura_preview_rev_1.png"
-              alt="Avatar"
-            />
-            <div class="container_card">
-              <h4 class="card-title"><b> Servicios medicos</b></h4>
-              <p class="card-subtitle">Aqui puedes agendar todas tus citas</p>
-            </div>
-          </div>
-          <div class="card">
-            <img
-              src="../../../../assets/icons/Captura_preview_rev_1.png"
-              alt="Avatar"
-            />
-            <div class="container_card">
-              <h4 class="card-title"><b> Servicios medicos</b></h4>
-              <p class="card-subtitle">Aqui puedes agendar todas tus citas</p>
-            </div>
-          </div>
-        </div>
+    <mat-sidenav-container fullscreen>
+      <mat-sidenav #sidenav mode="push">
+        <mat-toolbar color="primary">
+          <span>menu</span>
+          <span class="spacer"></span>
+          <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </mat-toolbar>
+
+        <mat-nav-list>
+          <a [routerLink]="['/home']" mat-list-item (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">home</mat-icon
+            ><span>Pagina principal</span></a
+          >
+          <a [routerLink]="['/home']" mat-list-item (click)="perfil()"
+            ><mat-icon mat-list-icon style="color: gray">person</mat-icon
+            ><span>Mi perfil</span></a
+          >
+          <a
+            [routerLink]="['/beneficiarios/lista']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">group</mat-icon
+            ><span>Mis Beneficiarios</span></a
+          >
+
+          <a
+            [routerLink]="['/app/soporte']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">settings</mat-icon
+            ><span>soporte</span></a
+          >
+          <a
+            [routerLink]="['/app/contacto']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">contact_mail</mat-icon
+            ><span>contacto</span></a
+          >
+        </mat-nav-list>
+      </mat-sidenav>
+
+      <mat-toolbar>
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="spacer"></span>
+        <button
+          mat-icon-button
+          class="example-icon favorite-icon"
+          aria-label="notificaciones"
+        >
+          <mat-icon>notifications</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" aria-label="cerrar sesion">
+          <mat-icon>logout</mat-icon>
+        </button>
+      </mat-toolbar>
+
+      <div class="container">
+        <router-outlet></router-outlet>
       </div>
-      <div class="bottom-menu">
-        <div class="menu-btn menu-btn_1">
-          <img
-            src="../../../../assets/icons/icon-citas-t.png"
-            height="40px"
-            width="40px"
-            alt=""
-          />
-        </div>
-        <div class="menu-btn menu-btn_2">
-          <img
-            src="../../../../assets/icons/icon-promocion-t.png"
-            height="40px"
-            width="40px"
-            alt=""
-          />
-        </div>
-        <div class="menu-btn menu-btn_3">
-          <img
-            src="../../../../assets/icons/icon-tarjeta.PNG"
-            height="35px"
-            width="40px"
-            alt=""
-          />
-        </div>
-        <div class="menu-btn menu-btn_4">
-          <img
-            src="../../../../assets/icons/icon-whats.PNG"
-            height="40px"
-            width="40px"
-            alt=""
-          />
-        </div>
-      </div>
-    </div>
+    </mat-sidenav-container>
   </body>
 </html>

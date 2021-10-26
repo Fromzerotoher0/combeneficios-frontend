@@ -6,6 +6,8 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SupportComponent } from './pages/support/support.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { MaterialModule } from '../material/material.module';
+import { BeneficiariesRoutingModule } from '../beneficiaries/beneficiaries-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,12 @@ import { ProfileComponent } from './pages/profile/profile.component';
     SupportComponent,
     ProfileComponent,
   ],
-  imports: [CommonModule, homeRoutingModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    homeRoutingModule,
+    BeneficiariesRoutingModule,
+    ReactiveFormsModule,
+    MaterialModule,
+  ],
 })
 export class HomeModule {}

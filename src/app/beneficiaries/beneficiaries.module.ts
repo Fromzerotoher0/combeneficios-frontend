@@ -7,6 +7,7 @@ import { CredentialComponent } from './credential/credential.component';
 import { AddComponent } from './add/add.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InformationComponent } from './information/information.component';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,11 @@ import { InformationComponent } from './information/information.component';
     AddComponent,
     InformationComponent,
   ],
-  imports: [CommonModule, BeneficiariesRoutingModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    BeneficiariesRoutingModule,
+    ReactiveFormsModule,
+    MaterialModule,
+  ],
 })
 export class BeneficiariesModule {}
