@@ -8,6 +8,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [AppComponent, SearchFilterPipe],
@@ -22,6 +23,7 @@ import { MaterialModule } from './material/material.module';
     }),
     BrowserAnimationsModule,
     MaterialModule,
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,15 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { departamento } from 'src/app/interfaces/departamento.interface';
+import { MediaObserver, MediaChange } from '@angular/flex-layout';
+import { Subscription } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class RegisterComponent {
+  hide = true;
+  get passwordInput() {
+    return this.miFormulario.get('contrasena')!;
+  }
+  mindate: any;
+  value = '';
   departamentos: any = [];
   ciudades: any = [];
   filename: String = '';
@@ -20,13 +30,16 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    public mediaObserver: MediaObserver
   ) {
     this.authService.getDepartamentos().subscribe((resp: any) => {
-      this.departamentos = resp.results;
-      console.log(this.departamentos);
+      this.departamentos = resp.result;
     });
   }
+
+  public currentYear = new Date().getFullYear();
+  maxDate = new Date(this.currentYear + 1, 11, 31);
 
   //formulario reactivo para obtener los datos del usuario a registrar
   miFormulario: FormGroup = this.fb.group({
@@ -35,8 +48,8 @@ export class RegisterComponent {
     nombres: ['', [Validators.required]],
     apellidos: ['', [Validators.required]],
     sexo: ['', [Validators.required]],
-    correo: ['', [Validators.required]],
     telefono: ['', [Validators.required]],
+    correo: ['', [Validators.required, Validators.email]],
     contrasena: ['', [Validators.required, Validators.minLength(6)]],
     fecha_nacimiento: ['', [Validators.required]],
     image: ['', [Validators.required]],
@@ -45,8 +58,11 @@ export class RegisterComponent {
   });
 
   cargarCiudades(departamento: departamento) {
+    console.log(departamento);
+
     this.authService.cargarCiudades(departamento).subscribe((resp: any) => {
-      this.ciudades = resp.results;
+      this.ciudades = resp.result;
+      console.log(this.ciudades);
     });
   }
 
@@ -75,7 +91,10 @@ export class RegisterComponent {
     }
   }
 
+  //metodo para registar un nuevo usuario
+
   registro() {
+    console.log(this.miFormulario.value);
     //formData para poder enviar una imagen con el formulario
     //se le asignan los valores del formulario reactivo
     const uploadData = new FormData();
@@ -107,7 +126,11 @@ export class RegisterComponent {
         this.router.navigateByUrl(`/auth/login`);
       },
       (err) => {
-        alert(err.error.msg);
+        if (err.error == undefined) {
+          alert('debe diligenciar todos los campos');
+        } else {
+          alert(err.error.msg);
+        }
       }
     );
   }
