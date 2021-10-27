@@ -8,6 +8,7 @@ import { SupportComponent } from './pages/support/support.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { MaterialModule } from '../material/material.module';
 import { BeneficiariesRoutingModule } from '../beneficiaries/beneficiaries-routing.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { BeneficiariesRoutingModule } from '../beneficiaries/beneficiaries-routi
     BeneficiariesRoutingModule,
     ReactiveFormsModule,
     MaterialModule,
+    FlexLayoutModule,
   ],
 })
 export class HomeModule {}

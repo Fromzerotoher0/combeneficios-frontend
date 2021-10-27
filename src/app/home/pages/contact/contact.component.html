@@ -80,7 +80,78 @@
         </button>
       </mat-toolbar>
 
-      <div class="contact_container">hola mundo</div>
+      <div fxLayout="row" fxLayoutAlign="center">
+        <div fxLayout="column" fxLayoutAlign="space-between center">
+          <div class="contact_container">
+            <div class="contact_2">
+              <div class="title_container">
+                <h2 class="contact_title">Contactanos</h2>
+              </div>
+              <form
+                (ngSubmit)="contacto()"
+                autocomplete="off"
+                [formGroup]="miFormulario"
+              >
+                <div>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Asunto</mat-label>
+                    <input
+                      matInput
+                      class="form__input"
+                      placeholder="asunto"
+                      formControlName="asunto"
+                    />
+                  </mat-form-field>
+                  &nbsp;
+                  <mat-form-field appearance="fill">
+                    <mat-label>Nombre</mat-label>
+                    <input
+                      matInput
+                      class="form__input"
+                      placeholder="Nombre"
+                      formControlName="nombre"
+                    />
+                  </mat-form-field>
+                </div>
+
+                <mat-form-field class="form__input" appearance="fill">
+                  <mat-label>Telefono</mat-label>
+                  <input
+                    matInput
+                    placeholder="Telefono"
+                    formControlName="telefono"
+                  />
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field class="form__input" appearance="fill">
+                  <mat-label>Correo</mat-label>
+                  <input
+                    matInput
+                    placeholder="Correo"
+                    formControlName="correo"
+                  />
+                </mat-form-field>
+                <br />
+                <textarea
+                  cols="30"
+                  formControlName="mensaje"
+                  rows="10"
+                ></textarea>
+                <br />
+                <button
+                  class="submit"
+                  type="submit"
+                  [disabled]="!miFormulario.valid"
+                >
+                  enviar
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span>valid</span>
+      <pre>{{ miFormulario.valid }}</pre>
     </mat-sidenav-container>
   </body>
 </html>
