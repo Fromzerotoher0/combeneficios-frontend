@@ -6,9 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  BrowserAnimationsModule,
+  NoopAnimationsModule,
+} from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { EspecializacionesPipe } from './pipes/especializaciones.pipe';
 
 @NgModule({
   declarations: [AppComponent, SearchFilterPipe],
@@ -22,6 +26,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
       },
     }),
     BrowserAnimationsModule,
+    NoopAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
   ],

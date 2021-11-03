@@ -24,6 +24,15 @@ export class DoctorsService {
     );
   }
 
+  getStudies(id: any) {
+    http: return this.http.post(
+      'http://localhost:7000/api/doctors/medico/especializaciones',
+      {
+        id: id,
+      }
+    );
+  }
+
   getEspecialization(id: any) {
     http: return this.http.post(
       'http://localhost:7000/api/doctors/medico/especializacion',
@@ -39,7 +48,8 @@ export class DoctorsService {
       asunto: body.asunto,
       direccion: body.direccion,
       modalidad: body.modalidad,
-      especializaciones_id: body.especializacion,
+      especializaciones_id: 1,
+      universidad: body.universidad,
     });
   }
 
@@ -56,5 +66,37 @@ export class DoctorsService {
 
   getUniversity() {
     return this.http.get('http://localhost:7000/api/doctors/universidades');
+  }
+
+  agenda(body: any, fecha: any, id: any) {
+    return this.http.post('http://localhost:7000/api/doctors/agenda', {
+      fecha: body.fecha,
+      hora: body.hora,
+      especialidad: body.especializacion,
+      tarifa: body.tarifa,
+      medico_id: id,
+    });
+  }
+
+  getAgenda(medico_id: any) {
+    return this.http.post('http://localhost:7000/api/doctors/agendaMedico', {
+      medico_id: medico_id,
+    });
+  }
+
+  appointment(agenda: any, beneficiario: any, medico: any) {
+    console.log(agenda, beneficiario);
+
+    return this.http.post('http://localhost:7000/api/doctors/agendaCita', {
+      beneficiario_id: beneficiario,
+      agenda_id: agenda,
+      medico_id: medico,
+    });
+  }
+
+  getAppointments(medico_id: any) {
+    return this.http.post('http://localhost:7000/api/doctors/citas', {
+      medico_id: medico_id,
+    });
   }
 }

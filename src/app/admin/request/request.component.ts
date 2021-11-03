@@ -12,7 +12,7 @@ export class RequestComponent implements OnInit {
   token = localStorage.getItem('jwt');
   constructor(private adminService: AdminService, private router: Router) {
     this.adminService.getSolicitudes().subscribe((resp: any) => {
-      this.solicitud = resp.results;
+      this.solicitud = resp.result;
     });
   }
 
@@ -21,15 +21,23 @@ export class RequestComponent implements OnInit {
     direccion: any,
     correo: any,
     modalidad: any,
-    especializacion: any
+    especializacion: any,
+    universidad: any
   ) {
     this.adminService
-      .aprobarSolicitud(id, direccion, correo, modalidad, especializacion)
+      .aprobarSolicitud(
+        id,
+        direccion,
+        correo,
+        modalidad,
+        especializacion,
+        universidad
+      )
       .subscribe(
         (resp: any) => {
           alert('solicitud aprobada');
           this.adminService.getSolicitudes().subscribe((resp: any) => {
-            this.solicitud = resp.results;
+            this.solicitud = resp.result;
           });
         },
         (err) => {
@@ -43,7 +51,7 @@ export class RequestComponent implements OnInit {
       (resp: any) => {
         alert('solicitud rechazada');
         this.adminService.getSolicitudes().subscribe((resp: any) => {
-          this.solicitud = resp.results;
+          this.solicitud = resp.result;
         });
       },
       (err) => {

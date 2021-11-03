@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar.mat-primary {
+  background: green;
+  color: #fff;
+}
+
+.mat-toolbar {
+  background: green;
+  color: #fff;
+}
+
+.appointment_container {
+  height: 100vh;
+  width: 80vw;
+  text-align: center;
+}
+body {
+  overflow-y: hidden;
+}
+
+.appointment_container h1 {
+  color: green;
+}
+.grid_layout {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(150px, 1fr));
+  grid-auto-rows: 250px;
+  grid-gap: 15px;
+}

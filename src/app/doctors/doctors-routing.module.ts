@@ -6,6 +6,8 @@ import { ListComponent } from './list/list.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { DoctorGuard } from '../guards/doctor.guard';
 import { RequestComponent } from './request/request.component';
+import { AppointmentsComponent } from './appointments/appointments.component';
+import { ScheduleListComponent } from './schedule-list/schedule-list.component';
 const routes: Routes = [
   {
     path: '',
@@ -30,7 +32,14 @@ const routes: Routes = [
         canActivate: [DoctorGuard],
         canLoad: [DoctorGuard],
       },
+      {
+        path: 'agendaMedico',
+        component: ScheduleListComponent,
+        canActivate: [DoctorGuard],
+        canLoad: [DoctorGuard],
+      },
       { path: ':id', component: DoctorComponent },
+      { path: 'agenda/:id', component: AppointmentsComponent },
     ],
   },
 ];

@@ -19,92 +19,157 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="contact_container">
-      <header>
-        <nav class="navBar">
-          <div class="nav_container">
-            <img src="icons/ubication-icon.png" alt="logo" class="logo" />
-            <select class="select_ciudad" name="ciudad" id="ciudad">
-              <option hidden selected>ciudad</option>
-              <option value="item 1">Barranquilla</option>
-              <option value="item 2">Santa Marta</option>
-              <option value="item 3">Medellin</option>
-              <option value="item 1">Bogota</option>
-              <option value="item 1">Barrancabermeja</option>
-            </select>
-            <input type="checkbox" id="check" />
-            <label for=""
-              ><span class="material-icons-outlined bell">
-                notifications
-              </span></label
-            >
-            <label for="check" class="bar-btn"
-              ><span class="material-icons settings"> settings </span>
-            </label>
-            <ul class="nav-menu">
-              <li>
-                <img
-                  src="icons/ubication-icon.png"
-                  class="menu_logo"
-                  alt=""
-                /><a href="#">Mi Perfil</a>
-              </li>
-              <li>
-                <img
-                  src="icons/ubication-icon.png"
-                  class="menu_logo"
-                  alt=""
-                /><a href="#">Mis beneficios</a>
-              </li>
-              <li>
-                <img
-                  src="icons/ubication-icon.png"
-                  class="menu_logo"
-                  alt=""
-                /><a href="#">Soporte</a>
-              </li>
-              <li>
-                <img
-                  src="icons/ubication-icon.png"
-                  class="menu_logo"
-                  alt=""
-                /><a href="#">Contáctenos</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
-      <h3 class="contact-title">Solicitud para ser medico</h3>
-      <div class="container-contact">
-        <div class="contact">
-          <form
-            (ngSubmit)="contacto()"
-            autocomplete="off"
-            [formGroup]="miFormulario"
+    <mat-sidenav-container autosize>
+      <mat-sidenav #sidenav mode="push">
+        <mat-toolbar color="primary">
+          <span>menu</span>
+          <span class="spacer"></span>
+          <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </mat-toolbar>
+        <br />
+        <mat-nav-list>
+          <a [routerLink]="['/home']" mat-list-item (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">home</mat-icon
+            ><span>Pagina principal</span></a
           >
-            <input
-              type="text"
-              class="text"
-              formControlName="asunto"
-              placeholder="Asunto"
-            />
-            <select class="select" formControlName="modalidad">
-              <option value="" selected disabled hidden>Modalidad</option>
-              <option value="{{ item }}" *ngFor="let item of modalidad">
-                {{ item }}
-              </option>
-            </select>
+          <a [routerLink]="['/home']" mat-list-item (click)="perfil()"
+            ><mat-icon mat-list-icon style="color: gray">person</mat-icon
+            ><span>Mi perfil</span></a
+          >
+          <a
+            [routerLink]="['/beneficiarios/lista']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">group</mat-icon
+            ><span>Mis Beneficiarios</span></a
+          >
 
-            <input
-              type="text"
-              class="text"
-              formControlName="direccion"
-              placeholder="direccion"
-            />
-            <input type="submit" class="submit" value="Enviar" />
-          </form>
+          <a
+            [routerLink]="['/app/soporte']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">settings</mat-icon
+            ><span>soporte</span></a
+          >
+          <a
+            [routerLink]="['/app/contacto']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">contact_mail</mat-icon
+            ><span>contacto</span></a
+          >
+
+          <a
+            [routerLink]="['/medicos/servicios']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >local_hospital</mat-icon
+            ><span>Servicios Medicos</span></a
+          >
+
+          <a
+            [routerLink]="['/medicos/solicitud']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >question_answer</mat-icon
+            ><span>ser medico</span></a
+          >
+        </mat-nav-list>
+      </mat-sidenav>
+
+      <mat-toolbar>
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="spacer"></span>
+        <button
+          mat-icon-button
+          class="example-icon favorite-icon"
+          aria-label="notificaciones"
+        >
+          <mat-icon>notifications</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          class="example-icon"
+          (click)="logout()"
+          aria-label="cerrar sesion"
+        >
+          <mat-icon>logout</mat-icon>
+        </button>
+      </mat-toolbar>
+
+      <div fxLayout="row" fxLayoutAlign="center">
+        <div fxLayout="column" fxLayoutAlign="space-between center">
+          <div class="contact_container">
+            <div class="contact_2">
+              <div class="title_container">
+                <h2 class="contact_title">Solicitud para ser medico</h2>
+              </div>
+              <p></p>
+              <form
+                (ngSubmit)="contacto()"
+                autocomplete="off"
+                [formGroup]="miFormulario"
+              >
+                <mat-form-field class="form__input" appearance="fill">
+                  <mat-label>Asunto</mat-label>
+                  <input
+                    matInput
+                    placeholder="asunto"
+                    formControlName="asunto"
+                  />
+                </mat-form-field>
+                <mat-form-field class="form__input" appearance="fill">
+                  <mat-label>Modalidad</mat-label>
+                  <mat-select formControlName="modalidad">
+                    <mat-option
+                      *ngFor="let modalidad of modalidad"
+                      value="{{ modalidad }}"
+                    >
+                      {{ modalidad }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="form__input" appearance="fill">
+                  <mat-label>universidad</mat-label>
+                  <mat-select formControlName="universidad">
+                    <mat-option
+                      *ngFor="let item of universidad"
+                      value="{{ item.Nombre_Institucion }} - sede
+                      {{ item.Municipio_Domicilio }}"
+                    >
+                      {{ item.Nombre_Institucion }} - sede
+                      {{ item.Municipio_Domicilio }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="form__input" appearance="fill">
+                  <mat-label>Direccion</mat-label>
+                  <input
+                    matInput
+                    placeholder="direccion"
+                    formControlName="direccion"
+                  />
+                </mat-form-field>
+
+                <button
+                  class="submit"
+                  type="submit"
+                  [disabled]="!miFormulario.valid"
+                >
+                  enviar
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </mat-sidenav-container>
   </body>
 </html>

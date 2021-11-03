@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DoctorsService } from 'src/app/services/doctors.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-list',
@@ -7,7 +9,11 @@ import { DoctorsService } from 'src/app/services/doctors.service';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
-  constructor(private doctorsService: DoctorsService) {}
+  constructor(
+    private doctorsService: DoctorsService,
+    private router: Router,
+    private jwtHelper: JwtHelperService
+  ) {}
   doctors: any;
   initDoctors: any;
   especializaciones: any;
@@ -16,13 +22,13 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.doctorsService.getDoctors().subscribe((resp: any) => {
-      this.doctors = resp.results;
-      this.initDoctors = resp.results;
+      this.doctors = resp.result;
+      this.initDoctors = resp.result;
       console.log(this.doctors);
     });
 
     this.doctorsService.getEspecs().subscribe((resp: any) => {
-      this.especializaciones = resp.results;
+      this.especializaciones = resp.result;
     });
   }
 
@@ -34,5 +40,14 @@ export class ListComponent implements OnInit {
       }
       return doctor.descripcion === this.selectedBrand;
     });
+  }
+
+  logout() {
+    localStorage.removeItem('jwt');
+    this.router.navigateByUrl('/auth/login');
+  }
+  perfil() {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    this.router.navigateByUrl(`/beneficiarios/${token.id}`);
   }
 }

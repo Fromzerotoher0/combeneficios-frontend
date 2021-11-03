@@ -10,6 +10,20 @@
   src: url(../../../assets/fonts/Cocogoose-Pro-Ultralight-trial.ttf);
 }
 
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar.mat-primary {
+  background: green;
+  color: #fff;
+}
+
+.mat-toolbar {
+  background: green;
+  color: #fff;
+}
+
 @media (min-width: 320px) {
   /* smartphones, iPhone, portrait 480x320 phones */
 
@@ -237,7 +251,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: minmax(280px);
-    grid-template-rows: minmax(200px);
+    grid-template-rows: minmax(250px);
     overflow-y: auto;
     justify-content: center;
   }
@@ -385,11 +399,9 @@
   /* big landscape tablets, laptops, and desktops */
 }
 @media (min-width: 1250px) {
-  .select_ciudad {
-    width: 15%;
-    margin-right: 73%;
+  .flex-layout_medic {
+    overflow: hidden;
   }
-
   .flex-layout_medic .content {
     display: grid;
     grid-template-columns: repeat(3, minmax(70px, 1fr));

@@ -8,6 +8,24 @@
   font-family: sans-serif;
 }
 
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar.mat-primary {
+  background: green;
+  color: #fff;
+}
+
+.mat-toolbar {
+  background: green;
+  color: #fff;
+}
+
+mat-sidenav {
+  width: 250px !important;
+}
+
 @media (min-width: 320px) {
   /* smartphones, iPhone, portrait 480x320 phones */
 
@@ -493,7 +511,7 @@
     margin-right: 73%;
   }
   .specialization-information {
-    height: 45vh;
+    height: 62vh;
     width: 34vw;
     margin-left: 34%;
   }

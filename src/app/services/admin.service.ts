@@ -45,7 +45,8 @@ export class AdminService {
     direccion: any,
     correo: any,
     modalidad: any,
-    especializacion: any
+    especializacion: any,
+    universidad: any
   ) {
     let header = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -59,13 +60,12 @@ export class AdminService {
         especializaciones_id: especializacion,
         direccion: direccion,
         correo: correo,
+        universidad: universidad,
       },
       { headers: header }
     );
   }
   aprobarEspecializacion(body: any) {
-    console.log(body);
-
     let header = new HttpHeaders({
       'Content-Type': 'application/json',
       authorization: 'Bearer ' + localStorage.getItem('jwt'),
@@ -78,6 +78,7 @@ export class AdminService {
         medico_id: body.medico_id,
         universidad: body.universidad,
         fecha_obtencion: body.fecha_obtencion,
+        especializacion: body.especializacion,
       },
       { headers: header }
     );

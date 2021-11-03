@@ -1,0 +1,154 @@
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+  crossorigin="anonymous"
+/>
+
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="push">
+    <mat-toolbar color="primary">
+      <span>menu</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a [routerLink]="['/home']" mat-list-item (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">home</mat-icon
+        ><span>Pagina principal</span></a
+      >
+      <a [routerLink]="['/home']" mat-list-item (click)="perfil()"
+        ><mat-icon mat-list-icon style="color: gray">person</mat-icon
+        ><span>Mi perfil</span></a
+      >
+      <a
+        [routerLink]="['/beneficiarios/lista']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">group</mat-icon
+        ><span>Mis Beneficiarios</span></a
+      >
+
+      <a
+        [routerLink]="['/app/soporte']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">settings</mat-icon
+        ><span>soporte</span></a
+      >
+      <a
+        [routerLink]="['/app/contacto']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">contact_mail</mat-icon
+        ><span>contacto</span></a
+      >
+
+      <a
+        [routerLink]="['/medicos/servicios']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">local_hospital</mat-icon
+        ><span>Servicios Medicos</span></a
+      >
+
+      <a
+        *ngIf="rol !== 4"
+        [routerLink]="['/medicos/solicitud']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">question_answer</mat-icon
+        ><span>ser medico</span></a
+      >
+      <a
+        *ngIf="rol == 4"
+        [routerLink]="['/medicos/estudio']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">health_and_safety</mat-icon
+        ><span>Agregar Especializacion</span></a
+      >
+      <a
+        *ngIf="rol == 4"
+        [routerLink]="['/medicos/agenda']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">pending_actions</mat-icon
+        ><span>agendar citas</span></a
+      >
+      <a
+        *ngIf="rol == 1"
+        [routerLink]="['/admin/solicitud']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray"
+          >admin_panel_settings</mat-icon
+        ><span>solicitudes</span></a
+      >
+      <a
+        *ngIf="rol == 1"
+        [routerLink]="['/admin/solicitudEstudio']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray"
+          >admin_panel_settings</mat-icon
+        ><span>solicitudes especializacion</span></a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-toolbar>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="spacer"></span>
+    <button
+      mat-icon-button
+      class="example-icon favorite-icon"
+      aria-label="notificaciones"
+    >
+      <mat-icon>notifications</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      class="example-icon"
+      (click)="logout()"
+      aria-label="cerrar sesion"
+    >
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div fxLayout="row" fxLayoutAlign="center">
+    <div class="appointment_container">
+      <h1>Citas Disponibles</h1>
+      <div class="grid_layout">
+        <div
+          class="card border-success mb-3"
+          style="max-width: 18rem"
+          *ngFor="let cita of citas"
+        >
+          <div class="card-header">Cita</div>
+          <div class="card-body text-success">
+            <p class="card-text">
+              Fecha : {{ cita.fecha | date }} - {{ cita.hora }}
+            </p>
+            <p>Especialidad : {{ cita.especialidad }}</p>
+            <p>Tarifa : ${{ cita.tarifa }}</p>
+          </div>
+          <div class="card-footer bg-transparent border-success">
+            <button
+              type="button"
+              (click)="agendar(cita.id, cita.medico_id)"
+              class="btn btn-outline-success"
+            >
+              Agendar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-sidenav-container>

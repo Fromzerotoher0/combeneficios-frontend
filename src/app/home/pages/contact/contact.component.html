@@ -19,7 +19,7 @@
     <title>Document</title>
   </head>
   <body>
-    <mat-sidenav-container fullscreen>
+    <mat-sidenav-container autosize>
       <mat-sidenav #sidenav mode="push">
         <mat-toolbar color="primary">
           <span>menu</span>
@@ -28,7 +28,7 @@
             <mat-icon>menu</mat-icon>
           </button>
         </mat-toolbar>
-
+        <br />
         <mat-nav-list>
           <a [routerLink]="['/home']" mat-list-item (click)="sidenav.toggle()"
             ><mat-icon mat-list-icon style="color: gray">home</mat-icon
@@ -39,7 +39,7 @@
             ><span>Mi perfil</span></a
           >
           <a
-            [routerLink]="['/app/lista']"
+            [routerLink]="['/beneficiarios/lista']"
             mat-list-item
             (click)="sidenav.toggle()"
             ><mat-icon mat-list-icon style="color: gray">group</mat-icon
@@ -57,8 +57,71 @@
             [routerLink]="['/app/contacto']"
             mat-list-item
             (click)="sidenav.toggle()"
-            ><mat-icon mat-list-icon style="color: gray">contact_mail</mat-icon
+            ><mat-icon mat-list-icon style="color: gray">support_agent</mat-icon
             ><span>contacto</span></a
+          >
+
+          <a
+            [routerLink]="['/medicos/servicios']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >local_hospital</mat-icon
+            ><span>Servicios Medicos</span></a
+          >
+
+          <a
+            *ngIf="rol !== 4"
+            [routerLink]="['/medicos/solicitud']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >question_answer</mat-icon
+            ><span>ser medico</span></a
+          >
+          <a
+            *ngIf="rol == 4"
+            [routerLink]="['/medicos/estudio']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >health_and_safety</mat-icon
+            ><span>Agregar Especializacion</span></a
+          >
+          <a
+            *ngIf="rol == 4"
+            [routerLink]="['/medicos/agenda']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >pending_actions</mat-icon
+            ><span>agendar citas</span></a
+          >
+          <a
+            *ngIf="rol == 1"
+            [routerLink]="['/admin/solicitudes']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >admin_panel_settings</mat-icon
+            ><span>solicitudes</span></a
+          >
+          <a
+            *ngIf="rol == 1"
+            [routerLink]="['/admin/solicitudEstudio']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >admin_panel_settings</mat-icon
+            ><span>solicitudes especializacion</span></a
+          >
+          <a
+            *ngIf="rol == 4"
+            [routerLink]="['/admin/solicitudEstudio']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"></mat-icon
+            ><span>Mi Agenda</span></a
           >
         </mat-nav-list>
       </mat-sidenav>
@@ -75,7 +138,12 @@
         >
           <mat-icon>notifications</mat-icon>
         </button>
-        <button mat-icon-button class="example-icon" aria-label="cerrar sesion">
+        <button
+          mat-icon-button
+          class="example-icon"
+          (click)="logout()"
+          aria-label="cerrar sesion"
+        >
           <mat-icon>logout</mat-icon>
         </button>
       </mat-toolbar>
@@ -87,27 +155,26 @@
               <div class="title_container">
                 <h2 class="contact_title">Contactanos</h2>
               </div>
+              <p></p>
               <form
                 (ngSubmit)="contacto()"
                 autocomplete="off"
                 [formGroup]="miFormulario"
               >
                 <div>
-                  <mat-form-field appearance="fill">
+                  <mat-form-field class="form__input" appearance="fill">
                     <mat-label>Asunto</mat-label>
                     <input
                       matInput
-                      class="form__input"
                       placeholder="asunto"
                       formControlName="asunto"
                     />
                   </mat-form-field>
                   &nbsp;
-                  <mat-form-field appearance="fill">
+                  <mat-form-field class="form__input" appearance="fill">
                     <mat-label>Nombre</mat-label>
                     <input
                       matInput
-                      class="form__input"
                       placeholder="Nombre"
                       formControlName="nombre"
                     />
@@ -136,6 +203,7 @@
                   cols="30"
                   formControlName="mensaje"
                   rows="10"
+                  placeholder="Mensaje"
                 ></textarea>
                 <br />
                 <button
@@ -150,8 +218,6 @@
           </div>
         </div>
       </div>
-      <span>valid</span>
-      <pre>{{ miFormulario.valid }}</pre>
     </mat-sidenav-container>
   </body>
 </html>

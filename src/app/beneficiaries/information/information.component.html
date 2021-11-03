@@ -68,7 +68,12 @@
         >
           <mat-icon>notifications</mat-icon>
         </button>
-        <button mat-icon-button class="example-icon" aria-label="cerrar sesion">
+        <button
+          mat-icon-button
+          class="example-icon"
+          (click)="logout()"
+          aria-label="cerrar sesion"
+        >
           <mat-icon>logout</mat-icon>
         </button>
       </mat-toolbar>

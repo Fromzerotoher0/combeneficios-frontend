@@ -32,7 +32,7 @@ export class UserService {
 
   registerBeneficiaries(body: any) {
     return this.http.post(
-      'http://localhost:7000/api/beneficiaries/beneficiaries/register',
+      'http://localhost:7000/api/beneficiaries/register',
       body
     );
   }

@@ -1,5 +1,7 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { DoctorsService } from '../../services/doctors.service';
 
@@ -12,22 +14,29 @@ export class RequestComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private doctorService: DoctorsService,
-    private jwtHelper: JwtHelperService
+    private jwtHelper: JwtHelperService,
+    private router: Router,
+    public datepipe: DatePipe
   ) {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    this.rol = token.tipo_usuario;
+
     this.doctorService.getEspecs().subscribe((resp: any) => {
-      this.especializaciones = resp.results;
+      this.especializaciones = resp.result;
       console.log(this.especializaciones);
     });
     this.doctorService.getUniversity().subscribe((resp: any) => {
-      this.universidad = resp.results;
+      this.universidad = resp.result;
       console.log(this.universidad);
     });
   }
+  new_date: any;
+  rol: any;
   especializaciones: any;
   universidad: any;
   ngOnInit(): void {}
   miFormulario: FormGroup = this.fb.group({
-    users_id: ['', [Validators.required]],
+    users_id: [''],
     especializaciones_id: ['', [Validators.required]],
     image: ['', [Validators.required]],
     universidad: ['', [Validators.required]],
@@ -61,6 +70,10 @@ export class RequestComponent implements OnInit {
   enviar() {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     const uploadData = new FormData();
+    this.new_date = this.datepipe.transform(
+      this.miFormulario.get('fecha_obtencion')!.value,
+      'yyyy-MM-dd'
+    );
     uploadData.append('medico_id', token.id);
     uploadData.append(
       'especializaciones_id',
@@ -71,20 +84,25 @@ export class RequestComponent implements OnInit {
       'universidad',
       this.miFormulario.get('universidad')!.value
     );
-    uploadData.append(
-      'fecha_obtencion',
-      this.miFormulario.get('fecha_obtencion')!.value
-    );
+    uploadData.append('fecha_obtencion', this.new_date);
 
     this.doctorService.studyrequest(uploadData).subscribe(
       (resp) => {
-        this.doctorService.studyrequest(uploadData).subscribe((resp: any) => {
-          alert('solicitud enviada');
-        });
+        alert('solicitud enviada');
       },
       (err) => {
         alert(err.error.msg);
       }
     );
+  }
+
+  perfil() {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    this.router.navigateByUrl(`/beneficiarios/${token.id}`);
+  }
+
+  logout() {
+    localStorage.removeItem('jwt');
+    this.router.navigateByUrl('/auth/login');
   }
 }

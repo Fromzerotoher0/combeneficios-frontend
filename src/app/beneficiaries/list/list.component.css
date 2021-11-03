@@ -485,10 +485,6 @@
     width: 30%;
   }
 
-  .beneficiarios-container {
-    overflow: hidden;
-  }
-
   .beneficiario-info {
     width: 95%;
     height: 20vh;
@@ -506,8 +502,16 @@
 }
 
 @media (min-width: 1251px) {
+  .middle-menu {
+    gap: 0;
+  }
+
+  .beneficiario-info {
+    height: 19vh;
+  }
+
   .add-beneficiario {
     width: 15%;
-    height: 15%;
+    height: 40px;
   }
 }

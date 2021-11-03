@@ -45,7 +45,7 @@ body {
 
 .file {
   margin-top: 10px;
-  width: 80% !important;
+  width: 90% !important;
   margin-left: 40px;
 }
 ::ng-deep .mat-select-arrow {

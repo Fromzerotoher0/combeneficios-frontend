@@ -19,15 +19,15 @@ export class ContactComponent implements OnInit {
     private jwtHelper: JwtHelperService
   ) {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    this.rol = token.tipo_usuario;
     this.userService.getUser(token.id).subscribe((resp: any) => {
-      console.log(resp);
-
       this.miFormulario.controls.nombre.setValue(
         resp.result[0].nombres + ' ' + resp.result[0].apellidos
       );
       this.miFormulario.controls.telefono.setValue(resp.result[0].telefono);
       this.miFormulario.controls.correo.setValue(resp.result[0].email);
     });
+    console.log(this.rol);
   }
 
   miFormulario: FormGroup = this.fb.group({
@@ -39,10 +39,15 @@ export class ContactComponent implements OnInit {
   });
 
   ngOnInit(): void {}
-
+  rol: any;
   perfil() {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     this.router.navigateByUrl(`/beneficiarios/${token.id}`);
+  }
+
+  logout() {
+    localStorage.removeItem('jwt');
+    this.router.navigateByUrl('/auth/login');
   }
 
   contacto() {

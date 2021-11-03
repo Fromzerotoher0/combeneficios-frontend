@@ -375,3 +375,6 @@ body {
 .mat-icon-button.mat-success {
   color: #155724;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

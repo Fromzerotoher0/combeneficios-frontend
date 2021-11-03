@@ -46,19 +46,25 @@ export class InformationComponent implements OnInit {
       .updateUser(this.beneficiary_id, this.miFormulario.value)
       .subscribe((resp) => {
         alert('datos actualizados');
+        this.userService.getUser(this.beneficiary_id).subscribe((resp: any) => {
+          this.miFormulario.controls.nombres.setValue(resp.result[0].nombres);
+          this.miFormulario.controls.apellidos.setValue(
+            resp.result[0].apellidos
+          );
+          this.miFormulario.controls.email.setValue(resp.result[0].email);
+          this.miFormulario.controls.telefono.setValue(resp.result[0].telefono);
+          this.user.push(resp.result[0].imgUrl);
+        });
       });
-
-    this.userService.getUser(this.beneficiary_id).subscribe((resp: any) => {
-      this.miFormulario.controls.nombres.setValue(resp.result[0].nombres);
-      this.miFormulario.controls.apellidos.setValue(resp.result[0].apellidos);
-      this.miFormulario.controls.email.setValue(resp.result[0].email);
-      this.miFormulario.controls.telefono.setValue(resp.result[0].telefono);
-      this.user.push(resp.result[0].imgUrl);
-    });
   }
 
   perfil() {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     this.router.navigateByUrl(`/beneficiarios/${token.id}`);
+  }
+
+  logout() {
+    localStorage.removeItem('jwt');
+    this.router.navigateByUrl('/auth/login');
   }
 }

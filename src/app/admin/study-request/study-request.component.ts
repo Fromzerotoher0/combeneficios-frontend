@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AdminService } from 'src/app/services/admin.service';
@@ -8,9 +9,13 @@ import { AdminService } from 'src/app/services/admin.service';
   styleUrls: ['./study-request.component.css'],
 })
 export class StudyRequestComponent implements OnInit {
-  constructor(private adminService: AdminService, private fb: FormBuilder) {
+  constructor(
+    private adminService: AdminService,
+    private fb: FormBuilder,
+    public datepipe: DatePipe
+  ) {
     this.adminService.getStudyRequest().subscribe((resp: any) => {
-      this.solicitud = resp.results;
+      this.solicitud = resp.result;
     });
   }
   miFormulario: FormGroup = this.fb.group({
@@ -18,9 +23,10 @@ export class StudyRequestComponent implements OnInit {
     medico_id: ['', [Validators.required]],
     universidad: ['', [Validators.required]],
     fecha_obtencion: ['', Validators.required],
+    especializacion: ['', Validators.required],
     users_id: ['', Validators.required],
   });
-
+  new_date: any;
   solicitud: any;
   ngOnInit(): void {}
   approve(
@@ -28,19 +34,22 @@ export class StudyRequestComponent implements OnInit {
     descripcion: any,
     universidad: any,
     medico_id: any,
-    fecha_obtencion: any
+    fecha_obtencion: any,
+    especializacion: any
   ) {
+    this.new_date = this.datepipe.transform(fecha_obtencion, 'yyyy-MM-dd');
     this.miFormulario.controls.users_id.setValue(users_id);
     this.miFormulario.controls.titulo.setValue(descripcion);
     this.miFormulario.controls.medico_id.setValue(medico_id);
     this.miFormulario.controls.universidad.setValue(universidad);
-    this.miFormulario.controls.fecha_obtencion.setValue(fecha_obtencion);
+    this.miFormulario.controls.especializacion.setValue(especializacion);
+    this.miFormulario.controls.fecha_obtencion.setValue(this.new_date);
     console.log(this.miFormulario.value);
     this.adminService.aprobarEspecializacion(this.miFormulario.value).subscribe(
       (resp: any) => {
         alert('solicitud aprobada');
-        this.adminService.getSolicitudes().subscribe((resp: any) => {
-          this.solicitud = resp.results;
+        this.adminService.getStudyRequest().subscribe((resp: any) => {
+          this.solicitud = resp.result;
         });
       },
       (err) => {
@@ -56,7 +65,7 @@ export class StudyRequestComponent implements OnInit {
       .rechazarEspecializacion(this.miFormulario.value)
       .subscribe((resp) => {
         this.adminService.getSolicitudes().subscribe((resp: any) => {
-          this.solicitud = resp.results;
+          this.solicitud = resp.result;
         });
       });
   }

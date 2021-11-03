@@ -24,10 +24,30 @@ export class LoginComponent implements OnInit {
     contrasena: ['', [Validators.required, Validators.minLength(6)]],
   });
 
+  getUserLocation() {
+    let lat;
+    let lng;
+    let zoom;
+    // get Users current position
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position: any) => {
+        lat = position.coords.latitude;
+        lng = position.coords.longitude;
+        zoom = 16;
+        console.log('position', position);
+        console.log(lat, lng);
+      });
+    } else {
+      console.log('User not allowed');
+    }
+  }
+
   login() {
     //llamada al servicio de login
     this.authService.login(this.miFormulario.value).subscribe(
       (resp: Login) => {
+        this.getUserLocation();
         if (resp.error === true) {
           alert('usuario y/o contraseña incorrectos');
         } else {

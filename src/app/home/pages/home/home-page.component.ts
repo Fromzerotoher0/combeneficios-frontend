@@ -16,7 +16,7 @@ export class HomePageComponent implements OnInit {
     private router: Router
   ) {
     this.authService.getDepartamentos().subscribe((resp: any) => {
-      this.ciudades = resp.results;
+      this.ciudades = resp.result;
       console.log(this.ciudades);
     });
   }
@@ -27,5 +27,9 @@ export class HomePageComponent implements OnInit {
   perfil() {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     this.router.navigateByUrl(`/beneficiarios/${token.id}`);
+  }
+  logout() {
+    localStorage.removeItem('jwt');
+    this.router.navigateByUrl('/auth/login');
   }
 }

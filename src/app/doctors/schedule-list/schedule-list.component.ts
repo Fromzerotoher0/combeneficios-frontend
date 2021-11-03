@@ -1,29 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { UserService } from 'src/app/services/user.service';
+import { DoctorsService } from 'src/app/services/doctors.service';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css'],
+  selector: 'app-schedule-list',
+  templateUrl: './schedule-list.component.html',
+  styleUrls: ['./schedule-list.component.css'],
 })
-export class ListComponent implements OnInit {
-  user: any = [];
-  beneficiaries: any = [];
+export class ScheduleListComponent implements OnInit {
   constructor(
+    private doctorService: DoctorsService,
     private jwtHelper: JwtHelperService,
-    private userService: UserService,
     private router: Router
   ) {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    this.rol = token.tipo_usuario;
 
-    this.userService.getBeneficiaries(token.id).subscribe((resp: any) => {
-      this.beneficiaries = resp.result;
-      console.log(this.beneficiaries);
+    this.doctorService.getAppointments(token.id).subscribe((resp) => {
+      console.log(resp);
     });
   }
 
+  ngOnInit(): void {}
+
+  rol: any;
+  citas: any;
   perfil() {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     this.router.navigateByUrl(`/beneficiarios/${token.id}`);
@@ -33,6 +35,4 @@ export class ListComponent implements OnInit {
     localStorage.removeItem('jwt');
     this.router.navigateByUrl('/auth/login');
   }
-
-  ngOnInit(): void {}
 }

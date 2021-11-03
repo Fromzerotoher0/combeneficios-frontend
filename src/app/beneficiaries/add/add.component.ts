@@ -11,6 +11,9 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./add.component.css'],
 })
 export class AddComponent {
+  hide = true;
+  public currentYear = new Date().getFullYear();
+  maxDate = new Date(this.currentYear + 1, 11, 31);
   departamentos: any = [];
   ciudades: any = [];
   filename: String = '';
@@ -26,7 +29,7 @@ export class AddComponent {
     private userService: UserService
   ) {
     this.authService.getDepartamentos().subscribe((resp: any) => {
-      this.departamentos = resp.results;
+      this.departamentos = resp.result;
       console.log(this.departamentos);
     });
   }
@@ -49,8 +52,12 @@ export class AddComponent {
 
   cargarCiudades(departamento: any) {
     this.authService.cargarCiudades(departamento).subscribe((resp: any) => {
-      this.ciudades = resp.results;
+      this.ciudades = resp.result;
     });
+  }
+
+  get passwordInput() {
+    return this.miFormulario.get('contrasena')!;
   }
 
   onFileChange(event: any) {
@@ -114,5 +121,10 @@ export class AddComponent {
         alert(err.error.msg);
       }
     );
+  }
+
+  logout() {
+    localStorage.removeItem('jwt');
+    this.router.navigateByUrl('/auth/login');
   }
 }

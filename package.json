@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-material-components/datetime-picker": "^6.0.3",
     "@angular-material-extensions/password-strength": "^8.2.1",
     "@angular/animations": "~12.2.0",
     "@angular/cdk": "^12.2.10",
@@ -25,6 +26,7 @@
     "@auth0/angular-jwt": "^5.0.2",
     "ng2-search-filter": "^0.5.1",
     "ngx-cookie-service": "^12.0.3",
+    "ngx-material-timepicker": "^5.5.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

@@ -13,6 +13,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+
 @NgModule({
   declarations: [],
   exports: [
@@ -30,6 +32,7 @@ import { MatCardModule } from '@angular/material/card';
     MatSidenavModule,
     MatListModule,
     MatCardModule,
+    NgxMaterialTimepickerModule,
   ],
 })
 export class MaterialModule {}

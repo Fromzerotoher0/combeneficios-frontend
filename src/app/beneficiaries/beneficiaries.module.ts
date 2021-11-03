@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { ListComponent } from './list/list.component';
 import { BeneficiariesRoutingModule } from './beneficiaries-routing.module';
 import { ParentescoPipe } from '../pipes/parentesco.pipe';
@@ -23,5 +23,6 @@ import { MaterialModule } from '../material/material.module';
     ReactiveFormsModule,
     MaterialModule,
   ],
+  providers: [DatePipe],
 })
 export class BeneficiariesModule {}

@@ -54,6 +54,10 @@
   color: #fff;
 }
 
+mat-sidenav {
+  width: 250px !important;
+}
+
 @media (min-width: 320px) {
   /* smartphones, iPhone, portrait 480x320 phones */
 
@@ -75,13 +79,13 @@
 
   .contact_2 {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     background-color: transparent;
     border: 1px solid transparent;
     padding: 20px;
     border-radius: 10px;
-    margin-top: 50px;
-    width: 82%;
+    margin-top: 37px;
+    width: 85%;
     overflow: hidden;
     box-shadow: 2px 5px 20px 5px silver;
   }
@@ -93,64 +97,26 @@
   .submit {
     align-self: center;
     border: none;
-    width: 45%;
+    width: 150px;
     height: 30px;
     background: darkgreen;
     color: white;
     border-radius: 10px;
+    margin-top: 10px;
   }
 }
 @media (min-width: 374px) {
-  .select_ciudad {
-    width: 33%;
-    margin-right: 28%;
+  .form__input {
+    width: 250px;
   }
-
-  .contact {
-    width: 90%;
-    margin-left: 35px;
-  }
-}
-@media (min-width: 399px) {
-  .nav_container {
-    width: 100%;
-  }
-
-  .bell {
-    font-size: 40px !important;
-  }
-  .settings {
-    font-size: 40px !important;
-    margin-left: 10px;
-  }
-  .select_ciudad {
-    width: 35%;
-    margin-right: 38%;
-  }
-
-  .menu_logo {
-    vertical-align: middle;
-    width: 50px;
-    height: 50px;
-  }
-
-  /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
 }
 
 @media (min-width: 424px) {
-  .select_ciudad {
-    width: 33%;
-    margin-right: 31%;
-    margin-left: -2%;
+  .form__input {
+    width: 300px;
   }
-  .contact {
-    width: 90%;
-    height: 100%;
-    margin-left: 40px;
-    margin-top: -50px;
-  }
-  .settings {
-    margin-left: 0;
+  textarea {
+    width: 270px;
   }
 }
 
@@ -174,14 +140,21 @@
 }
 
 @media (min-width: 767px) {
-  .contact_2 {
-    margin-top: -520px;
-    width: 60%;
-    height: 60%;
+  * {
+    overflow: hidden;
   }
 
-  .contact_title {
-    margin-right: 400px;
+  .contact_2 {
+    width: 65%;
+    height: 90%;
+  }
+
+  .form__input {
+    width: 90%;
+  }
+  textarea {
+    width: 80%;
+    margin-bottom: 10px;
   }
 }
 
@@ -209,23 +182,16 @@
 @media (min-width: 1023px) {
   .contact_2 {
     width: 60%;
-    height: 45%;
-    margin-top: -730px;
-  }
-
-  .contact_title {
-    margin-right: 600px;
+    height: 90%;
   }
 }
 
 @media (min-width: 1439px) {
-  .contact_2 {
-    width: 85%;
-    height: 83%;
-    margin-top: -600px;
+  .contact_container {
+    background-image: none;
   }
-
-  .contact_title {
-    margin-right: 600px;
+  .contact_2 {
+    width: 45%;
+    height: 80%;
   }
 }

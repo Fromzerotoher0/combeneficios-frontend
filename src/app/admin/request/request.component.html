@@ -21,6 +21,7 @@
           <th scope="col">nombres</th>
           <th scope="col">apellidos</th>
           <th scope="col">documento</th>
+          <th scope="col">universidad</th>
           <th scope="col">asunto</th>
           <th scope="col">direccion</th>
           <th scope="col">modalidad</th>
@@ -37,6 +38,7 @@
           <td>{{ item.nombres }}</td>
           <td>{{ item.apellidos }}</td>
           <td>{{ item.documento }}</td>
+          <td>{{ item.universidad }}</td>
           <td>{{ item.asunto }}</td>
           <td>{{ item.direccion }}</td>
           <td>{{ item.modalidad }}</td>
@@ -49,7 +51,8 @@
                   item.direccion,
                   item.correo,
                   item.modalidad,
-                  item.especializaciones_id
+                  item.especializaciones_id,
+                  item.universidad
                 )
               "
               type="button"

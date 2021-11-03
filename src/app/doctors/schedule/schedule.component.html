@@ -1,1 +1,218 @@
-<p>schedule works!</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:wght@600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <mat-sidenav-container autosize>
+      <mat-sidenav #sidenav mode="push">
+        <mat-toolbar color="primary">
+          <span>menu</span>
+          <span class="spacer"></span>
+          <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </mat-toolbar>
+        <br />
+        <mat-nav-list>
+          <a [routerLink]="['/home']" mat-list-item (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">home</mat-icon
+            ><span>Pagina principal</span></a
+          >
+          <a [routerLink]="['/home']" mat-list-item (click)="perfil()"
+            ><mat-icon mat-list-icon style="color: gray">person</mat-icon
+            ><span>Mi perfil</span></a
+          >
+          <a
+            [routerLink]="['/beneficiarios/lista']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">group</mat-icon
+            ><span>Mis Beneficiarios</span></a
+          >
+
+          <a
+            [routerLink]="['/app/soporte']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">settings</mat-icon
+            ><span>soporte</span></a
+          >
+          <a
+            [routerLink]="['/app/contacto']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">contact_mail</mat-icon
+            ><span>contacto</span></a
+          >
+
+          <a
+            [routerLink]="['/medicos/servicios']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >local_hospital</mat-icon
+            ><span>Servicios Medicos</span></a
+          >
+
+          <a
+            *ngIf="rol !== 4"
+            [routerLink]="['/medicos/solicitud']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >question_answer</mat-icon
+            ><span>ser medico</span></a
+          >
+          <a
+            *ngIf="rol == 4"
+            [routerLink]="['/medicos/estudio']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >health_and_safety</mat-icon
+            ><span>Agregar Especializacion</span></a
+          >
+          <a
+            *ngIf="rol == 4"
+            [routerLink]="['/medicos/agenda']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >pending_actions</mat-icon
+            ><span>agendar citas</span></a
+          >
+          <a
+            *ngIf="rol == 1"
+            [routerLink]="['/admin/solicitud']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >admin_panel_settings</mat-icon
+            ><span>solicitudes</span></a
+          >
+          <a
+            *ngIf="rol == 1"
+            [routerLink]="['/admin/solicitudEstudio']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >admin_panel_settings</mat-icon
+            ><span>solicitudes especializacion</span></a
+          >
+        </mat-nav-list>
+      </mat-sidenav>
+
+      <mat-toolbar>
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="spacer"></span>
+        <button
+          mat-icon-button
+          class="example-icon favorite-icon"
+          aria-label="notificaciones"
+        >
+          <mat-icon>notifications</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          class="example-icon"
+          (click)="logout()"
+          aria-label="cerrar sesion"
+        >
+          <mat-icon>logout</mat-icon>
+        </button>
+      </mat-toolbar>
+
+      <div fxLayout="row" fxLayoutAlign="center">
+        <div fxLayout="column" fxLayoutAlign="space-between center">
+          <div class="contact_container">
+            <div class="contact_2">
+              <div class="title_container">
+                <h2 class="contact_title">Agendar citas</h2>
+              </div>
+              <p></p>
+              <form
+                (ngSubmit)="agendar()"
+                autocomplete="off"
+                [formGroup]="miFormulario"
+              >
+                <mat-form-field class="form__input" appearance="fill">
+                  <mat-label>Fecha de la cita</mat-label>
+                  <input
+                    matInput
+                    formControlName="fecha"
+                    [matDatepicker]="picker"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="picker"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field class="form__input" appearance="fill">
+                  <input
+                    matInput
+                    formControlName="hora"
+                    placeholder="Hora de la cita"
+                    aria-label="12hr format"
+                    [ngxTimepicker]="default"
+                    readonly
+                  />
+                  <ngx-material-timepicker #default></ngx-material-timepicker>
+                </mat-form-field>
+
+                <mat-form-field class="form__input" appearance="fill">
+                  <mat-label>especializacion</mat-label>
+                  <mat-select formControlName="especializacion">
+                    <mat-option
+                      value="{{ especializacion.titulo }}"
+                      *ngFor="let especializacion of especializaciones"
+                    >
+                      {{ especializacion.titulo | especializaciones }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="form__input" appearance="fill">
+                  <mat-label>Tarifa</mat-label>
+                  <input
+                    type="number"
+                    matInput
+                    placeholder="Tarifa"
+                    formControlName="tarifa"
+                  />
+                </mat-form-field>
+
+                <button
+                  class="submit"
+                  type="submit"
+                  [disabled]="!miFormulario.valid"
+                >
+                  crear cita
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-sidenav-container>
+  </body>
+</html>

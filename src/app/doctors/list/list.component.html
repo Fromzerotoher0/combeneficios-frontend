@@ -12,137 +12,156 @@
   </head>
   <body>
     <div class="container">
-      <header>
-        <nav class="navBar">
-          <div class="nav_container">
-            <img
-              src="../../../../assets/icons/ubication-icon.png"
-              alt="logo"
-              class="logo"
-            />
-            <select class="select_ciudad" name="ciudad" id="ciudad">
-              <option hidden selected>ciudad</option>
-              <option value="item 1">Barranquilla</option>
-              <option value="item 2">Santa Marta</option>
-              <option value="item 3">Medellin</option>
-              <option value="item 1">Bogota</option>
-              <option value="item 1">Barrancabermeja</option>
-            </select>
-            <input type="checkbox" id="check" />
-            <label for=""
-              ><span class="material-icons-outlined bell">
-                notifications
-              </span></label
+      <mat-sidenav-container fullscreen>
+        <mat-sidenav #sidenav mode="push">
+          <mat-toolbar color="primary">
+            <span>menu</span>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="sidenav.toggle()">
+              <mat-icon>menu</mat-icon>
+            </button>
+          </mat-toolbar>
+
+          <mat-nav-list>
+            <a [routerLink]="['/home']" mat-list-item (click)="sidenav.toggle()"
+              ><mat-icon mat-list-icon style="color: gray">home</mat-icon
+              ><span>Pagina principal</span></a
             >
-            <label for="check" class="bar-btn"
-              ><span class="material-icons settings"> settings </span>
-            </label>
-            <ul class="nav-menu">
-              <li>
-                <img
-                  src="../../../../assets/icons/ubication-icon.png"
-                  class="menu_logo"
-                  alt=""
-                /><a href="#">Mi Perfil</a>
-              </li>
-              <li>
-                <img
-                  src="../../../../assets/icons/ubication-icon.png"
-                  class="menu_logo"
-                  alt=""
-                /><a href="#">Mis beneficios</a>
-              </li>
-              <li>
-                <img
-                  src="../../../../assets/icons/ubication-icon.png"
-                  class="menu_logo"
-                  alt=""
-                /><a href="#">Soporte</a>
-              </li>
-              <li>
-                <img
-                  src="../../../../assets/icons/ubication-icon.png"
-                  class="menu_logo"
-                  alt=""
-                /><a href="#">Contáctenos</a>
-              </li>
-            </ul>
+            <a [routerLink]="['/home']" mat-list-item (click)="perfil()"
+              ><mat-icon mat-list-icon style="color: gray">person</mat-icon
+              ><span>Mi perfil</span></a
+            >
+            <a
+              [routerLink]="['/beneficiarios/lista']"
+              mat-list-item
+              (click)="sidenav.toggle()"
+              ><mat-icon mat-list-icon style="color: gray">group</mat-icon
+              ><span>Mis Beneficiarios</span></a
+            >
+
+            <a
+              [routerLink]="['/app/soporte']"
+              mat-list-item
+              (click)="sidenav.toggle()"
+              ><mat-icon mat-list-icon style="color: gray">settings</mat-icon
+              ><span>soporte</span></a
+            >
+            <a
+              [routerLink]="['/app/contacto']"
+              mat-list-item
+              (click)="sidenav.toggle()"
+              ><mat-icon mat-list-icon style="color: gray"
+                >contact_mail</mat-icon
+              ><span>contacto</span></a
+            >
+
+            <a
+              [routerLink]="['/medicos/servicios']"
+              mat-list-item
+              (click)="sidenav.toggle()"
+              ><mat-icon mat-list-icon style="color: gray"
+                >local_hospital</mat-icon
+              ><span>Servicios Medicos</span></a
+            >
+          </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-toolbar>
+          <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <span class="spacer"></span>
+          <button
+            mat-icon-button
+            class="example-icon favorite-icon"
+            aria-label="notificaciones"
+          >
+            <mat-icon>notifications</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            class="example-icon"
+            (click)="logout()"
+            aria-label="cerrar sesion"
+          >
+            <mat-icon>logout</mat-icon>
+          </button>
+        </mat-toolbar>
+
+        <div class="middle-menu">
+          <div class="service">
+            <div class="service_logo">
+              <img
+                src="../../../../assets/icons/Captura_preview_rev_1.png"
+                alt=""
+              />
+            </div>
+            <div class="service_title">
+              <p><strong>Servicios medicos</strong></p>
+              <h6>Citas virtuales</h6>
+            </div>
           </div>
-        </nav>
-      </header>
-      <div class="middle-menu">
-        <div class="service">
-          <div class="service_logo">
-            <img
-              src="../../../../assets/icons/Captura_preview_rev_1.png"
-              alt=""
+          <div class="filter">
+            <select [(ngModel)]="selectedBrand" (change)="valueSelected()">
+              <option value="all">todas las especializaciones</option>
+              <option *ngFor="let item of especializaciones">
+                {{ item.descripcion }}
+              </option>
+            </select>
+
+            <input
+              type="text"
+              [(ngModel)]="term"
+              placeholder=" Filtrar por especialista o especialidad"
             />
           </div>
-          <div class="service_title">
-            <p><strong>Servicios medicos</strong></p>
-            <h6>Citas virtuales</h6>
-          </div>
-        </div>
-        <div class="filter">
-          <select [(ngModel)]="selectedBrand" (change)="valueSelected()">
-            <option value="all">todas las especializaciones</option>
-            <option *ngFor="let item of especializaciones">
-              {{ item.descripcion }}
-            </option>
-          </select>
 
-          <input
-            type="text"
-            [(ngModel)]="term"
-            placeholder=" Filtrar por especialista o especialidad"
-          />
-        </div>
-
-        <div class="flex-layout_medic">
-          <div class="content">
-            <div class="children" *ngFor="let item of doctors | filter: term">
-              <div class="medic-photo">
-                <img src="{{ item.imgUrl }}" alt="foto medico" />
-              </div>
-              <div class="medic-information">
-                <div class="medic-information__text">
-                  <p>
-                    <strong>{{ item.nombres }} {{ item.apellidos }}</strong>
-                  </p>
-                  <p>{{ item.descripcion }}</p>
-                  <p class="medic-information__space">
-                    Consultas realizadas : {{ item.id }}
-                  </p>
-                  <p>
-                    <img
-                      src="../../../../assets/icons/Polígono 2.png"
-                      alt=""
-                    /><img
-                      src="../../../../assets/icons/Polígono 2.png"
-                      alt=""
-                    /><img
-                      src="../../../../assets/icons/Polígono 2.png"
-                      alt=""
-                    /><img
-                      src="../../../../assets/icons/Polígono 2.png"
-                      alt=""
-                    /><img
-                      src="../../../../assets/icons/Polígono 2 copia 4.png"
-                      alt=""
-                    />
-                  </p>
+          <div class="flex-layout_medic">
+            <div class="content">
+              <div class="children" *ngFor="let item of doctors | filter: term">
+                <div class="medic-photo">
+                  <img src="{{ item.imgUrl }}" alt="foto medico" />
                 </div>
+                <div class="medic-information">
+                  <div class="medic-information__text">
+                    <p>
+                      <strong>{{ item.nombres }} {{ item.apellidos }}</strong>
+                    </p>
+                    <p>{{ item.descripcion }}</p>
+                    <p class="medic-information__space">
+                      Consultas realizadas : {{ item.id }}
+                    </p>
+                    <p>
+                      <img
+                        src="../../../../assets/icons/Polígono 2.png"
+                        alt=""
+                      /><img
+                        src="../../../../assets/icons/Polígono 2.png"
+                        alt=""
+                      /><img
+                        src="../../../../assets/icons/Polígono 2.png"
+                        alt=""
+                      /><img
+                        src="../../../../assets/icons/Polígono 2.png"
+                        alt=""
+                      /><img
+                        src="../../../../assets/icons/Polígono 2 copia 4.png"
+                        alt=""
+                      />
+                    </p>
+                  </div>
+                </div>
+                <button
+                  [routerLink]="['/medicos', item.id]"
+                  class="medic-profile"
+                >
+                  Perfil
+                </button>
               </div>
-              <button
-                [routerLink]="['/medicos', item.id]"
-                class="medic-profile"
-              >
-                Perfil
-              </button>
             </div>
           </div>
         </div>
-      </div>
+      </mat-sidenav-container>
     </div>
   </body>
 </html>

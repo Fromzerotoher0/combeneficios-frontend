@@ -15,11 +15,16 @@ export class SupportComponent implements OnInit {
     window.location.href = 'https://api.whatsapp.com/send?phone=573009125879';
   }
   correo() {
-    this.router.navigateByUrl(`/contacto`);
+    this.router.navigateByUrl(`/app/contacto`);
   }
 
   perfil() {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     this.router.navigateByUrl(`/beneficiarios/${token.id}`);
+  }
+
+  logout() {
+    localStorage.removeItem('jwt');
+    this.router.navigateByUrl('/auth/login');
   }
 }
