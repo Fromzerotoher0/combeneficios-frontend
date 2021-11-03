@@ -57,7 +57,7 @@
             [routerLink]="['/app/contacto']"
             mat-list-item
             (click)="sidenav.toggle()"
-            ><mat-icon mat-list-icon style="color: gray">contact_mail</mat-icon
+            ><mat-icon mat-list-icon style="color: gray">support_agent</mat-icon
             ><span>contacto</span></a
           >
 
@@ -99,7 +99,7 @@
           >
           <a
             *ngIf="rol == 1"
-            [routerLink]="['/admin/solicitud']"
+            [routerLink]="['/admin/solicitudes']"
             mat-list-item
             (click)="sidenav.toggle()"
             ><mat-icon mat-list-icon style="color: gray"
@@ -114,6 +114,21 @@
             ><mat-icon mat-list-icon style="color: gray"
               >admin_panel_settings</mat-icon
             ><span>solicitudes especializacion</span></a
+          >
+          <a
+            *ngIf="rol == 4"
+            [routerLink]="['/medicos/agendaMedico']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">edit_calendar</mat-icon
+            ><span>Mi Agenda</span></a
+          >
+          <a
+            [routerLink]="['/medicos/agendaUsuario']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">schedule</mat-icon
+            ><span>Mis Citas</span></a
           >
         </mat-nav-list>
       </mat-sidenav>

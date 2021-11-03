@@ -14,6 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [],
@@ -33,6 +34,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     MatListModule,
     MatCardModule,
     NgxMaterialTimepickerModule,
+    MatTableModule,
   ],
 })
 export class MaterialModule {}

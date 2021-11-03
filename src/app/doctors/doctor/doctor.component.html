@@ -50,7 +50,7 @@
             [routerLink]="['/app/contacto']"
             mat-list-item
             (click)="sidenav.toggle()"
-            ><mat-icon mat-list-icon style="color: gray">contact_mail</mat-icon
+            ><mat-icon mat-list-icon style="color: gray">support_agent</mat-icon
             ><span>contacto</span></a
           >
 
@@ -61,6 +61,67 @@
             ><mat-icon mat-list-icon style="color: gray"
               >local_hospital</mat-icon
             ><span>Servicios Medicos</span></a
+          >
+
+          <a
+            *ngIf="rol !== 4"
+            [routerLink]="['/medicos/solicitud']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >question_answer</mat-icon
+            ><span>ser medico</span></a
+          >
+          <a
+            *ngIf="rol == 4"
+            [routerLink]="['/medicos/estudio']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >health_and_safety</mat-icon
+            ><span>Agregar Especializacion</span></a
+          >
+          <a
+            *ngIf="rol == 4"
+            [routerLink]="['/medicos/agenda']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >pending_actions</mat-icon
+            ><span>agendar citas</span></a
+          >
+          <a
+            *ngIf="rol == 1"
+            [routerLink]="['/admin/solicitudes']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >admin_panel_settings</mat-icon
+            ><span>solicitudes</span></a
+          >
+          <a
+            *ngIf="rol == 1"
+            [routerLink]="['/admin/solicitudEstudio']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >admin_panel_settings</mat-icon
+            ><span>solicitudes especializacion</span></a
+          >
+          <a
+            *ngIf="rol == 4"
+            [routerLink]="['/medicos/agendaMedico']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">edit_calendar</mat-icon
+            ><span>Mi Agenda</span></a
+          >
+          <a
+            [routerLink]="['/medicos/agendaUsuario']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">schedule</mat-icon
+            ><span>Mis Citas</span></a
           >
         </mat-nav-list>
       </mat-sidenav>

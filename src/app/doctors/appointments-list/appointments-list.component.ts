@@ -3,13 +3,12 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { DoctorsService } from 'src/app/services/doctors.service';
-
 @Component({
-  selector: 'app-schedule-list',
-  templateUrl: './schedule-list.component.html',
-  styleUrls: ['./schedule-list.component.css'],
+  selector: 'app-appointments-list',
+  templateUrl: './appointments-list.component.html',
+  styleUrls: ['./appointments-list.component.css'],
 })
-export class ScheduleListComponent implements OnInit {
+export class AppointmentsListComponent implements OnInit {
   constructor(
     private doctorService: DoctorsService,
     private jwtHelper: JwtHelperService,
@@ -18,7 +17,7 @@ export class ScheduleListComponent implements OnInit {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     this.rol = token.tipo_usuario;
 
-    this.doctorService.getAppointments(token.id).subscribe((resp: any) => {
+    this.doctorService.getAppointmentsUser(token.id).subscribe((resp: any) => {
       console.log(resp);
 
       this.dataSource = new MatTableDataSource(resp.result);

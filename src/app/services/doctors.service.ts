@@ -99,4 +99,10 @@ export class DoctorsService {
       medico_id: medico_id,
     });
   }
+
+  getAppointmentsUser(id: any) {
+    return this.http.post('http://localhost:7000/api/doctors/citasUsuario', {
+      id: id,
+    });
+  }
 }

@@ -15,6 +15,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { EspecializacionesPipe } from '../pipes/especializaciones.pipe';
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { ScheduleListComponent } from './schedule-list/schedule-list.component';
+import { AppointmentsListComponent } from './appointments-list/appointments-list.component';
 @NgModule({
   declarations: [
     ListComponent,
@@ -25,6 +26,7 @@ import { ScheduleListComponent } from './schedule-list/schedule-list.component';
     EspecializacionesPipe,
     AppointmentsComponent,
     ScheduleListComponent,
+    AppointmentsListComponent,
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { AdminService } from '../../services/admin.service';
 
 @Component({
@@ -9,8 +10,16 @@ import { AdminService } from '../../services/admin.service';
 })
 export class RequestComponent implements OnInit {
   solicitud: any;
+  rol: any;
   token = localStorage.getItem('jwt');
-  constructor(private adminService: AdminService, private router: Router) {
+  constructor(
+    private adminService: AdminService,
+    private router: Router,
+    private jwtHelper: JwtHelperService
+  ) {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    this.rol = token.tipo_usuario;
+
     this.adminService.getSolicitudes().subscribe((resp: any) => {
       this.solicitud = resp.result;
     });
@@ -59,6 +68,16 @@ export class RequestComponent implements OnInit {
       }
     );
     console.log(id, correo);
+  }
+
+  perfil() {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    this.router.navigateByUrl(`/beneficiarios/${token.id}`);
+  }
+
+  logout() {
+    localStorage.removeItem('jwt');
+    this.router.navigateByUrl('/auth/login');
   }
 
   ngOnInit(): void {}

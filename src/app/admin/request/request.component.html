@@ -13,63 +13,200 @@
     <title>solicitudes</title>
   </head>
   <body>
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">solicitud</th>
-          <th scope="col">id usuario</th>
-          <th scope="col">nombres</th>
-          <th scope="col">apellidos</th>
-          <th scope="col">documento</th>
-          <th scope="col">universidad</th>
-          <th scope="col">asunto</th>
-          <th scope="col">direccion</th>
-          <th scope="col">modalidad</th>
-          <th style="width: 10.66%" scope="col">especializacion</th>
-          <th style="width: 13.66%; text-align: center" scope="col">
-            Acciones
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of solicitud; index as i">
-          <td>{{ i + 1 }}</td>
-          <td>{{ item.users_id }}</td>
-          <td>{{ item.nombres }}</td>
-          <td>{{ item.apellidos }}</td>
-          <td>{{ item.documento }}</td>
-          <td>{{ item.universidad }}</td>
-          <td>{{ item.asunto }}</td>
-          <td>{{ item.direccion }}</td>
-          <td>{{ item.modalidad }}</td>
-          <td>{{ item.especializaciones_id }}</td>
-          <td>
-            <button
-              (click)="
-                approve(
-                  item.users_id,
-                  item.direccion,
-                  item.correo,
-                  item.modalidad,
-                  item.especializaciones_id,
-                  item.universidad
-                )
-              "
-              type="button"
-              class="btn btn-primary"
-            >
-              aceptar
-            </button>
-            <button
-              type="button"
-              (click)="reject(item.users_id, item.correo)"
-              class="btn btn-danger"
-            >
-              rechazar
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <mat-sidenav-container fullscreen>
+      <mat-sidenav #sidenav mode="push">
+        <mat-toolbar color="primary">
+          <span>menu</span>
+          <span class="spacer"></span>
+          <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </mat-toolbar>
+        <br />
+        <mat-nav-list>
+          <a [routerLink]="['/home']" mat-list-item (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">home</mat-icon
+            ><span>Pagina principal</span></a
+          >
+          <a [routerLink]="['/home']" mat-list-item (click)="perfil()"
+            ><mat-icon mat-list-icon style="color: gray">person</mat-icon
+            ><span>Mi perfil</span></a
+          >
+          <a
+            [routerLink]="['/beneficiarios/lista']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">group</mat-icon
+            ><span>Mis Beneficiarios</span></a
+          >
+
+          <a
+            [routerLink]="['/app/soporte']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">settings</mat-icon
+            ><span>soporte</span></a
+          >
+          <a
+            [routerLink]="['/app/contacto']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">support_agent</mat-icon
+            ><span>contacto</span></a
+          >
+
+          <a
+            [routerLink]="['/medicos/servicios']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >local_hospital</mat-icon
+            ><span>Servicios Medicos</span></a
+          >
+
+          <a
+            *ngIf="rol !== 4"
+            [routerLink]="['/medicos/solicitud']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >question_answer</mat-icon
+            ><span>ser medico</span></a
+          >
+          <a
+            *ngIf="rol == 4"
+            [routerLink]="['/medicos/estudio']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >health_and_safety</mat-icon
+            ><span>Agregar Especializacion</span></a
+          >
+          <a
+            *ngIf="rol == 4"
+            [routerLink]="['/medicos/agenda']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >pending_actions</mat-icon
+            ><span>agendar citas</span></a
+          >
+          <a
+            *ngIf="rol == 1"
+            [routerLink]="['/admin/solicitudes']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >admin_panel_settings</mat-icon
+            ><span>solicitudes</span></a
+          >
+          <a
+            *ngIf="rol == 1"
+            [routerLink]="['/admin/solicitudEstudio']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray"
+              >admin_panel_settings</mat-icon
+            ><span>solicitudes especializacion</span></a
+          >
+          <a
+            *ngIf="rol == 4"
+            [routerLink]="['/medicos/agendaMedico']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">edit_calendar</mat-icon
+            ><span>Mi Agenda</span></a
+          >
+          <a
+            [routerLink]="['/medicos/agendaUsuario']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">schedule</mat-icon
+            ><span>Mis Citas</span></a
+          >
+        </mat-nav-list>
+      </mat-sidenav>
+
+      <mat-toolbar>
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="spacer"></span>
+        <button
+          mat-icon-button
+          class="example-icon favorite-icon"
+          aria-label="notificaciones"
+        >
+          <mat-icon>notifications</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          class="example-icon"
+          (click)="logout()"
+          aria-label="cerrar sesion"
+        >
+          <mat-icon>logout</mat-icon>
+        </button>
+      </mat-toolbar>
+
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">solicitud</th>
+            <th scope="col">id usuario</th>
+            <th scope="col">nombres</th>
+            <th scope="col">apellidos</th>
+            <th scope="col">documento</th>
+            <th scope="col">universidad</th>
+            <th scope="col">asunto</th>
+            <th scope="col">direccion</th>
+            <th scope="col">modalidad</th>
+            <th style="width: 10.66%" scope="col">especializacion</th>
+            <th style="width: 13.66%; text-align: center" scope="col">
+              Acciones
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of solicitud; index as i">
+            <td>{{ i + 1 }}</td>
+            <td>{{ item.users_id }}</td>
+            <td>{{ item.nombres }}</td>
+            <td>{{ item.apellidos }}</td>
+            <td>{{ item.documento }}</td>
+            <td>{{ item.universidad }}</td>
+            <td>{{ item.asunto }}</td>
+            <td>{{ item.direccion }}</td>
+            <td>{{ item.modalidad }}</td>
+            <td>{{ item.especializaciones_id }}</td>
+            <td>
+              <button
+                (click)="
+                  approve(
+                    item.users_id,
+                    item.direccion,
+                    item.correo,
+                    item.modalidad,
+                    item.especializaciones_id,
+                    item.universidad
+                  )
+                "
+                type="button"
+                class="btn btn-primary"
+              >
+                aceptar
+              </button>
+              <button
+                type="button"
+                (click)="reject(item.users_id, item.correo)"
+                class="btn btn-danger"
+              >
+                rechazar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-sidenav-container>
   </body>
 </html>

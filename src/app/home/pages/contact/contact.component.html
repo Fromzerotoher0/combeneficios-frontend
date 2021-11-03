@@ -117,11 +117,18 @@
           >
           <a
             *ngIf="rol == 4"
-            [routerLink]="['/admin/solicitudEstudio']"
+            [routerLink]="['/medicos/agendaMedico']"
             mat-list-item
             (click)="sidenav.toggle()"
-            ><mat-icon mat-list-icon style="color: gray"></mat-icon
+            ><mat-icon mat-list-icon style="color: gray">edit_calendar</mat-icon
             ><span>Mi Agenda</span></a
+          >
+          <a
+            [routerLink]="['/medicos/agendaUsuario']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">schedule</mat-icon
+            ><span>Mis Citas</span></a
           >
         </mat-nav-list>
       </mat-sidenav>

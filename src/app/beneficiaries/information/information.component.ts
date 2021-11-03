@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class InformationComponent implements OnInit {
   user: any = [];
+  rol: any;
   beneficiary_id = 0;
   constructor(
     private jwtHelper: JwtHelperService,
@@ -19,6 +20,9 @@ export class InformationComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    this.rol = token.tipo_usuario;
+
     this.beneficiary_id = this.activatedRoute.snapshot.params['id'];
     this.userService.getUser(this.beneficiary_id).subscribe((resp: any) => {
       console.log(resp);

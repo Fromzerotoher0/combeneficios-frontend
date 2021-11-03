@@ -1,6 +1,8 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
@@ -12,8 +14,12 @@ export class StudyRequestComponent implements OnInit {
   constructor(
     private adminService: AdminService,
     private fb: FormBuilder,
-    public datepipe: DatePipe
+    public datepipe: DatePipe,
+    private router: Router,
+    private jwtHelper: JwtHelperService
   ) {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    this.rol = token.tipo_usuario;
     this.adminService.getStudyRequest().subscribe((resp: any) => {
       this.solicitud = resp.result;
     });
@@ -28,6 +34,7 @@ export class StudyRequestComponent implements OnInit {
   });
   new_date: any;
   solicitud: any;
+  rol: any;
   ngOnInit(): void {}
   approve(
     users_id: any,
@@ -68,5 +75,15 @@ export class StudyRequestComponent implements OnInit {
           this.solicitud = resp.result;
         });
       });
+  }
+
+  perfil() {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    this.router.navigateByUrl(`/beneficiarios/${token.id}`);
+  }
+
+  logout() {
+    localStorage.removeItem('jwt');
+    this.router.navigateByUrl('/auth/login');
   }
 }

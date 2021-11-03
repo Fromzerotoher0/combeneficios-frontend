@@ -19,8 +19,11 @@ export class ListComponent implements OnInit {
   especializaciones: any;
   term: string = '';
   selectedBrand: any;
+  rol: any;
 
   ngOnInit(): void {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    this.rol = token.tipo_usuario;
     this.doctorsService.getDoctors().subscribe((resp: any) => {
       this.doctors = resp.result;
       this.initDoctors = resp.result;

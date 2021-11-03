@@ -8,7 +8,11 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   styleUrls: ['./support.component.css'],
 })
 export class SupportComponent implements OnInit {
-  constructor(private router: Router, private jwtHelper: JwtHelperService) {}
+  rol: any;
+  constructor(private router: Router, private jwtHelper: JwtHelperService) {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    this.rol = token.tipo_usuario;
+  }
 
   ngOnInit(): void {}
   chat() {

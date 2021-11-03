@@ -10,11 +10,14 @@ import { Router } from '@angular/router';
 })
 export class HomePageComponent implements OnInit {
   ciudades: any = [];
+  rol: any;
   constructor(
     private authService: AuthService,
     private jwtHelper: JwtHelperService,
     private router: Router
   ) {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    this.rol = token.tipo_usuario;
     this.authService.getDepartamentos().subscribe((resp: any) => {
       this.ciudades = resp.result;
       console.log(this.ciudades);

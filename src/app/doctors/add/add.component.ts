@@ -19,12 +19,16 @@ export class AddComponent {
   universidad: any;
   modalidad = ['presencial', 'virtual', 'presencial/virtual'];
   especializaciones: any;
+  rol: any;
   constructor(
     private fb: FormBuilder,
     private jwtHelper: JwtHelperService,
     private doctorService: DoctorsService,
     private router: Router
   ) {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    this.rol = token.tipo_usuario;
+
     this.doctorService.getEspecs().subscribe((resp: any) => {
       this.especializaciones = resp.result;
       console.log(this.especializaciones);

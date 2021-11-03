@@ -21,7 +21,11 @@ export class DoctorComponent implements OnInit {
   doctorData: any;
   pregrade: any;
   especialization: any;
+  rol: any;
   ngOnInit(): void {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    this.rol = token.tipo_usuario;
+
     this.doctor_id = this.activatedRoute.snapshot.params['id'];
     this.doctorService.getDoctor(this.doctor_id).subscribe((resp: any) => {
       this.doctor = resp.result;

@@ -11,13 +11,14 @@ import { UserService } from 'src/app/services/user.service';
 export class ListComponent implements OnInit {
   user: any = [];
   beneficiaries: any = [];
+  rol: any;
   constructor(
     private jwtHelper: JwtHelperService,
     private userService: UserService,
     private router: Router
   ) {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
-
+    this.rol = token.tipo_usuario;
     this.userService.getBeneficiaries(token.id).subscribe((resp: any) => {
       this.beneficiaries = resp.result;
       console.log(this.beneficiaries);
