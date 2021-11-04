@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../../services/auth.service';
 import { Router, RouterModule } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Login } from 'src/app/interfaces/login.interface';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ import { Login } from 'src/app/interfaces/login.interface';
 export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
+    private authService: AuthenticationService,
     private router: Router
   ) {}
 
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('jwt', resp.token);
         }
       },
-      (err) => {
+      (err: any) => {
         alert(err.error.msg);
       }
     );

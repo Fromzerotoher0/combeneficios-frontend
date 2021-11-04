@@ -1,11 +1,11 @@
 import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { departamento } from 'src/app/interfaces/departamento.interface';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-register',
@@ -29,7 +29,7 @@ export class RegisterComponent {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
+    private authService: AuthenticationService,
     private router: Router,
     public mediaObserver: MediaObserver
   ) {
@@ -121,11 +121,11 @@ export class RegisterComponent {
     uploadData.append('ciudad', this.miFormulario.get('ciudad')!.value);
 
     this.authService.registro(uploadData).subscribe(
-      (resp) => {
+      (resp: any) => {
         console.log(resp);
         this.router.navigateByUrl(`/auth/login`);
       },
-      (err) => {
+      (err: any) => {
         if (err.error == undefined) {
           alert('debe diligenciar todos los campos');
         } else {
