@@ -12,7 +12,7 @@ export class AdminService {
       'Content-Type': 'application/json',
       authorization: 'Bearer ' + localStorage.getItem('jwt'),
     });
-    return this.http.get('https://45.63.109.10:7000/api/admin/solicitud', {
+    return this.http.get('https://localhost:7000/api/admin/solicitud', {
       headers: header,
     });
   }
@@ -22,12 +22,9 @@ export class AdminService {
       'Content-Type': 'application/json',
       authorization: 'Bearer ' + localStorage.getItem('jwt'),
     });
-    return this.http.get(
-      'https://45.63.109.10:7000/api/admin/solicitudEstudio',
-      {
-        headers: header,
-      }
-    );
+    return this.http.get('https://localhost:7000/api/admin/solicitudEstudio', {
+      headers: header,
+    });
   }
 
   rechazarsolicitud(id: any, correo: any) {
@@ -36,7 +33,7 @@ export class AdminService {
       authorization: 'Bearer ' + localStorage.getItem('jwt'),
     });
     return this.http.post(
-      'https://45.63.109.10:7000/api/admin/rechazar',
+      'https://localhost:7000/api/admin/rechazar',
       { id: id, correo: correo },
       {
         headers: header,
@@ -49,14 +46,16 @@ export class AdminService {
     correo: any,
     modalidad: any,
     especializacion: any,
-    universidad: any
+    universidad: any,
+    departamento: any,
+    ciudad: any
   ) {
     let header = new HttpHeaders({
       'Content-Type': 'application/json',
       authorization: 'Bearer ' + localStorage.getItem('jwt'),
     });
     return this.http.post(
-      'https://45.63.109.10:7000/api/admin/aprobar',
+      'https://localhost:7000/api/admin/aprobar',
       {
         id: id,
         modalidad: modalidad,
@@ -64,6 +63,8 @@ export class AdminService {
         direccion: direccion,
         correo: correo,
         universidad: universidad,
+        departamento: departamento,
+        ciudad: ciudad,
       },
       { headers: header }
     );
@@ -74,7 +75,7 @@ export class AdminService {
       authorization: 'Bearer ' + localStorage.getItem('jwt'),
     });
     return this.http.post(
-      'https://45.63.109.10:7000/api/admin/aceptarEstudio',
+      'https://localhost:7000/api/admin/aceptarEstudio',
       {
         users_id: body.users_id,
         titulo: body.titulo,
@@ -93,7 +94,7 @@ export class AdminService {
       authorization: 'Bearer ' + localStorage.getItem('jwt'),
     });
     return this.http.post(
-      'https://45.63.109.10:7000/api/admin/rechazarEstudio',
+      'https://localhost:7000/api/admin/rechazarEstudio',
       {
         users_id: body.users_id,
         medico_id: body.medico_id,

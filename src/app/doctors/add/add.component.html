@@ -202,6 +202,31 @@
                   </mat-select>
                 </mat-form-field>
                 <mat-form-field class="form__input" appearance="fill">
+                  <mat-label>Departamento</mat-label>
+                  <mat-select
+                    formControlName="departamento"
+                    (selectionChange)="cargarCiudades($any($event).value)"
+                  >
+                    <mat-option
+                      *ngFor="let departamento of departamentos"
+                      value="{{ departamento.id_departamento }}"
+                    >
+                      {{ departamento.departamento }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="form__input" appearance="fill">
+                  <mat-label>Ciudad</mat-label>
+                  <mat-select formControlName="ciudad">
+                    <mat-option
+                      *ngFor="let ciudad of ciudades"
+                      value="{{ ciudad.municipio }}"
+                    >
+                      {{ ciudad.municipio }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="form__input" appearance="fill">
                   <mat-label>Direccion</mat-label>
                   <input
                     matInput

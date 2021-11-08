@@ -27,7 +27,18 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              {
+                "input": "./src/assets/js/script.js",
+                "inject": true,
+                "bundleName": "script"
+              },
+              {
+                "input": "./src/assets/js/worker.js",
+                "inject": true,
+                "bundleName": "worker"
+              }
+            ]
           },
           "configurations": {
             "production": {

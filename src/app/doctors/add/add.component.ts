@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DoctorsService } from 'src/app/services/doctors.service';
 
 @Component({
@@ -15,15 +16,20 @@ export class AddComponent {
     modalidad: ['', [Validators.required]],
     direccion: ['', [Validators.required]],
     universidad: ['', [Validators.required]],
+    departamento: ['', [Validators.required]],
+    ciudad: ['', [Validators.required]],
   });
   universidad: any;
   modalidad = ['presencial', 'virtual', 'presencial/virtual'];
   especializaciones: any;
   rol: any;
+  departamentos: any;
+  ciudades: any;
   constructor(
     private fb: FormBuilder,
     private jwtHelper: JwtHelperService,
     private doctorService: DoctorsService,
+    private authService: AuthenticationService,
     private router: Router
   ) {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
@@ -36,6 +42,10 @@ export class AddComponent {
     this.doctorService.getUniversity().subscribe((resp: any) => {
       this.universidad = resp.result;
       console.log(this.universidad);
+    });
+
+    this.authService.getDepartamentos().subscribe((resp: any) => {
+      this.departamentos = resp.result;
     });
   }
 
@@ -63,5 +73,12 @@ export class AddComponent {
   logout() {
     localStorage.removeItem('jwt');
     this.router.navigateByUrl('/auth/login');
+  }
+
+  cargarCiudades(departamento: any) {
+    this.authService.cargarCiudades(departamento).subscribe((resp: any) => {
+      this.ciudades = resp.result;
+      console.log(this.ciudades);
+    });
   }
 }

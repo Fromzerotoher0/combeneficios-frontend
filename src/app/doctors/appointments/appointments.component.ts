@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { DoctorsService } from '../../services/doctors.service';
-
+declare var subscripcion: any;
+declare var message: any;
 @Component({
   selector: 'app-appointments',
   templateUrl: './appointments.component.html',
@@ -43,13 +44,13 @@ export class AppointmentsComponent implements OnInit {
     this.doctorService
       .appointment(agenda, token.id, medico)
       .subscribe((resp: any) => {
-        alert(resp.result);
         this.doctor_id = this.activatedRoute.snapshot.params['id'];
         this.doctorService.getAgenda(this.doctor_id).subscribe((resp: any) => {
           this.citas = resp.result;
-          console.log(this.citas);
+          subscripcion();
+          message('cita agendada');
+          this.router.navigateByUrl('/medicos/servicios');
         });
-        // this.router.navigateByUrl('/medicos/servicios');
       });
   }
 }

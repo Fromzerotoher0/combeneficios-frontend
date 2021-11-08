@@ -1,13 +1,8 @@
-@font-face {
-  font-family: "Cocogoose";
-  src: url(../../../assets/fonts/Cocogoose-Pro-Ultralight-trial.ttf);
-}
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   text-decoration: none;
-  font-family: "Cocogoose";
 }
 .spacer {
   flex: 1 1 auto;
@@ -226,7 +221,6 @@
     outline: none;
     background-color: transparent;
     border-bottom: 1px solid green;
-    font-family: "Cocogoose";
     font-size: 12px;
   }
 

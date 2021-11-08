@@ -1,10 +1,9 @@
-import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { departamento } from 'src/app/interfaces/departamento.interface';
-import { MediaObserver, MediaChange } from '@angular/flex-layout';
-import { Subscription } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
+import { MediaObserver } from '@angular/flex-layout';
+
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({

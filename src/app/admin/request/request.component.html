@@ -159,6 +159,8 @@
             <th scope="col">documento</th>
             <th scope="col">universidad</th>
             <th scope="col">asunto</th>
+            <th scope="col">departamento</th>
+            <th scope="col">ciudad</th>
             <th scope="col">direccion</th>
             <th scope="col">modalidad</th>
             <th style="width: 10.66%" scope="col">especializacion</th>
@@ -176,6 +178,8 @@
             <td>{{ item.documento }}</td>
             <td>{{ item.universidad }}</td>
             <td>{{ item.asunto }}</td>
+            <td>{{ item.departamento }}</td>
+            <td>{{ item.ciudad }}</td>
             <td>{{ item.direccion }}</td>
             <td>{{ item.modalidad }}</td>
             <td>{{ item.especializaciones_id }}</td>
@@ -188,7 +192,9 @@
                     item.correo,
                     item.modalidad,
                     item.especializaciones_id,
-                    item.universidad
+                    item.universidad,
+                    item.departamento,
+                    item.ciudad
                   )
                 "
                 type="button"
