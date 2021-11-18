@@ -162,13 +162,8 @@
                   </p>
                   <p class="medic-information__space">{{ item.descripcion }}</p>
                   <p>
-                    <img src="assets/icons/Polígono 2.png" alt="" /><img
-                      src="assets/icons/Polígono 2.png"
-                      alt=""
-                    /><img src="assets/icons/Polígono 2.png" alt="" /><img
-                      src="assets/icons/Polígono 2 copia 4.png"
-                      alt=""
-                    /><img src="assets/icons/Polígono 2 copia 4.png" alt="" />
+                    <strong>calificacion : </strong
+                    >{{ item.calificacion | calificacion }}
                   </p>
                 </div>
               </div>
@@ -192,7 +187,8 @@
                 />
                 <p></p>
                 <p class="consultas">
-                  <strong>consultas realizadas </strong>: 37
+                  <strong>consultas realizadas </strong>:
+                  {{ item.consultas - 1 }}
                 </p>
               </div>
             </div>

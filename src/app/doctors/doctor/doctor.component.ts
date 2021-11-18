@@ -27,6 +27,8 @@ export class DoctorComponent implements OnInit {
     this.rol = token.tipo_usuario;
 
     this.doctor_id = this.activatedRoute.snapshot.params['id'];
+    console.log(this.doctor_id);
+
     this.doctorService.getDoctor(this.doctor_id).subscribe((resp: any) => {
       this.doctor = resp.result;
       console.log(this.doctor);

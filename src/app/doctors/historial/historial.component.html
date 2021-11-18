@@ -1,10 +1,3 @@
-<link
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-  rel="stylesheet"
-  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-  crossorigin="anonymous"
-/>
-
 <mat-sidenav-container fullscreen>
   <mat-sidenav #sidenav mode="push">
     <mat-toolbar color="primary">
@@ -112,6 +105,13 @@
         ><mat-icon mat-list-icon style="color: gray">schedule</mat-icon
         ><span>Mis Citas</span></a
       >
+      <a
+        [routerLink]="['/medicos/historial']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">schedule</mat-icon
+        ><span>Historial de citas</span></a
+      >
     </mat-nav-list>
   </mat-sidenav>
 
@@ -136,51 +136,48 @@
       <mat-icon>logout</mat-icon>
     </button>
   </mat-toolbar>
-
-  <h1 style="text-align: center">mis citas pendientes</h1>
-
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef>No.</th>
-      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
+    <ng-container matColumnDef="fecha">
       <th mat-header-cell *matHeaderCellDef>Fecha</th>
       <td mat-cell *matCellDef="let element">{{ element.fecha | date }}</td>
     </ng-container>
-
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
+    <ng-container matColumnDef="hora">
       <th mat-header-cell *matHeaderCellDef>Hora</th>
       <td mat-cell *matCellDef="let element">
         {{ element.hora }}
       </td>
     </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="nombres">
-      <th mat-header-cell *matHeaderCellDef>nombre medico</th>
+    <ng-container matColumnDef="especialidad">
+      <th mat-header-cell *matHeaderCellDef>Especialidad</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.especialidad }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef>Nombres medico</th>
       <td mat-cell *matCellDef="let element">
         {{ element.nombres }}
       </td>
     </ng-container>
     <ng-container matColumnDef="apellidos">
-      <th mat-header-cell *matHeaderCellDef>apellidos medico</th>
+      <th mat-header-cell *matHeaderCellDef>Apellidos medico</th>
       <td mat-cell *matCellDef="let element">
         {{ element.apellidos }}
       </td>
     </ng-container>
-
-    <ng-container matColumnDef="acciones">
-      <th mat-header-cell *matHeaderCellDef>acciones</th>
+    <ng-container matColumnDef="calificacion">
+      <th mat-header-cell *matHeaderCellDef>calificacion</th>
       <td mat-cell *matCellDef="let element">
-        <button mat-raised-button color="warn">Cancelar</button>
+        <select (change)="calificar($any($event.target).value, element.id)">
+          <option value="" disabled selected>{{ element.calificacion }}</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
       </td>
     </ng-container>
-
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>

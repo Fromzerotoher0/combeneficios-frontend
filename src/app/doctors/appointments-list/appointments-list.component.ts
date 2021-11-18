@@ -18,9 +18,8 @@ export class AppointmentsListComponent implements OnInit {
     this.rol = token.tipo_usuario;
 
     this.doctorService.getAppointmentsUser(token.id).subscribe((resp: any) => {
-      console.log(resp);
-
       this.dataSource = new MatTableDataSource(resp.result);
+      console.log(resp.result);
     });
   }
 
@@ -38,10 +37,12 @@ export class AppointmentsListComponent implements OnInit {
     this.router.navigateByUrl('/auth/login');
   }
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+  displayedColumns: string[] = [
+    'position',
+    'name',
+    'weight',
+    'nombres',
+    'apellidos',
+    'acciones',
+  ];
 }

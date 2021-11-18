@@ -130,6 +130,13 @@
             ><mat-icon mat-list-icon style="color: gray">schedule</mat-icon
             ><span>Mis Citas</span></a
           >
+          <a
+            [routerLink]="['/medicos/historial']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">schedule</mat-icon
+            ><span>Historial de citas</span></a
+          >
         </mat-nav-list>
       </mat-sidenav>
 

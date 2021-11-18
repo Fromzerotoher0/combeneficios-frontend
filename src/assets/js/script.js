@@ -2,9 +2,7 @@ const subscripcion = async () => {
   const public_key =
     "BCB48D5qobdbl6JLzb0n2JuJmtllHCaM-F-Fa9Q9JW23OuukbHyHB6GKFEDVhmWIy9piJsGUh7-GjbXQGLRo2_o";
   //service worker
-  const register = await navigator.serviceWorker.register("/worker.js", {
-    scope: "/",
-  });
+  const register = await navigator.serviceWorker.register("/worker.js");
   const subscription = await register.pushManager.subscribe({
     userVisibleOnly: true,
     applicationServerKey: urlBase64ToUint8Array(public_key),
@@ -25,7 +23,7 @@ const subscripcion = async () => {
     return outputArray;
   }
 
-  await fetch("https://localhost:7000/api/subscription", {
+  await fetch("https://45.63.109.10:7000/api/subscription", {
     method: "POST",
     body: JSON.stringify(subscription),
     headers: { "Content-Type": "application/json" },
@@ -33,7 +31,7 @@ const subscripcion = async () => {
 };
 
 const message = async (message) => {
-  await fetch("https://localhost:7000/api/new-message", {
+  await fetch("https://45.63.109.10:7000/api/new-message", {
     method: "POST",
     body: JSON.stringify({ message: message }),
     headers: { "Content-Type": "application/json" },

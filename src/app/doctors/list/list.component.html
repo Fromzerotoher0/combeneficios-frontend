@@ -145,21 +145,6 @@
               >
             </mat-select>
           </mat-form-field>
-
-          <!-- <mat-form-field appearance="fill">
-            <mat-label>ciudad</mat-label>
-            <mat-select
-              (selectionChange)="citySelected($any($event).value)"
-              formControlName="ciudad"
-            >
-              <mat-option
-                *ngFor="let ciudad of ciudades"
-                value="{{ ciudad.ciudad }}"
-              >
-                {{ ciudad.ciudad }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field> -->
           <span class="spacer"></span>
           <button
             mat-icon-button
@@ -216,16 +201,12 @@
                     </p>
                     <p>{{ item.descripcion }}</p>
                     <p class="medic-information__space">
-                      Consultas realizadas : {{ item.id }}
+                      <strong>consultas realizadas </strong>:
+                      {{ item.consultas - 1 }}
                     </p>
                     <p>
-                      <img src="assets/icons/Polígono 2.png" alt="" /><img
-                        src="assets/icons/Polígono 2.png"
-                        alt=""
-                      /><img src="assets/icons/Polígono 2.png" alt="" /><img
-                        src="assets/icons/Polígono 2.png"
-                        alt=""
-                      /><img src="assets/icons/Polígono 2 copia 4.png" alt="" />
+                      <strong>calificacion</strong>:
+                      {{ item.calificacion | calificacion }}
                     </p>
                   </div>
                 </div>
@@ -236,6 +217,13 @@
                   Perfil
                 </button>
               </div>
+            </div>
+            <div *ngIf="!doctors?.length">
+              <p>
+                actualmente no hay doctores disponibles en su ciudad({{
+                  token.ciudad
+                }})
+              </p>
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { DoctorsService } from 'src/app/services/doctors.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Doctor } from '../../interfaces/doctor.interface';
 
 @Component({
   selector: 'app-list',
@@ -13,28 +14,15 @@ export class ListComponent implements OnInit {
   constructor(
     private doctorsService: DoctorsService,
     private router: Router,
-    private jwtHelper: JwtHelperService,
-    private fb: FormBuilder
-  ) {}
-  doctors: any;
-  initDoctors: any;
-  especializaciones: any;
-  term: string = '';
-  selectedBrand: any;
-  selectedBrand2: any;
-  rol: any;
-  foods: any;
-  ciudades: any;
-  cityDoctors: any = [];
-  initDoctorsEspects: any;
-  token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
-
-  ngOnInit(): void {
+    private jwtHelper: JwtHelperService
+  ) {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     this.rol = token.tipo_usuario;
     this.doctorsService.getDoctors().subscribe((resp: any) => {
       this.initDoctors = resp.result;
-      console.log(this.initDoctors);
+      this.doctors = resp.result;
+      this.citySelected(token.ciudad);
+      console.log(resp.result);
     });
     this.doctorsService.getEspecs().subscribe((resp: any) => {
       this.especializaciones = resp.result;
@@ -42,13 +30,18 @@ export class ListComponent implements OnInit {
     this.doctorsService.getDoctorsCity().subscribe((resp: any) => {
       this.ciudades = resp.result;
     });
-    this.doctorsService
-      .getDoctorsByCity(token.ciudad)
-      .subscribe((resp: any) => {
-        this.doctors = resp.result;
-        this.initDoctorsEspects = resp.result;
-      });
   }
+  doctors: any;
+  initDoctors: Doctor = {};
+  especializaciones: any;
+  term: string = '';
+  selectedBrand: any;
+  rol: any;
+  ciudades: any;
+  cityDoctors: any = [];
+  token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+
+  ngOnInit(): void {}
 
   selected = this.token.ciudad;
 
@@ -73,6 +66,7 @@ export class ListComponent implements OnInit {
 
   citySelected(ciudad: any) {
     this.doctors = this.initDoctors;
+    console.log('cambio');
 
     this.doctors = this.doctors.filter((doctor: any) => {
       if (doctor.ciudad == ciudad) {

@@ -13,6 +13,7 @@ import {
 import { MaterialModule } from './material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { EspecializacionesPipe } from './pipes/especializaciones.pipe';
+import { CalificacionPipe } from './pipes/calificacion.pipe';
 
 @NgModule({
   declarations: [AppComponent, SearchFilterPipe],

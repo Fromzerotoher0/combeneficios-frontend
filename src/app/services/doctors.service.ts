@@ -8,27 +8,27 @@ export class DoctorsService {
   constructor(private http: HttpClient) {}
 
   getDoctors() {
-    return this.http.get('https://localhost:7000/api/doctors/medicos');
+    return this.http.get('https://45.63.109.10:7000/api/doctors/medicos');
   }
   getDoctorsCity() {
-    return this.http.get('https://localhost:7000/api/doctors/medicosCiudad');
+    return this.http.get('https://45.63.109.10:7000/api/doctors/medicosCiudad');
   }
   getDoctorsByCity(body: any) {
     return this.http.post(
-      'https://localhost:7000/api/doctors/medicosByCiudad',
+      'https://45.63.109.10:7000/api/doctors/medicosByCiudad',
       {
         ciudad: body,
       }
     );
   }
   getDoctor(id: any) {
-    return this.http.post('https://localhost:7000/api/doctors/medico', {
+    return this.http.post('https://45.63.109.10:7000/api/doctors/medico', {
       id: id,
     });
   }
   getPregrade(id: any) {
     http: return this.http.post(
-      'https://localhost:7000/api/doctors/medico/estudios',
+      'https://45.63.109.10:7000/api/doctors/medico/estudios',
       {
         id: id,
       }
@@ -37,7 +37,7 @@ export class DoctorsService {
 
   getStudies(id: any) {
     http: return this.http.post(
-      'https://localhost:7000/api/doctors/medico/especializaciones',
+      'https://45.63.109.10:7000/api/doctors/medico/especializaciones',
       {
         id: id,
       }
@@ -46,7 +46,7 @@ export class DoctorsService {
 
   getEspecialization(id: any) {
     http: return this.http.post(
-      'https://localhost:7000/api/doctors/medico/especializacion',
+      'https://45.63.109.10:7000/api/doctors/medico/especializacion',
       {
         id: id,
       }
@@ -56,7 +56,7 @@ export class DoctorsService {
   register(id: any, body: any) {
     console.log(body);
 
-    return this.http.post('https://localhost:7000/api/doctors/solicitud', {
+    return this.http.post('https://45.63.109.10:7000/api/doctors/solicitud', {
       id: id,
       asunto: body.asunto,
       direccion: body.direccion,
@@ -70,23 +70,23 @@ export class DoctorsService {
 
   getEspecs() {
     return this.http.get(
-      'https://localhost:7000/api/doctors/especializaciones'
+      'https://45.63.109.10:7000/api/doctors/especializaciones'
     );
   }
 
   studyrequest(body: any) {
     return this.http.post(
-      'https://localhost:7000/api/doctors/medico/agregarEspecializacion',
+      'https://45.63.109.10:7000/api/doctors/medico/agregarEspecializacion',
       body
     );
   }
 
   getUniversity() {
-    return this.http.get('https://localhost:7000/api/doctors/universidades');
+    return this.http.get('https://45.63.109.10:7000/api/doctors/universidades');
   }
 
   agenda(body: any, fecha: any, id: any) {
-    return this.http.post('https://localhost:7000/api/doctors/agenda', {
+    return this.http.post('https://45.63.109.10:7000/api/doctors/agenda', {
       fecha: body.fecha,
       hora: body.hora,
       especialidad: body.especializacion,
@@ -96,15 +96,18 @@ export class DoctorsService {
   }
 
   getAgenda(medico_id: any) {
-    return this.http.post('https://localhost:7000/api/doctors/agendaMedico', {
-      medico_id: medico_id,
-    });
+    return this.http.post(
+      'https://45.63.109.10:7000/api/doctors/agendaMedico',
+      {
+        medico_id: medico_id,
+      }
+    );
   }
 
   appointment(agenda: any, beneficiario: any, medico: any) {
     console.log(agenda, beneficiario);
 
-    return this.http.post('https://localhost:7000/api/doctors/agendaCita', {
+    return this.http.post('https://45.63.109.10:7000/api/doctors/agendaCita', {
       beneficiario_id: beneficiario,
       agenda_id: agenda,
       medico_id: medico,
@@ -112,14 +115,48 @@ export class DoctorsService {
   }
 
   getAppointments(medico_id: any) {
-    return this.http.post('https://localhost:7000/api/doctors/citas', {
+    return this.http.post('https://45.63.109.10:7000/api/doctors/citas', {
       medico_id: medico_id,
     });
   }
 
   getAppointmentsUser(id: any) {
-    return this.http.post('https://localhost:7000/api/doctors/citasUsuario', {
+    return this.http.post(
+      'https://45.63.109.10:7000/api/doctors/citasUsuario',
+      {
+        id: id,
+      }
+    );
+  }
+
+  cancelAppointment(id: any, email: any) {
+    return this.http.post(
+      'https://45.63.109.10:7000/api/doctors/cancelarCita',
+      {
+        id: id,
+        email: email,
+      }
+    );
+  }
+  completeAppointment(id: any) {
+    return this.http.post(
+      'https://45.63.109.10:7000/api/doctors/completarCita',
+      {
+        id: id,
+      }
+    );
+  }
+
+  getHistorial(id: any) {
+    return this.http.post('https://45.63.109.10:7000/api/doctors/historial', {
       id: id,
+    });
+  }
+
+  calificar(id: any, calificacion: any) {
+    return this.http.post('https://45.63.109.10:7000/api/doctors/calificar', {
+      id: id,
+      calificacion: calificacion,
     });
   }
 }

@@ -26,9 +26,9 @@ export class ScheduleListComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-  dataSource: any;
-  rol: any;
-  citas: any;
+  public dataSource: any;
+  public rol: any;
+  public citas: any;
   perfil() {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     this.router.navigateByUrl(`/beneficiarios/${token.id}`);
@@ -39,10 +39,36 @@ export class ScheduleListComponent implements OnInit {
     this.router.navigateByUrl('/auth/login');
   }
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = [
+    'name',
+    'weight',
+    'nombres',
+    'especialidad',
+    'apellidos',
+    'acciones',
+  ];
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  cancelar(id: string, email: string) {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    this.doctorService.cancelAppointment(id, email).subscribe((resp) => {
+      alert('cita cancelada');
+      this.doctorService.getAppointments(token.id).subscribe((resp: any) => {
+        console.log(resp);
+
+        this.dataSource = new MatTableDataSource(resp.result);
+      });
+    });
+  }
+
+  completar(id: any) {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    this.doctorService.completeAppointment(id).subscribe((resp) => {
+      alert('cita completada');
+      this.doctorService.getAppointments(token.id).subscribe((resp: any) => {
+        console.log(resp);
+
+        this.dataSource = new MatTableDataSource(resp.result);
+      });
+    });
   }
 }

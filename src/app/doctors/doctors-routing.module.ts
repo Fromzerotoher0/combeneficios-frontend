@@ -9,6 +9,7 @@ import { RequestComponent } from './request/request.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { ScheduleListComponent } from './schedule-list/schedule-list.component';
 import { AppointmentsListComponent } from './appointments-list/appointments-list.component';
+import { HistorialComponent } from './historial/historial.component';
 const routes: Routes = [
   {
     path: '',
@@ -42,6 +43,10 @@ const routes: Routes = [
       {
         path: 'agendaUsuario',
         component: AppointmentsListComponent,
+      },
+      {
+        path: 'historial',
+        component: HistorialComponent,
       },
       { path: ':id', component: DoctorComponent },
       { path: 'agenda/:id', component: AppointmentsComponent },
