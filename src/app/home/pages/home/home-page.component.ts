@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { MatDialog, MatDialogConfig } from '@angular/material';
 
 @Component({
   selector: 'app-home-page',
@@ -16,8 +14,7 @@ export class HomePageComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private jwtHelper: JwtHelperService,
-    private router: Router,
-    private http: HttpClient
+    private router: Router
   ) {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     this.rol = token.tipo_usuario;

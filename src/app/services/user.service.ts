@@ -36,4 +36,11 @@ export class UserService {
       body
     );
   }
+
+  asistencia(id: any, asistencia: any) {
+    return this.http.post('https://localhost:7000/api/doctors/asistencia', {
+      id: id,
+      asistencia: asistencia,
+    });
+  }
 }

@@ -47,8 +47,9 @@ export class AppointmentsComponent implements OnInit {
         this.doctor_id = this.activatedRoute.snapshot.params['id'];
         this.doctorService.getAgenda(this.doctor_id).subscribe((resp: any) => {
           this.citas = resp.result;
-          subscripcion();
-          message('cita agendada');
+          // subscripcion();
+          // message('cita agendada');
+          alert('cita agendada');
           this.router.navigateByUrl('/medicos/servicios');
         });
       });

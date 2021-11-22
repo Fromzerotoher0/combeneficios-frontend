@@ -16,6 +16,7 @@ import { MatCardModule } from '@angular/material/card';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [],
@@ -37,6 +38,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     NgxMaterialTimepickerModule,
     MatTableModule,
     MatDialogModule,
+    MatCheckboxModule,
   ],
 })
 export class MaterialModule {}
