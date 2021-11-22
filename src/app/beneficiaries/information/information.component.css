@@ -456,3 +456,12 @@
   }
   /* hi-res laptops and desktops */
 }
+
+#boton {
+  background: red;
+  float: left;
+  position: absolute;
+}
+img {
+  float: left;
+}

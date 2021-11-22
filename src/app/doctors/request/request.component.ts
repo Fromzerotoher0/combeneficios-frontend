@@ -39,11 +39,13 @@ export class RequestComponent implements OnInit {
     users_id: [''],
     especializaciones_id: ['', [Validators.required]],
     image: ['', [Validators.required]],
+    otra: [''],
     universidad: ['', [Validators.required]],
     fecha_obtencion: ['', [Validators.required]],
   });
 
   onFileChange(event: any) {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     let fileList: FileList = event.target.files;
     if (fileList.length > 0) {
       let file: File = fileList[0];
@@ -75,10 +77,15 @@ export class RequestComponent implements OnInit {
       'yyyy-MM-dd'
     );
     uploadData.append('medico_id', token.id);
-    uploadData.append(
-      'especializaciones_id',
-      this.miFormulario.get('especializaciones_id')!.value
-    );
+    if (this.miFormulario.get('especializaciones_id')?.value == 99) {
+      uploadData.append('especializaciones_id', '99');
+    } else {
+      uploadData.append(
+        'especializaciones_id',
+        this.miFormulario.get('especializaciones_id')!.value
+      );
+    }
+
     uploadData.append('image', this.miFormulario.get('image')!.value);
     uploadData.append(
       'universidad',

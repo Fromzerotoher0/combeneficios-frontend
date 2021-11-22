@@ -12,8 +12,7 @@ import {
 } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { EspecializacionesPipe } from './pipes/especializaciones.pipe';
-import { CalificacionPipe } from './pipes/calificacion.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent, SearchFilterPipe],
@@ -30,6 +29,7 @@ import { CalificacionPipe } from './pipes/calificacion.pipe';
     NoopAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

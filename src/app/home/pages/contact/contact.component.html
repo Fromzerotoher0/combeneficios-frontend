@@ -47,6 +47,14 @@
           >
 
           <a
+            [routerLink]="['/beneficiarios/tarjeta']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">badge</mat-icon
+            ><span>Mi Tarjeta</span></a
+          >
+
+          <a
             [routerLink]="['/app/soporte']"
             mat-list-item
             (click)="sidenav.toggle()"
@@ -95,7 +103,7 @@
             (click)="sidenav.toggle()"
             ><mat-icon mat-list-icon style="color: gray"
               >pending_actions</mat-icon
-            ><span>agendar citas</span></a
+            ><span>agendar disponibilidad</span></a
           >
           <a
             *ngIf="rol == 1"

@@ -32,6 +32,7 @@ export class ListComponent implements OnInit {
     });
   }
   doctors: any;
+  currentRate = 3.14;
   initDoctors: Doctor = {};
   especializaciones: any;
   term: string = '';

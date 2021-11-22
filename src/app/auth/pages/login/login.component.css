@@ -20,6 +20,7 @@
     url("../../../../assets/images/background-2.png");
   background-size: cover;
   background-position: bottom;
+  width: 100vw;
 }
 
 .login_container {

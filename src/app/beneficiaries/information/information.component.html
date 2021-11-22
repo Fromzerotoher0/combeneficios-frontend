@@ -9,6 +9,32 @@
       rel="stylesheet"
     />
 
+    <style type="text/css">
+      #boton {
+        background: white;
+        float: left;
+        position: absolute;
+        margin-top: 25vh;
+        margin-left: 10vw;
+        height: 5vh;
+        width: 2vw;
+        border-radius: 20px;
+      }
+      img {
+        float: left;
+      }
+
+      .file_input {
+        display: none;
+      }
+      .label {
+        cursor: pointer;
+        color: gray;
+        background: white;
+        border-radius: 50%;
+      }
+    </style>
+
     <title>Home</title>
   </head>
   <body>
@@ -37,6 +63,14 @@
             (click)="sidenav.toggle()"
             ><mat-icon mat-list-icon style="color: gray">group</mat-icon
             ><span>Mis Beneficiarios</span></a
+          >
+
+          <a
+            [routerLink]="['/beneficiarios/tarjeta']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">badge</mat-icon
+            ><span>Mi Tarjeta</span></a
           >
 
           <a
@@ -88,7 +122,7 @@
             (click)="sidenav.toggle()"
             ><mat-icon mat-list-icon style="color: gray"
               >pending_actions</mat-icon
-            ><span>agendar citas</span></a
+            ><span>agendar disponibilidad</span></a
           >
           <a
             *ngIf="rol == 1"
@@ -123,6 +157,13 @@
             ><mat-icon mat-list-icon style="color: gray">schedule</mat-icon
             ><span>Mis Citas</span></a
           >
+          <a
+            [routerLink]="['/medicos/historial']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">schedule</mat-icon
+            ><span>Historial de citas</span></a
+          >
         </mat-nav-list>
       </mat-sidenav>
 
@@ -153,9 +194,23 @@
           <h2>Mi Perfil</h2>
           <div class="general-information">
             <div class="children_p">
-              <div class="profile-photo" *ngFor="let item of user">
-                <img src="{{ user }}" alt="foto medico" />
-              </div>
+              <form [formGroup]="formImage">
+                <div class="profile-photo" *ngFor="let item of user">
+                  <img src="{{ user }}" alt="foto medico" />
+                  <div id="boton" (click)="file.click()">
+                    <input
+                      #file
+                      class="file_input"
+                      formControlName="image"
+                      (change)="onFileChange($event)"
+                      type="file"
+                    />
+                    <label class="material-icons-outlined label">
+                      photo_camera
+                    </label>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
           <div class="profile-data">
@@ -180,6 +235,12 @@
             </form>
           </div>
         </div>
+      </div>
+      <div>
+        <h2>Estudios realizados</h2>
+        <ul>
+          <li *ngFor="let estudio of estudios">{{ estudio.titulo }}</li>
+        </ul>
       </div>
     </mat-sidenav-container>
   </body>

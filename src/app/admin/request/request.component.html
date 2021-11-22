@@ -23,6 +23,7 @@
           </button>
         </mat-toolbar>
         <br />
+
         <mat-nav-list>
           <a [routerLink]="['/home']" mat-list-item (click)="sidenav.toggle()"
             ><mat-icon mat-list-icon style="color: gray">home</mat-icon
@@ -38,6 +39,14 @@
             (click)="sidenav.toggle()"
             ><mat-icon mat-list-icon style="color: gray">group</mat-icon
             ><span>Mis Beneficiarios</span></a
+          >
+
+          <a
+            [routerLink]="['/beneficiarios/tarjeta']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">badge</mat-icon
+            ><span>Mi Tarjeta</span></a
           >
 
           <a
@@ -89,7 +98,7 @@
             (click)="sidenav.toggle()"
             ><mat-icon mat-list-icon style="color: gray"
               >pending_actions</mat-icon
-            ><span>agendar citas</span></a
+            ><span>agendar disponibilidad</span></a
           >
           <a
             *ngIf="rol == 1"
@@ -123,6 +132,13 @@
             (click)="sidenav.toggle()"
             ><mat-icon mat-list-icon style="color: gray">schedule</mat-icon
             ><span>Mis Citas</span></a
+          >
+          <a
+            [routerLink]="['/medicos/historial']"
+            mat-list-item
+            (click)="sidenav.toggle()"
+            ><mat-icon mat-list-icon style="color: gray">schedule</mat-icon
+            ><span>Historial de citas</span></a
           >
         </mat-nav-list>
       </mat-sidenav>

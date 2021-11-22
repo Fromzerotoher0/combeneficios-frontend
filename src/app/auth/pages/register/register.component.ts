@@ -122,6 +122,7 @@ export class RegisterComponent {
     this.authService.registro(uploadData).subscribe(
       (resp: any) => {
         console.log(resp);
+        alert('registro exitoso');
         this.router.navigateByUrl(`/auth/login`);
       },
       (err: any) => {

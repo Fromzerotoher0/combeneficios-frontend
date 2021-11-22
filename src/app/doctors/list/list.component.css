@@ -3,11 +3,37 @@
   margin: 0;
   padding: 0;
 }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
 /* google fonts*/
 
 .spacer {
   flex: 1 1 auto;
+}
+.star {
+  position: relative;
+  display: inline-block;
+  font-size: 30px;
+  color: #d3d3d3;
+}
+.full {
+  color: red;
+}
+.half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  color: red;
 }
 
 .mat-toolbar.mat-primary {

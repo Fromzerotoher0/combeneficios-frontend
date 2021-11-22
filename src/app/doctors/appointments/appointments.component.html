@@ -32,6 +32,14 @@
       >
 
       <a
+        [routerLink]="['/beneficiarios/tarjeta']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">badge</mat-icon
+        ><span>Mi Tarjeta</span></a
+      >
+
+      <a
         [routerLink]="['/app/soporte']"
         mat-list-item
         (click)="sidenav.toggle()"
@@ -76,7 +84,7 @@
         mat-list-item
         (click)="sidenav.toggle()"
         ><mat-icon mat-list-icon style="color: gray">pending_actions</mat-icon
-        ><span>agendar citas</span></a
+        ><span>agendar disponibilidad</span></a
       >
       <a
         *ngIf="rol == 1"
@@ -111,6 +119,13 @@
         ><mat-icon mat-list-icon style="color: gray">schedule</mat-icon
         ><span>Mis Citas</span></a
       >
+      <a
+        [routerLink]="['/medicos/historial']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">schedule</mat-icon
+        ><span>Historial de citas</span></a
+      >
     </mat-nav-list>
   </mat-sidenav>
 
@@ -139,7 +154,7 @@
   <div fxLayout="row" fxLayoutAlign="center">
     <div class="appointment_container">
       <h1>Citas Disponibles</h1>
-      <div class="grid_layout">
+      <!-- <div class="grid_layout">
         <div
           class="card border-success mb-3"
           style="max-width: 18rem"
@@ -163,7 +178,33 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> -->
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Especialidad</th>
+            <th scope="col">Tarifa</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cita of citas">
+            <th scope="row">{{ cita.fecha | date }} - {{ cita.hora }}</th>
+            <td>{{ cita.especialidad }}</td>
+            <td>${{ cita.tarifa }}</td>
+            <td>
+              <button
+                type="button"
+                (click)="agendar(cita.id, cita.medico_id)"
+                class="btn btn-outline-success"
+              >
+                Agendar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </mat-sidenav-container>

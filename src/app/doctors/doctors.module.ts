@@ -17,6 +17,8 @@ import { ScheduleListComponent } from './schedule-list/schedule-list.component';
 import { AppointmentsListComponent } from './appointments-list/appointments-list.component';
 import { CalificacionPipe } from '../pipes/calificacion.pipe';
 import { HistorialComponent } from './historial/historial.component';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     ListComponent,
@@ -40,6 +42,7 @@ import { HistorialComponent } from './historial/historial.component';
     MaterialModule,
     FlexLayoutModule,
     NgxMaterialTimepickerModule,
+    NgbRatingModule,
   ],
   providers: [DatePipe],
 })

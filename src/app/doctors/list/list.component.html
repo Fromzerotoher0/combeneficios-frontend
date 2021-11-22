@@ -8,6 +8,12 @@
       href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
       rel="stylesheet"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
     <title>Buscar medico</title>
   </head>
   <body>
@@ -36,6 +42,14 @@
               (click)="sidenav.toggle()"
               ><mat-icon mat-list-icon style="color: gray">group</mat-icon
               ><span>Mis Beneficiarios</span></a
+            >
+
+            <a
+              [routerLink]="['/beneficiarios/tarjeta']"
+              mat-list-item
+              (click)="sidenav.toggle()"
+              ><mat-icon mat-list-icon style="color: gray">badge</mat-icon
+              ><span>Mi Tarjeta</span></a
             >
 
             <a
@@ -88,7 +102,7 @@
               (click)="sidenav.toggle()"
               ><mat-icon mat-list-icon style="color: gray"
                 >pending_actions</mat-icon
-              ><span>agendar citas</span></a
+              ><span>agendar disponibilidad</span></a
             >
             <a
               *ngIf="rol == 1"
@@ -123,6 +137,13 @@
               (click)="sidenav.toggle()"
               ><mat-icon mat-list-icon style="color: gray">schedule</mat-icon
               ><span>Mis Citas</span></a
+            >
+            <a
+              [routerLink]="['/medicos/historial']"
+              mat-list-item
+              (click)="sidenav.toggle()"
+              ><mat-icon mat-list-icon style="color: gray">schedule</mat-icon
+              ><span>Historial de citas</span></a
             >
           </mat-nav-list>
         </mat-sidenav>
@@ -204,10 +225,23 @@
                       <strong>consultas realizadas </strong>:
                       {{ item.consultas - 1 }}
                     </p>
-                    <p>
-                      <strong>calificacion</strong>:
-                      {{ item.calificacion | calificacion }}
-                    </p>
+                    <p><strong>Modalidad</strong>:{{ item.modalidad_cita }}</p>
+                    <div>
+                      <ng-template #t let-fill="fill">
+                        <span class="star" [class.full]="fill === 100">
+                          <span class="half" [style.width.%]="fill"
+                            >&starf;</span
+                          >&starf;
+                        </span>
+                      </ng-template>
+
+                      <ngb-rating
+                        [max]="5"
+                        [starTemplate]="t"
+                        [(rate)]="item.calificacion"
+                        [readonly]="true"
+                      ></ngb-rating>
+                    </div>
                   </div>
                 </div>
                 <button
