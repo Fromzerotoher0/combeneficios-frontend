@@ -136,7 +136,7 @@
               mat-list-item
               (click)="sidenav.toggle()"
               ><mat-icon mat-list-icon style="color: gray">schedule</mat-icon
-              ><span>Mis Citas</span></a
+              ><span>Citas Pendientes</span></a
             >
             <a
               [routerLink]="['/medicos/historial']"
@@ -200,6 +200,15 @@
               <option *ngFor="let item of especializaciones">
                 {{ item.descripcion }}
               </option>
+            </select>
+
+            <select
+              [(ngModel)]="selectedModality"
+              (change)="modalitySelected()"
+            >
+              <option value="all">todas las modalidades</option>
+              <option value="presencial">Presencial</option>
+              <option value="virtual">virtual</option>
             </select>
 
             <input

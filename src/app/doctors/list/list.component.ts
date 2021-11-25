@@ -24,8 +24,9 @@ export class ListComponent implements OnInit {
       this.citySelected(token.ciudad);
       console.log(resp.result);
     });
-    this.doctorsService.getEspecs().subscribe((resp: any) => {
+    this.doctorsService.getDEspecs().subscribe((resp: any) => {
       this.especializaciones = resp.result;
+      console.log(this.especializaciones);
     });
     this.doctorsService.getDoctorsCity().subscribe((resp: any) => {
       this.ciudades = resp.result;
@@ -37,6 +38,7 @@ export class ListComponent implements OnInit {
   especializaciones: any;
   term: string = '';
   selectedBrand: any;
+  selectedModality = 'all';
   rol: any;
   ciudades: any;
   cityDoctors: any = [];
@@ -53,6 +55,17 @@ export class ListComponent implements OnInit {
         return doctor;
       }
       return doctor.descripcion === this.selectedBrand;
+    });
+  }
+
+  modalitySelected() {
+    this.doctors = this.cityDoctors;
+    this.doctors = this.doctors.filter((doctor: any) => {
+      if (this.selectedModality == 'all') {
+        return doctor;
+      } else {
+        return doctor.modalidad_cita === this.selectedModality;
+      }
     });
   }
 

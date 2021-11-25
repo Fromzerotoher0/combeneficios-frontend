@@ -137,7 +137,7 @@
             mat-list-item
             (click)="sidenav.toggle()"
             ><mat-icon mat-list-icon style="color: gray">schedule</mat-icon
-            ><span>Mis Citas</span></a
+            ><span>Citas Pendientes</span></a
           >
           <a
             [routerLink]="['/medicos/historial']"
@@ -153,6 +153,16 @@
         <button mat-icon-button (click)="sidenav.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
+        <mat-form-field appearance="fill">
+          <mat-label>Ciudad</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option
+              [value]="ciudad.ciudad"
+              *ngFor="let ciudad of ciudades"
+              >{{ ciudad.ciudad }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
         <span class="spacer"></span>
         <button
           mat-icon-button
