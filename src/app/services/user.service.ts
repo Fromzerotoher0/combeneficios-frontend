@@ -43,4 +43,10 @@ export class UserService {
       asistencia: asistencia,
     });
   }
+
+  forgotPassword(body: any) {
+    https: return this.http.post('https://localhost:7000/api/auth/forgot', {
+      email: body,
+    });
+  }
 }

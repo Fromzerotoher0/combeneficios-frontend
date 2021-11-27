@@ -5,9 +5,10 @@ import { RegisterComponent } from './pages/register/register.component';
 import { authRoutingModule } from './auth-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
+import { ForgotComponent } from './pages/forgot/forgot.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent],
+  declarations: [LoginComponent, RegisterComponent, ForgotComponent],
   imports: [
     CommonModule,
     authRoutingModule,

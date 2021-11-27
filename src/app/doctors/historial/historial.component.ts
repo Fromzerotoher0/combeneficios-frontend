@@ -31,6 +31,7 @@ export class HistorialComponent implements OnInit {
   valor: any;
   initDatasource: any;
   allComplete: any;
+  check: any;
 
   perfil() {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
@@ -83,4 +84,12 @@ export class HistorialComponent implements OnInit {
       });
     }
   }
+
+  //   checked(evento: any) {
+  //     this.check = evento;
+  //   }
+
+  //   confirmar() {
+  //     console.log(this.check);
+  //   }
 }
