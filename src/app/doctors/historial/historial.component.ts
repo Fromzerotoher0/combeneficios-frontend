@@ -22,6 +22,7 @@ export class HistorialComponent implements OnInit {
     this.doctorService.getHistorial(token.id).subscribe((resp: any) => {
       console.log(resp);
       this.dataSource = new MatTableDataSource(resp.result);
+      this.arreglo = this.dataSource;
     });
   }
 
@@ -32,6 +33,7 @@ export class HistorialComponent implements OnInit {
   initDatasource: any;
   allComplete: any;
   check: any;
+  arreglo: any;
 
   perfil() {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
@@ -50,6 +52,7 @@ export class HistorialComponent implements OnInit {
     'nombre',
     'asistio',
     'calificacion',
+    'acciones',
   ];
 
   calificar(calificacion: any, id: any) {
@@ -63,8 +66,8 @@ export class HistorialComponent implements OnInit {
     });
   }
 
-  setAll(completed: boolean, id: any) {
-    if (completed == true) {
+  confirmar(completed: string, id: any) {
+    if (completed == 'si') {
       const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
       this.userService.asistencia(id, 1).subscribe((resp) => {
         alert('asistencia confirmada');
@@ -92,4 +95,26 @@ export class HistorialComponent implements OnInit {
   //   confirmar() {
   //     console.log(this.check);
   //   }
+
+  toggle(event: any, id: any) {
+    if (event == true) {
+      for (let i = 0; i <= this.dataSource.filteredData.length; i++) {
+        if (this.dataSource.filteredData[i].id == id) {
+          this.dataSource.filteredData[i].asistio = 'si';
+          this.dataSource.filteredData[i].enviado = 'no';
+          this.dataSource.filteredData[i].calificar = 'no';
+          console.log(this.dataSource.filteredData[i]);
+        }
+      }
+    } else {
+      for (let i = 0; i <= this.dataSource.filteredData.length; i++) {
+        if (this.dataSource.filteredData[i].id == id) {
+          this.dataSource.filteredData[i].asistio = 'no';
+          this.dataSource.filteredData[i].enviado = 'nou';
+          this.dataSource.filteredData[i].calificar = 'no';
+          console.log(this.dataSource.filteredData[i]);
+        }
+      }
+    }
+  }
 }

@@ -180,9 +180,10 @@
       <th mat-header-cell *matHeaderCellDef>asistio</th>
       <td mat-cell *matCellDef="let element">
         <mat-checkbox
+          #c
           [checked]="element.asistio == 1"
           [disabled]="element.asistio == 1"
-          (change)="setAll($event.checked, element.id)"
+          (change)="toggle(c.checked, element.id)"
         ></mat-checkbox>
       </td>
     </ng-container>
@@ -191,7 +192,11 @@
       <th mat-header-cell *matHeaderCellDef>calificacion</th>
       <td mat-cell *matCellDef="let element">
         <select
-          [disabled]="element.asistio == 0"
+          [disabled]="
+            element.asistio == 0 ||
+            element.asistio == 'no' ||
+            element.calificar == 'no'
+          "
           (change)="calificar($any($event.target).value, element.id)"
         >
           <option value="" disabled selected>{{ element.calificacion }}</option>
@@ -201,6 +206,20 @@
           <option value="4">4</option>
           <option value="5">5</option>
         </select>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          *ngIf="element.enviado == 'no'"
+          mat-raised-button
+          color="warning"
+          class="space"
+          (click)="confirmar(element.asistio, element.id)"
+        >
+          confirmar
+        </button>
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

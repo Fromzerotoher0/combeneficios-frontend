@@ -45,8 +45,18 @@ export class UserService {
   }
 
   forgotPassword(body: any) {
-    https: return this.http.post('https://localhost:7000/api/auth/forgot', {
+    return this.http.post('https://localhost:7000/api/auth/forgot', {
       email: body,
     });
+  }
+
+  cancelarCitaU(id: any, cita: any) {
+    return this.http.post(
+      'https://localhost:7000/api/doctors/cancelarCitaUser',
+      {
+        id: id,
+        cita: cita,
+      }
+    );
   }
 }

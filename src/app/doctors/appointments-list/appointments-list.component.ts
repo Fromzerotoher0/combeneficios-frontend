@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { DoctorsService } from 'src/app/services/doctors.service';
+import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-appointments-list',
   templateUrl: './appointments-list.component.html',
@@ -11,6 +12,7 @@ import { DoctorsService } from 'src/app/services/doctors.service';
 export class AppointmentsListComponent implements OnInit {
   constructor(
     private doctorService: DoctorsService,
+    private userService: UserService,
     private jwtHelper: JwtHelperService,
     private router: Router
   ) {
@@ -35,6 +37,12 @@ export class AppointmentsListComponent implements OnInit {
   logout() {
     localStorage.removeItem('jwt');
     this.router.navigateByUrl('/auth/login');
+  }
+
+  cancelar(cita: any, medico: any) {
+    this.userService.cancelarCitaU(medico, cita).subscribe((resp) => {
+      alert('cita cancelada');
+    });
   }
 
   displayedColumns: string[] = [
