@@ -191,9 +191,14 @@
     <ng-container matColumnDef="acciones">
       <th mat-header-cell *matHeaderCellDef>Acciones</th>
       <td mat-cell *matCellDef="let element">
-        <button mat-raised-button color="warning" class="space">
+        <!-- <button
+          mat-raised-button
+          color="warning"
+          (click)="confirmar()"
+          class="space"
+        >
           confirmar
-        </button>
+        </button> -->
 
         <button
           mat-raised-button

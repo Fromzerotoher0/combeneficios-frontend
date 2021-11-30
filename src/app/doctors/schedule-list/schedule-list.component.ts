@@ -60,6 +60,10 @@ export class ScheduleListComponent implements OnInit {
     });
   }
 
+  confirmar() {
+    console.log('confirmado');
+  }
+
   completar(id: any) {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     this.doctorService.completeAppointment(id).subscribe((resp) => {

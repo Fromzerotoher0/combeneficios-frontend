@@ -39,10 +39,10 @@ export class AppointmentsComponent implements OnInit {
     this.router.navigateByUrl('/auth/login');
   }
 
-  agendar(agenda: any, medico: any) {
+  agendar(agenda: any, medico: any, modalidad: any) {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     this.doctorService
-      .appointment(agenda, token.id, medico)
+      .appointment(agenda, token.id, medico, modalidad)
       .subscribe((resp: any) => {
         this.doctor_id = this.activatedRoute.snapshot.params['id'];
         this.doctorService.getAgenda(this.doctor_id).subscribe((resp: any) => {

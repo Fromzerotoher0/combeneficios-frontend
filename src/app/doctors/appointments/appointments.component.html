@@ -185,6 +185,7 @@
             <th scope="col">Fecha</th>
             <th scope="col">Especialidad</th>
             <th scope="col">Tarifa</th>
+            <th scope="col">Modalidad</th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -193,10 +194,11 @@
             <th scope="row">{{ cita.fecha | date }} - {{ cita.hora }}</th>
             <td>{{ cita.especialidad }}</td>
             <td>${{ cita.tarifa }}</td>
+            <td>{{ cita.modalidad }}</td>
             <td>
               <button
                 type="button"
-                (click)="agendar(cita.id, cita.medico_id)"
+                (click)="agendar(cita.id, cita.medico_id, cita.modalidad)"
                 class="btn btn-outline-success"
               >
                 Agendar

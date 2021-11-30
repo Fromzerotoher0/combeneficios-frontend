@@ -64,7 +64,10 @@ export class ListComponent implements OnInit {
       if (this.selectedModality == 'all') {
         return doctor;
       } else {
-        return doctor.modalidad_cita === this.selectedModality;
+        return (
+          doctor.modalidad_cita === this.selectedModality ||
+          doctor.modalidad_cita === 'presencial/virtual'
+        );
       }
     });
   }

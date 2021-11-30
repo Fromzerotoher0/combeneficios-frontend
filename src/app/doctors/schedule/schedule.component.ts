@@ -25,6 +25,10 @@ export class ScheduleComponent {
       this.especializaciones = resp.result;
       console.log(this.especializaciones);
     });
+    this.doctorService.getModalidad(token.id).subscribe((resp: any) => {
+      this.modalidad = resp.result;
+      console.log(this.modalidad);
+    });
   }
 
   miFormulario: FormGroup = this.fb.group({
@@ -32,11 +36,13 @@ export class ScheduleComponent {
     hora: ['', [Validators.required]],
     especializacion: ['', [Validators.required]],
     tarifa: ['', [Validators.required]],
+    modalidad: ['', Validators.required],
   });
 
   rol: any;
   especializaciones: any;
   new_date: any;
+  modalidad: any;
   perfil() {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     this.router.navigateByUrl(`/beneficiarios/${token.id}`);

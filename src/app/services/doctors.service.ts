@@ -44,6 +44,15 @@ export class DoctorsService {
     );
   }
 
+  getModalidad(id: any) {
+    http: return this.http.post(
+      'https://localhost:7000/api/doctors/modalidad',
+      {
+        id: id,
+      }
+    );
+  }
+
   getEspecialization(id: any) {
     http: return this.http.post(
       'https://localhost:7000/api/doctors/medico/especializacion',
@@ -97,6 +106,7 @@ export class DoctorsService {
       hora: body.hora,
       especialidad: body.especializacion,
       tarifa: body.tarifa,
+      modalidad: body.modalidad,
       medico_id: id,
     });
   }
@@ -107,13 +117,14 @@ export class DoctorsService {
     });
   }
 
-  appointment(agenda: any, beneficiario: any, medico: any) {
+  appointment(agenda: any, beneficiario: any, medico: any, modalidad: any) {
     console.log(agenda, beneficiario);
 
     return this.http.post('https://localhost:7000/api/doctors/agendaCita', {
       beneficiario_id: beneficiario,
       agenda_id: agenda,
       medico_id: medico,
+      modalidad: modalidad,
     });
   }
 

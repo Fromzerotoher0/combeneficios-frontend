@@ -231,6 +231,18 @@
                   />
                 </mat-form-field>
 
+                <mat-form-field class="form__input" appearance="fill">
+                  <mat-label>Modalidad</mat-label>
+                  <mat-select formControlName="modalidad">
+                    <mat-option
+                      value="{{ modalidad }}"
+                      *ngFor="let modalidad of modalidad"
+                    >
+                      {{ modalidad }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
                 <button
                   class="submit"
                   type="submit"
