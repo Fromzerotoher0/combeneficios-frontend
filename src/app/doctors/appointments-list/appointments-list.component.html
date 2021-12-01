@@ -199,6 +199,14 @@
         >
           Cancelar
         </button>
+        <button
+          *ngIf="element.urlCita != null"
+          (click)="ir(element.urlCita)"
+          mat-raised-button
+          color="primary"
+        >
+          ir a la cita
+        </button>
       </td>
     </ng-container>
 

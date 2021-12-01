@@ -212,7 +212,7 @@
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
         <button
-          *ngIf="element.enviado == 'no'"
+          [disabled]="element.asistio == 1"
           mat-raised-button
           color="warning"
           class="space"

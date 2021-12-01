@@ -45,6 +45,10 @@ export class AppointmentsListComponent implements OnInit {
     });
   }
 
+  ir(url: any) {
+    window.location.href = url;
+  }
+
   displayedColumns: string[] = [
     'position',
     'name',
