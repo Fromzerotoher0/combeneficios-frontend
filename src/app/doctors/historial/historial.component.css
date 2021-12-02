@@ -19,6 +19,10 @@
   color: #fff;
 }
 
+.mat-check {
+  overflow: hidden;
+}
+
 table {
   width: 100%;
 }

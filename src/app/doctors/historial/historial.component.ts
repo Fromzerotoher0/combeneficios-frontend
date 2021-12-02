@@ -34,6 +34,13 @@ export class HistorialComponent implements OnInit {
   allComplete: any;
   check: any;
   arreglo: any;
+  data: { id: number; calificacion: number } = {} as {
+    id: number;
+    calificacion: number;
+  };
+  calificacion: any = [];
+  busqueda: any;
+  duplicados: any;
 
   perfil() {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
@@ -56,14 +63,20 @@ export class HistorialComponent implements OnInit {
   ];
 
   calificar(calificacion: any, id: any) {
-    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
-    this.doctorService.calificar(id, calificacion).subscribe((resp) => {
-      alert('cita calificada');
-      this.doctorService.getHistorial(token.id).subscribe((resp: any) => {
-        console.log(resp);
-        this.dataSource = new MatTableDataSource(resp.result);
-      });
-    });
+    // const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    // this.doctorService.calificar(id, calificacion).subscribe((resp) => {
+    //   alert('cita calificada');
+    //   this.doctorService.getHistorial(token.id).subscribe((resp: any) => {
+    //     console.log(resp);
+    //     this.dataSource = new MatTableDataSource(resp.result);
+    //   });
+    // });
+    this.data = {
+      id: id,
+      calificacion: calificacion,
+    };
+    this.calificacion.push(this.data);
+    console.log(this.calificacion);
   }
 
   confirmar(completed: string, id: any) {
@@ -71,20 +84,51 @@ export class HistorialComponent implements OnInit {
       const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
       this.userService.asistencia(id, 1).subscribe((resp) => {
         alert('asistencia confirmada');
+        this.doctorService
+          .calificar(id, this.calificacion)
+          .subscribe((resp) => {});
         this.doctorService.getHistorial(token.id).subscribe((resp: any) => {
           console.log(resp);
           this.dataSource = new MatTableDataSource(resp.result);
         });
       });
     } else {
-      const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
-      this.userService.asistencia(id, 0).subscribe((resp) => {
-        alert('asistencia editada');
+      if (this.calificacion.length == 1) {
+        const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+        this.doctorService
+          .calificar(id, this.calificacion[0].calificacion)
+          .subscribe((resp) => {
+            alert('calificacion editada');
+            this.doctorService.getHistorial(token.id).subscribe((resp: any) => {
+              console.log(resp);
+              this.dataSource = new MatTableDataSource(resp.result);
+            });
+          });
+      } else {
+        const busqueda = this.calificacion.reduce((acc: any, persona: any) => {
+          acc[persona.id] = ++acc[persona.id] || 0;
+          return acc;
+        }, {});
+        this.duplicados = this.calificacion.filter((persona: any) => {
+          return busqueda[persona.id];
+        });
+
+        console.log(this.duplicados[this.duplicados.length - 1].calificacion);
+        console.log(this.duplicados);
+        const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+        this.doctorService
+          .calificar(
+            id,
+            this.duplicados[this.duplicados.length - 1].calificacion
+          )
+          .subscribe((resp) => {
+            alert('calificacion editada');
+          });
         this.doctorService.getHistorial(token.id).subscribe((resp: any) => {
           console.log(resp);
           this.dataSource = new MatTableDataSource(resp.result);
         });
-      });
+      }
     }
   }
 
