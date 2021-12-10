@@ -396,3 +396,7 @@ body {
   white-space: nowrap;
   border: 0;
 }
+
+.cho-container button {
+  background-color: lightgreen;
+}

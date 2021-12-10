@@ -37,6 +37,16 @@
                 "input": "./src/assets/js/worker.js",
                 "inject": true,
                 "bundleName": "worker"
+              },
+              {
+                "input": "./src/assets/js/mercadopago.js",
+                "inject": true,
+                "bundleName": "mercadopago"
+              },
+              {
+                "input": "./src/assets/js/pago.js",
+                "inject": true,
+                "bundleName": "pago"
               }
             ]
           },

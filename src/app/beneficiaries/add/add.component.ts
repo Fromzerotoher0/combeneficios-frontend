@@ -43,7 +43,7 @@ export class AddComponent {
     parentesco: ['', [Validators.required]],
     correo: ['', [Validators.required]],
     telefono: ['', [Validators.required]],
-    contrasena: ['', [Validators.required, Validators.minLength(6)]],
+    contrasena: ['', [Validators.required]],
     fecha_nacimiento: ['', [Validators.required]],
     image: ['', [Validators.required]],
     departamento: ['', [Validators.required]],
@@ -88,6 +88,7 @@ export class AddComponent {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
 
     const uploadData = new FormData();
+    uploadData.append('directorio', 'users');
     uploadData.append('tipo_id', this.miFormulario.get('tipo_id')!.value);
     uploadData.append(
       'nro_documento',

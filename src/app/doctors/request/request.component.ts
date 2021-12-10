@@ -72,19 +72,17 @@ export class RequestComponent implements OnInit {
   enviar() {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     const uploadData = new FormData();
+    uploadData.append('directorio', 'certificados');
     this.new_date = this.datepipe.transform(
       this.miFormulario.get('fecha_obtencion')!.value,
       'yyyy-MM-dd'
     );
     uploadData.append('medico_id', token.id);
-    if (this.miFormulario.get('especializaciones_id')?.value == 99) {
-      uploadData.append('especializaciones_id', '99');
-    } else {
-      uploadData.append(
-        'especializaciones_id',
-        this.miFormulario.get('especializaciones_id')!.value
-      );
-    }
+
+    uploadData.append(
+      'especializaciones_id',
+      this.miFormulario.get('especializaciones_id')!.value
+    );
 
     uploadData.append('image', this.miFormulario.get('image')!.value);
     uploadData.append(

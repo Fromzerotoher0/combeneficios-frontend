@@ -110,6 +110,7 @@ export class InformationComponent implements OnInit {
 
           this.uploadData.append('image', this.formImage.get('image')?.value);
           this.uploadData.append('id', this.token.id);
+          this.uploadData.append('directorio', 'users');
           this.foto();
         };
         reader.readAsDataURL(event.target.files[0]);

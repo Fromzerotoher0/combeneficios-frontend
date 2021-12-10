@@ -38,10 +38,13 @@ export class UserService {
   }
 
   asistencia(id: any, asistencia: any) {
-    return this.http.post('https://localhost:7000/api/doctors/asistencia', {
-      id: id,
-      asistencia: asistencia,
-    });
+    return this.http.post(
+      'https://localhost:7000/api/beneficiaries/asistencia',
+      {
+        id: id,
+        asistencia: asistencia,
+      }
+    );
   }
 
   forgotPassword(body: any) {
@@ -50,9 +53,9 @@ export class UserService {
     });
   }
 
-  cancelarCitaU(id: any, cita: any) {
+  cancelarCita(id: any, cita: any) {
     return this.http.post(
-      'https://localhost:7000/api/doctors/cancelarCitaUser',
+      'https://localhost:7000/api/beneficiaries/cancelarCita',
       {
         id: id,
         cita: cita,

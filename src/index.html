@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>CombeneficiosFrontend</title>
+    <title>Combeneficios</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -11,10 +11,45 @@
     />
 
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-      <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+
+    <script>
+      function init() {
+        const mp = new MercadoPago(
+          "TEST-feadb05c-9782-4fb8-947b-54949c3f1fe7",
+          {
+            locale: "es-CO",
+          }
+        );
+
+        console.log(mp.checkout);
+
+        console.log(
+          mp.checkout({
+            preference: {
+              id: "759574360-f7d60547-3b31-45af-ad51-3eff05170e1e",
+            },
+            render: {
+              container: ".cho-container", // Indica el nombre de la clase donde se mostrará el botón de pago
+              label: "agendar", // Cambia el texto del botón de pago (opcional)
+            },
+            theme: {
+              elementsColor: "#c0392b",
+            },
+          })
+        );
+      }
+    </script>
+  </head>
   <body class="mat-typography">
     <app-root></app-root>
   </body>

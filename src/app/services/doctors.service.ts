@@ -120,7 +120,7 @@ export class DoctorsService {
   appointment(agenda: any, beneficiario: any, medico: any, modalidad: any) {
     console.log(agenda, beneficiario);
 
-    return this.http.post('https://localhost:7000/api/doctors/agendaCita', {
+    return this.http.post('https://localhost:7000/api/beneficiaries/agendar', {
       beneficiario_id: beneficiario,
       agenda_id: agenda,
       medico_id: medico,
@@ -135,7 +135,7 @@ export class DoctorsService {
   }
 
   getAppointmentsUser(id: any) {
-    return this.http.post('https://localhost:7000/api/doctors/citasUsuario', {
+    return this.http.post('https://localhost:7000/api/beneficiaries/citas', {
       id: id,
     });
   }
@@ -153,15 +153,21 @@ export class DoctorsService {
   }
 
   getHistorial(id: any) {
-    return this.http.post('https://localhost:7000/api/doctors/historial', {
-      id: id,
-    });
+    return this.http.post(
+      'https://localhost:7000/api/beneficiaries/historial',
+      {
+        id: id,
+      }
+    );
   }
 
   calificar(id: any, calificacion: any) {
-    return this.http.post('https://localhost:7000/api/doctors/calificar', {
-      id: id,
-      calificacion: calificacion,
-    });
+    return this.http.post(
+      'https://localhost:7000/api/beneficiaries/calificar',
+      {
+        id: id,
+        calificacion: calificacion,
+      }
+    );
   }
 }

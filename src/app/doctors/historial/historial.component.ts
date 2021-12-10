@@ -81,17 +81,41 @@ export class HistorialComponent implements OnInit {
 
   confirmar(completed: string, id: any) {
     if (completed == 'si') {
-      const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
-      this.userService.asistencia(id, 1).subscribe((resp) => {
-        alert('asistencia confirmada');
-        this.doctorService
-          .calificar(id, this.calificacion)
-          .subscribe((resp) => {});
-        this.doctorService.getHistorial(token.id).subscribe((resp: any) => {
-          console.log(resp);
-          this.dataSource = new MatTableDataSource(resp.result);
+      if (this.calificacion.length == 1) {
+        const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+        this.userService.asistencia(id, 1).subscribe((resp) => {
+          alert('asistencia confirmada');
+          this.doctorService
+            .calificar(id, this.calificacion[0].calificacion)
+            .subscribe((resp) => {});
+          this.doctorService.getHistorial(token.id).subscribe((resp: any) => {
+            console.log(resp);
+            this.dataSource = new MatTableDataSource(resp.result);
+          });
         });
-      });
+      } else {
+        const busqueda = this.calificacion.reduce((acc: any, persona: any) => {
+          acc[persona.id] = ++acc[persona.id] || 0;
+          return acc;
+        }, {});
+        this.duplicados = this.calificacion.filter((persona: any) => {
+          return busqueda[persona.id];
+        });
+        const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+        this.userService.asistencia(id, 1).subscribe((resp) => {
+          alert('asistencia confirmada');
+          this.doctorService
+            .calificar(
+              id,
+              this.duplicados[this.duplicados.length - 1].calificacion
+            )
+            .subscribe((resp) => {});
+          this.doctorService.getHistorial(token.id).subscribe((resp: any) => {
+            console.log(resp);
+            this.dataSource = new MatTableDataSource(resp.result);
+          });
+        });
+      }
     } else {
       if (this.calificacion.length == 1) {
         const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);

@@ -97,6 +97,7 @@ export class RegisterComponent {
     //formData para poder enviar una imagen con el formulario
     //se le asignan los valores del formulario reactivo
     const uploadData = new FormData();
+    uploadData.append('directorio', 'users');
     uploadData.append('tipo_id', this.miFormulario.get('tipo_id')!.value);
     uploadData.append(
       'nro_documento',

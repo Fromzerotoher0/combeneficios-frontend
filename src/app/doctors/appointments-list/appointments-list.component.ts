@@ -40,8 +40,15 @@ export class AppointmentsListComponent implements OnInit {
   }
 
   cancelar(cita: any, medico: any) {
-    this.userService.cancelarCitaU(medico, cita).subscribe((resp) => {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    this.userService.cancelarCita(medico, cita).subscribe((resp) => {
       alert('cita cancelada');
+      this.doctorService
+        .getAppointmentsUser(token.id)
+        .subscribe((resp: any) => {
+          this.dataSource = new MatTableDataSource(resp.result);
+          console.log(resp.result);
+        });
     });
   }
 

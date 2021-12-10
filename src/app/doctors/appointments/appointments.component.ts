@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { DoctorsService } from '../../services/doctors.service';
-declare var subscripcion: any;
-declare var message: any;
+declare var MercadoPago: any;
+declare var init: any;
 @Component({
   selector: 'app-appointments',
   templateUrl: './appointments.component.html',
@@ -25,10 +25,13 @@ export class AppointmentsComponent implements OnInit {
     });
   }
 
+  @ViewChild('pago') pago!: ElementRef;
+
   ngOnInit(): void {}
   rol: any;
   doctor_id: any;
   citas: any;
+
   perfil() {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     this.router.navigateByUrl(`/beneficiarios/${token.id}`);
@@ -47,8 +50,6 @@ export class AppointmentsComponent implements OnInit {
         this.doctor_id = this.activatedRoute.snapshot.params['id'];
         this.doctorService.getAgenda(this.doctor_id).subscribe((resp: any) => {
           this.citas = resp.result;
-          // subscripcion();
-          // message('cita agendada');
           alert('cita agendada');
           this.router.navigateByUrl('/medicos/servicios');
         });

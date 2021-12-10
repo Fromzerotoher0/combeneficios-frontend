@@ -90,18 +90,28 @@
         </mat-form-field>
         <!---input contraseña-->
         <mat-form-field class="form__input" appearance="fill">
+          <mat-label>contraseña</mat-label>
+
           <input
             matInput
-            placeholder="Contraseña"
-            [type]="hide ? 'password' : 'text'"
+            name="password"
+            type="password"
             formControlName="contrasena"
-            style="color: white"
             required
+            pattern="^[a-z0-9_-]{4,30}$"
           />
-          <mat-icon matSuffix (click)="hide = !hide">{{
-            hide ? "visibility_off" : "visibility"
-          }}</mat-icon>
-          <mat-hint *ngIf="!passwordInput.value">Digite su contraseña</mat-hint>
+
+          <mat-error
+            *ngIf="miFormulario.controls['contrasena'].hasError('required')"
+          >
+            debe digitar su contraseña
+          </mat-error>
+
+          <mat-error
+            *ngIf="miFormulario.controls['contrasena'].hasError('pattern')"
+          >
+            la contraseña debe tener Mínimo 4 caracteres
+          </mat-error>
         </mat-form-field>
         <!--Foto de perfil-->
         <input

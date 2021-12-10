@@ -18,6 +18,7 @@ import { AppointmentsListComponent } from './appointments-list/appointments-list
 import { CalificacionPipe } from '../pipes/calificacion.pipe';
 import { HistorialComponent } from './historial/historial.component';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { AppointmentComponent } from './appointment/appointment.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
     AppointmentsListComponent,
     CalificacionPipe,
     HistorialComponent,
+    AppointmentComponent,
   ],
   imports: [
     CommonModule,
