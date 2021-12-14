@@ -31,22 +31,46 @@
           }
         );
 
-        console.log(mp.checkout);
+        const asyncPostCall = async () => {
+          try {
+            const response = await fetch(
+              "https://localhost:7000/api/beneficiaries/mercadopago",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  // your expected POST request payload goes here
+                  title: "My post title",
+                  body: "My post content.",
+                }),
+              }
+            );
+            const data = await response.json();
+            console.log(data.preferenceId);
+            localStorage.setItem("preferenceId", data.preferenceId);
+            mp.checkout({
+              preference: {
+                id: `${data.preferenceId}`,
+              },
+              render: {
+                container: ".cho-container", // Indica el nombre de la clase donde se mostrará el botón de pago
+                label: "agendar", // Cambia el texto del botón de pago (opcional)
+              },
+              theme: {
+                elementsColor: "#5DBC63",
+              },
+              auto_return: "approved",
+            });
+          } catch (error) {
+            // enter your logic for when there is an error (ex. error toast)
 
-        console.log(
-          mp.checkout({
-            preference: {
-              id: "759574360-f7d60547-3b31-45af-ad51-3eff05170e1e",
-            },
-            render: {
-              container: ".cho-container", // Indica el nombre de la clase donde se mostrará el botón de pago
-              label: "agendar", // Cambia el texto del botón de pago (opcional)
-            },
-            theme: {
-              elementsColor: "#c0392b",
-            },
-          })
-        );
+            console.log(error);
+          }
+        };
+
+        asyncPostCall();
       }
     </script>
   </head>

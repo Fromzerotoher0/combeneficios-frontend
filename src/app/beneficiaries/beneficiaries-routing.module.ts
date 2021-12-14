@@ -4,6 +4,7 @@ import { AddComponent } from './add/add.component';
 import { CredentialComponent } from './credential/credential.component';
 import { InformationComponent } from './information/information.component';
 import { ListComponent } from './list/list.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
       {
         path: 'agregar',
         component: AddComponent,
+      },
+      {
+        path: 'notifications',
+        component: NotificationsComponent,
       },
       { path: ':id', component: InformationComponent },
     ],

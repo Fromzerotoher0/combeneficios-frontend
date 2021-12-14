@@ -42,6 +42,10 @@ export class AppointmentsComponent implements OnInit {
     this.router.navigateByUrl('/auth/login');
   }
 
+  // info(id:any){
+  //   this.router.navigateByUrl('/cita/login');
+  // }
+
   agendar(agenda: any, medico: any, modalidad: any) {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     this.doctorService

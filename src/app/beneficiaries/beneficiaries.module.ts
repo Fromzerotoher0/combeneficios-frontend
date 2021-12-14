@@ -8,6 +8,7 @@ import { AddComponent } from './add/add.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InformationComponent } from './information/information.component';
 import { MaterialModule } from '../material/material.module';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MaterialModule } from '../material/material.module';
     CredentialComponent,
     AddComponent,
     InformationComponent,
+    NotificationsComponent,
   ],
   imports: [
     CommonModule,

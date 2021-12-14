@@ -170,4 +170,10 @@ export class DoctorsService {
       }
     );
   }
+
+  getAppointment(id: any) {
+    return this.http.post('https://localhost:7000/api/beneficiaries/cita', {
+      id: id,
+    });
+  }
 }

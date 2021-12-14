@@ -37,7 +37,7 @@
       }
     </script> -->
   </head>
-  <body onload="init()">
+  <body>
     <mat-sidenav-container fullscreen>
       <mat-sidenav #sidenav mode="push">
         <mat-toolbar color="primary">
@@ -233,13 +233,13 @@
                 <td>${{ cita.tarifa }}</td>
                 <td>{{ cita.modalidad }}</td>
                 <td>
-                  <div class="cho-container" #pago></div>
+                  <div class="cho-container"></div>
                   <button
                     type="button"
-                    (click)="agendar(cita.id, cita.medico_id, cita.modalidad)"
+                    [routerLink]="['/medicos/cita', cita.id]"
                     class="btn btn-outline-success"
                   >
-                    Agendar
+                    Info
                   </button>
                 </td>
               </tr>

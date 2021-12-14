@@ -131,11 +131,6 @@
   }
 }
 @media (min-width: 374px) {
-  .select_ciudad {
-    width: 33%;
-    margin-right: 28%;
-  }
-
   .grid-layout {
     grid-template-columns: 145px 145px;
     grid-template-rows: 150px 150px;
@@ -143,46 +138,8 @@
     margin-top: -70px;
   }
 }
-@media (min-width: 399px) {
-  .nav_container {
-    width: 100%;
-  }
-
-  .bell {
-    font-size: 40px !important;
-  }
-  .settings {
-    font-size: 40px !important;
-    margin-left: 10px;
-  }
-  .select_ciudad {
-    width: 35%;
-    margin-right: 38%;
-  }
-
-  .menu_logo {
-    vertical-align: middle;
-    width: 50px;
-    height: 50px;
-  }
-
-  /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
-}
-
-@media (min-width: 424px) {
-  .select_ciudad {
-    width: 30%;
-    margin-right: 31%;
-    margin-left: -2%;
-  }
-}
 
 @media (min-width: 550px) {
-  .select_ciudad {
-    width: 30%;
-    margin-right: 50%;
-    margin-left: -2%;
-  }
   .grid-layout {
     grid-template-columns: 140px 140px 140px;
     grid-template-rows: 150px 150px 150px;
@@ -190,13 +147,6 @@
   /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
 }
 @media (min-width: 961px) {
-  .logo {
-    margin-right: 1%;
-  }
-  .select_ciudad {
-    width: 20%;
-    margin-right: 64%;
-  }
   .bottom-menu {
     display: none;
   }
@@ -206,24 +156,6 @@
   * {
     overflow: hidden;
   }
-  /* tablet, landscape iPad, lo-res laptops ands desktops */
-}
-@media (min-width: 1025px) {
-  .logo {
-    margin-right: 1%;
-  }
-  .select_ciudad {
-    width: 25%;
-    margin-right: 60%;
-  }
-  /* big landscape tablets, laptops, and desktops */
-}
-@media (min-width: 1250px) {
-  .select_ciudad {
-    width: 15%;
-    margin-right: 72.5%;
-  }
-  /* hi-res laptops and desktops */
 }
 
 .card {

@@ -110,7 +110,7 @@ export class InformationComponent implements OnInit {
 
           this.uploadData.append('image', this.formImage.get('image')?.value);
           this.uploadData.append('id', this.token.id);
-          this.uploadData.append('directorio', 'users');
+          this.uploadData.append('directorio', this.token.id);
           this.foto();
         };
         reader.readAsDataURL(event.target.files[0]);
@@ -125,7 +125,6 @@ export class InformationComponent implements OnInit {
       alert('foto actualizada');
       this.beneficiary_id = this.activatedRoute.snapshot.params['id'];
       this.userService.getUser(this.beneficiary_id).subscribe((resp: any) => {
-        console.log(resp);
         this.user = [];
         this.miFormulario.controls.nombres.setValue(resp.result[0].nombres);
         this.miFormulario.controls.apellidos.setValue(resp.result[0].apellidos);

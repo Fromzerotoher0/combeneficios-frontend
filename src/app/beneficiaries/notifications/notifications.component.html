@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
-      rel="stylesheet"
-    />
-
-    <title>Home</title>
+    <title>Cita</title>
   </head>
   <body>
     <mat-sidenav-container fullscreen>
@@ -21,7 +17,6 @@
             <mat-icon>menu</mat-icon>
           </button>
         </mat-toolbar>
-
         <mat-nav-list>
           <a [routerLink]="['/home']" mat-list-item (click)="sidenav.toggle()"
             ><mat-icon mat-list-icon style="color: gray">home</mat-icon
@@ -145,8 +140,6 @@
         <button mat-icon-button (click)="sidenav.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
-        <h1>Mis Beneficiarios</h1>
-
         <span class="spacer"></span>
         <button
           mat-icon-button
@@ -164,39 +157,20 @@
           <mat-icon>logout</mat-icon>
         </button>
       </mat-toolbar>
-
-      <div class="container_mi">
-        <div class="middle-menu">
-          <div class="beneficiarios-container">
-            <div class="beneficiario-info" *ngFor="let item of beneficiaries">
-              <div class="beneficiario-photo">
-                <img src="{{ item.imgUrl }}" alt="" />
-              </div>
-              <div class="beneficiario-name">
-                <p>{{ item.nombres }}{{ " " + item.apellidos }}</p>
-                <p>{{ item.parentesco_id | parentesco }}</p>
-              </div>
-              <div class="btn-container">
-                <button class="btn-beneficiario">
-                  <a
-                    style="color: white"
-                    [routerLink]="['/beneficiarios', item.id]"
-                  >
-                    <strong> ver detalles </strong>
-                  </a>
-                </button>
-              </div>
-            </div>
-
-            <button
-              [routerLink]="'/beneficiarios/agregar'"
-              class="add-beneficiario"
-            >
-              <strong>Agregar beneficiario</strong>
-            </button>
-          </div>
-        </div>
-      </div>
+      <section class="padre">
+        <section class="hijo" *ngIf="urlTree.queryParams.status == 'approved'">
+          <h2>Informacion del pago</h2>
+          <p><strong>estado : </strong>{{ "aprobado" }}</p>
+          <p>
+            <strong>Referencia de pago : </strong>
+            {{ urlTree.queryParams.payment_id }}
+          </p>
+        </section>
+        <button mat-button [routerLink]="['/medicos/servicios']">
+          regresar
+        </button>
+        <br />
+      </section>
     </mat-sidenav-container>
   </body>
 </html>
