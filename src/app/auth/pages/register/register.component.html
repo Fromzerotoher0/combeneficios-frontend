@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -14,11 +14,11 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
-    <title>Registro de usuario</title>
+    <title>Registro</title>
   </head>
   <body>
-    <h1 class="register__title">Registro de usuario</h1>
-    <div fxLayout="row" fxLayoutGap="20px" class="container__register">
+    <div class="register__container">
+      <h1 class="title">Registro de usuario</h1>
       <form
         (ngSubmit)="registro()"
         autocomplete="off"
@@ -113,6 +113,7 @@
           </mat-error>
         </mat-form-field>
         <!--Foto de perfil-->
+        <h3>Foto de perfil</h3>
         <input
           class="form-control file"
           type="file"
@@ -165,20 +166,18 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+        <br />
         <!---Submit-->
-        <div class="submit">
-          <button
-            type="submit"
-            class="btn"
-            [disabled]="!miFormulario.valid"
-            value="REGISTRARSE"
-            mat-raised-button
-            color="basic"
-          >
-            Registrarse
-          </button>
-        </div>
-        &nbsp;
+        <button
+          type="submit"
+          class="btn"
+          [disabled]="!miFormulario.valid"
+          value="REGISTRARSE"
+          mat-raised-button
+          color="basic"
+        >
+          Registrarse
+        </button>
       </form>
     </div>
   </body>

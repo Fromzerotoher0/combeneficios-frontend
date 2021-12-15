@@ -43,8 +43,9 @@ export class ScheduleListComponent implements OnInit {
     'name',
     'weight',
     'nombres',
-    'especialidad',
     'apellidos',
+    'especialidad',
+    'modalidad',
     'acciones',
   ];
 
@@ -74,5 +75,9 @@ export class ScheduleListComponent implements OnInit {
         this.dataSource = new MatTableDataSource(resp.result);
       });
     });
+  }
+
+  cita(url: string) {
+    window.location.href = url;
   }
 }
