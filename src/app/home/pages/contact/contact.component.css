@@ -63,11 +63,6 @@ mat-sidenav {
     display: flex;
     flex-wrap: wrap;
     align-content: space-between;
-    background-image: linear-gradient(
-        rgba(255, 255, 255, 0.6),
-        rgba(255, 255, 255, 0.8)
-      ),
-      url("../../../../assets/images/background-2.PNG");
     background-size: cover;
     background-position: center;
   }

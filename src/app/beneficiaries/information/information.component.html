@@ -10,28 +10,64 @@
     />
 
     <style type="text/css">
-      #boton {
-        background: white;
-        float: left;
-        position: absolute;
-        margin-top: 25vh;
-        margin-left: 10vw;
-        height: 5vh;
-        width: 2vw;
-        border-radius: 20px;
-      }
-      img {
-        float: left;
+      @media (min-width: 319px) {
+        #boton {
+          background: white;
+          float: left;
+          position: absolute;
+          margin-top: 15vh;
+          margin-left: 32vw;
+          height: 3vh;
+          width: 8vw;
+          border-radius: 20px;
+        }
+        img {
+          float: left;
+        }
+
+        .file_input {
+          display: none;
+        }
+        .label {
+          cursor: pointer;
+          color: gray;
+          background: white;
+          border-radius: 50%;
+        }
       }
 
-      .file_input {
-        display: none;
-      }
-      .label {
-        cursor: pointer;
-        color: gray;
-        background: white;
-        border-radius: 50%;
+      @media (min-width: 374px) {
+        #boton {
+          margin-top: 13vh;
+          margin-left: 28vw;
+        }
+        @media (min-width: 424px) {
+          #boton {
+            margin-top: 15vh;
+            margin-left: 28vw;
+          }
+        }
+
+        @media (min-width: 767px) {
+          #boton {
+            width: 4vw;
+            margin-top: 15vh;
+            margin-left: 17vw;
+          }
+        }
+
+        @media (min-width: 1023px) {
+          #boton {
+            margin-top: 18vh;
+            margin-left: 16vw;
+          }
+        }
+        @media (min-width: 1250px) {
+          #boton {
+            margin-top: 18vh;
+            margin-left: 11vw;
+          }
+        }
       }
     </style>
 
