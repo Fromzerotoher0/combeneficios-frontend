@@ -11,6 +11,10 @@
   padding: 0;
 }
 
+body {
+  background-image: url("../../../assets/images/informacion.png");
+}
+
 .spacer {
   flex: 1 1 auto;
 }

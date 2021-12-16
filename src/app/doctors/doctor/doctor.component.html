@@ -221,7 +221,10 @@
                 </div>
               </div>
             </div>
-            <div class="specialization-information_3">
+            <div
+              class="specialization-information_3"
+              *ngIf="especialization.length > 0"
+            >
               <div class="specialization-information_3-container">
                 <p class="specialization-information_3__title">
                   <strong>Especializaciones Realizadas</strong>
@@ -234,12 +237,11 @@
                   <p>{{ item.universidad }}</p>
                   <p>{{ item.fecha_obtencion | date: "dd/MM/yyyy" }}</p>
                 </div>
-
-                <button (click)="agenda()" class="btn-cita">
-                  <strong>Agendar cita</strong>
-                </button>
               </div>
             </div>
+            <button (click)="agenda()" class="btn-cita">
+              <strong>Agendar cita</strong>
+            </button>
           </div>
         </div>
       </div>

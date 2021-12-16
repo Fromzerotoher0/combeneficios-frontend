@@ -37,13 +37,8 @@
   /* menu central */
   .middle-menu {
     padding: 20px;
-    width: 100vw;
+    width: 98vw;
     height: 85vh;
-    background-image: linear-gradient(
-        rgba(255, 255, 255, 0.6),
-        rgba(255, 255, 255, 0.8)
-      ),
-      url("../../../../assets/images/background-2.PNG");
     background-size: cover;
     background-position: center;
     display: flex;
@@ -143,6 +138,7 @@
   .grid-layout {
     grid-template-columns: 140px 140px 140px;
     grid-template-rows: 150px 150px 150px;
+    overflow: hidden;
   }
   /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
 }
@@ -151,11 +147,15 @@
     display: none;
   }
   .middle-menu {
-    height: 100vh;
+    height: 91vh;
   }
   * {
     overflow: hidden;
   }
+}
+
+* {
+  overflow: hidden;
 }
 
 .card {

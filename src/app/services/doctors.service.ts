@@ -55,7 +55,7 @@ export class DoctorsService {
 
   getEspecialization(id: any) {
     http: return this.http.post(
-      'https://localhost:7000/api/doctors/medico/especializacion',
+      'https://localhost:7000/api/doctors/medico/posgrado',
       {
         id: id,
       }

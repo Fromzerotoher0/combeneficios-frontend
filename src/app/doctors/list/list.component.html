@@ -183,76 +183,66 @@
             <mat-icon>logout</mat-icon>
           </button>
         </mat-toolbar>
+        <div class="filter__container">
+          <div class="Filter">
+            <div class="Filter__content">
+              <div class="Filter__logo">
+                <img src="assets/icons/Captura_preview_rev_1.png" alt="" />
+              </div>
+              <div class="Filter__input">
+                <h1>Servicios Medicos</h1>
+                <select [(ngModel)]="selectedBrand" (change)="valueSelected()">
+                  <option value="all">todas las especializaciones</option>
+                  <option *ngFor="let item of especializaciones">
+                    {{ item.descripcion }}
+                  </option>
+                </select>
+                <select
+                  [(ngModel)]="selectedModality"
+                  (change)="modalitySelected()"
+                >
+                  <option value="all">todas las modalidades</option>
+                  <option value="presencial">Presencial</option>
+                  <option value="virtual">virtual</option>
+                </select>
 
-        <div class="middle-menu">
-          <div class="service">
-            <div class="service_logo">
-              <img src="assets/icons/Captura_preview_rev_1.png" alt="" />
-            </div>
-            <div class="service_title">
-              <p><strong>Servicios medicos</strong></p>
-              <h6>Citas virtuales</h6>
+                <input
+                  type="text"
+                  [(ngModel)]="term"
+                  placeholder=" Filtrar por especialista o especialidad"
+                />
+              </div>
             </div>
           </div>
-          <div class="filter">
-            <select [(ngModel)]="selectedBrand" (change)="valueSelected()">
-              <option value="all">todas las especializaciones</option>
-              <option *ngFor="let item of especializaciones">
-                {{ item.descripcion }}
-              </option>
-            </select>
-
-            <select
-              [(ngModel)]="selectedModality"
-              (change)="modalitySelected()"
-            >
-              <option value="all">todas las modalidades</option>
-              <option value="presencial">Presencial</option>
-              <option value="virtual">virtual</option>
-            </select>
-
-            <input
-              type="text"
-              [(ngModel)]="term"
-              placeholder=" Filtrar por especialista o especialidad"
-            />
-          </div>
-
-          <div class="flex-layout_medic">
-            <div class="content">
-              <div class="children" *ngFor="let item of doctors | filter: term">
-                <div class="medic-photo">
+          <div class="List">
+            <div class="content" *ngFor="let item of doctors | filter: term">
+              <div class="card">
+                <div class="medic__photo">
                   <img src="{{ item.imgUrl }}" alt="foto medico" />
                 </div>
-                <div class="medic-information">
-                  <div class="medic-information__text">
-                    <p>
-                      <strong>{{ item.nombres }} {{ item.apellidos }}</strong>
-                    </p>
-                    <p>{{ item.descripcion }}</p>
-                    <p class="medic-information__space">
-                      <strong>consultas realizadas </strong>:
-                      {{ item.consultas - 1 }}
-                    </p>
-                    <p><strong>Modalidad</strong>:{{ item.modalidad_cita }}</p>
-                    <div>
-                      <ng-template #t let-fill="fill">
-                        <span class="star" [class.full]="fill === 100">
-                          <span class="half" [style.width.%]="fill"
-                            >&starf;</span
-                          >&starf;
-                        </span>
-                      </ng-template>
-
-                      <ngb-rating
-                        [max]="5"
-                        [starTemplate]="t"
-                        [(rate)]="item.calificacion"
-                        [readonly]="true"
-                      ></ngb-rating>
-                    </div>
-                  </div>
+                <div class="medic__information">
+                  <p>
+                    <strong>{{ item.nombres }} {{ item.apellidos }}</strong>
+                  </p>
+                  <p>{{ item.descripcion }}</p>
+                  <p>
+                    <strong>consultas realizadas </strong>:
+                    {{ item.consultas - 1 }}
+                  </p>
+                  <ng-template #t let-fill="fill">
+                    <span class="star" [class.full]="fill === 100">
+                      <span class="half" [style.width.%]="fill">&starf;</span
+                      >&starf;
+                    </span>
+                  </ng-template>
+                  <ngb-rating
+                    [max]="5"
+                    [starTemplate]="t"
+                    [(rate)]="item.calificacion"
+                    [readonly]="true"
+                  ></ngb-rating>
                 </div>
+                <span class="spacer"></span>
                 <button
                   [routerLink]="['/medicos', item.id]"
                   class="medic-profile"
@@ -260,13 +250,6 @@
                   Perfil
                 </button>
               </div>
-            </div>
-            <div *ngIf="!doctors?.length">
-              <p>
-                actualmente no hay doctores disponibles en su ciudad({{
-                  token.ciudad
-                }})
-              </p>
             </div>
           </div>
         </div>

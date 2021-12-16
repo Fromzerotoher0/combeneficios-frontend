@@ -57,7 +57,6 @@ export class AppointmentsListComponent implements OnInit {
   }
 
   displayedColumns: string[] = [
-    'position',
     'name',
     'weight',
     'nombres',
