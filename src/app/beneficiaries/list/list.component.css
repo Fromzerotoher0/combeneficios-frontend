@@ -12,12 +12,12 @@
 }
 
 .mat-toolbar.mat-primary {
-  background: green;
+  background: #4d840c;
   color: #fff;
 }
 
 .mat-toolbar {
-  background: green;
+  background: #4d840c;
   color: #fff;
 }
 
@@ -417,18 +417,13 @@
   /* big landscape tablets, laptops, and desktops */
 }
 @media (min-width: 1450px) {
-  .select_ciudad {
-    width: 15%;
-    margin-right: 73%;
-  }
   .add-beneficiario {
     width: 30%;
   }
 
   .beneficiario-info {
-    width: 95%;
+    width: 100%;
     height: 20vh;
-    margin-left: 2vw;
     overflow-x: hidden;
   }
 

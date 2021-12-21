@@ -14,10 +14,10 @@
   height: 100vh;
   overflow: hidden;
   background-image: linear-gradient(
-      rgba(126, 213, 111),
-      rgba(40, 180, 131, 0.8)
+      rgba(198, 235, 139, 0),
+      rgba(143, 223, 30, 0.9)
     ),
-    url("../../../../assets/images/background-2.png");
+    url("../../../../assets/images/background-3.png");
   background-size: cover;
   background-position: bottom;
   width: 100vw;
@@ -56,13 +56,13 @@
 
 .btn {
   width: 60%;
-  height: 8%;
+  height: 30px;
   font-size: 12px;
   color: rgba(72, 104, 82, 255);
   border-radius: 20px;
   transform: translateY(-0.1rem);
   cursor: pointer;
-  margin: 15% 0 10% 0;
+  margin: 10% 0 10% 0;
   border: solid 1px transparent;
   background-color: rgba(255, 255, 255, 255);
 }
@@ -130,16 +130,23 @@ a {
   }
   .container {
     background-image: linear-gradient(
-        rgba(126, 213, 111, 0.8),
-        rgba(40, 180, 131, 0.8)
+        rgba(198, 235, 139, 0),
+        rgba(143, 223, 30, 0.9)
       ),
-      url("../../../../assets/images/family-background.png");
+      url("../../../../assets/images/family_bg_HD.png");
     background-size: cover;
     background-position: bottom;
   }
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1439px) {
+  .container {
+    background-image: linear-gradient(
+        rgba(198, 235, 139, 0),
+        rgba(143, 223, 30, 0.8)
+      ),
+      url("../../../../assets/images/family_bg_HD.png");
+  }
   .login_container {
     margin: 0;
     margin-top: 5%;
@@ -167,6 +174,13 @@ a {
 }
 
 @media screen and (min-width: 1440px) {
+  .container {
+    background-image: linear-gradient(
+        rgba(198, 235, 139, 0),
+        rgba(143, 223, 30, 0.8)
+      ),
+      url("../../../../assets/images/family_bg_HD.png");
+  }
   .login_container {
     margin: 0;
     margin-top: 5%;

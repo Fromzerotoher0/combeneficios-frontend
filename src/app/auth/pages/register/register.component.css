@@ -6,6 +6,7 @@
   overflow: auto;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 .title {
@@ -16,10 +17,7 @@
 .register__container {
   width: 100vw;
   height: 100vh;
-  background-image: linear-gradient(
-      rgba(126, 213, 111, 0.8),
-      rgba(40, 180, 131, 0.8)
-    ),
+  background-image: linear-gradient(#c6eb8b, #8fdf1e),
     url("../../../../assets/images/background-3.png");
   background-size: cover;
   text-align: center;
@@ -81,10 +79,14 @@ span.mat-select-min-line {
 @media (min-width: 1250px) {
   .form__input {
     width: 35%;
-    margin-left: 10px;
   }
   .file {
     width: 70% !important;
     margin-left: 230px;
   }
+}
+
+* {
+  overflow-x: auto;
+  overflow-y: auto;
 }

@@ -4,18 +4,21 @@
   padding: 0;
   overflow: auto;
 }
+.mat-elevation-z8 {
+  overflow-x: auto;
+}
 
 .spacer {
   flex: 1 1 auto;
 }
 
 .mat-toolbar.mat-primary {
-  background: green;
+  background: #4d840c;
   color: #fff;
 }
 
 .mat-toolbar {
-  background: green;
+  background: #4d840c;
   color: #fff;
 }
 

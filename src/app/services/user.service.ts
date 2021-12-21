@@ -9,13 +9,13 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getUser(id: any) {
-    return this.http.post('https://localhost:7000/api/users/user', {
+    return this.http.post('https://45.63.109.10:7000/api/users/user', {
       id: id,
     });
   }
 
   updateUser(id: any, body: updateBody) {
-    return this.http.put('https://localhost:7000/api/users/user', {
+    return this.http.put('https://45.63.109.10:7000/api/users/user', {
       id: id,
       nombres: body.nombres,
       apellidos: body.apellidos,
@@ -25,21 +25,21 @@ export class UserService {
   }
 
   getBeneficiaries(id: any) {
-    return this.http.post('https://localhost:7000/api/users/beneficiaries', {
+    return this.http.post('https://45.63.109.10:7000/api/users/beneficiaries', {
       id: id,
     });
   }
 
   registerBeneficiaries(body: any) {
     return this.http.post(
-      'https://localhost:7000/api/beneficiaries/register',
+      'https://45.63.109.10:7000/api/beneficiaries/register',
       body
     );
   }
 
   asistencia(id: any, asistencia: any) {
     return this.http.post(
-      'https://localhost:7000/api/beneficiaries/asistencia',
+      'https://45.63.109.10:7000/api/beneficiaries/asistencia',
       {
         id: id,
         asistencia: asistencia,
@@ -48,14 +48,14 @@ export class UserService {
   }
 
   forgotPassword(body: any) {
-    return this.http.post('https://localhost:7000/api/auth/forgot', {
+    return this.http.post('https://45.63.109.10:7000/api/auth/forgot', {
       email: body,
     });
   }
 
   cancelarCita(id: any, cita: any) {
     return this.http.post(
-      'https://localhost:7000/api/beneficiaries/cancelarCita',
+      'https://45.63.109.10:7000/api/beneficiaries/cancelarCita',
       {
         id: id,
         cita: cita,

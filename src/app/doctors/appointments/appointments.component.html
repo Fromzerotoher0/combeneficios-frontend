@@ -170,6 +170,8 @@
         <button mat-icon-button (click)="sidenav.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
+        <h1>Citas Disponibles</h1>
+
         <span class="spacer"></span>
         <button
           mat-icon-button
@@ -190,32 +192,6 @@
 
       <div fxLayout="row" fxLayoutAlign="center">
         <div class="appointment_container">
-          <h1>Citas Disponibles</h1>
-          <!-- <div class="grid_layout">
-          <div
-            class="card border-success mb-3"
-            style="max-width: 18rem"
-            *ngFor="let cita of citas"
-          >
-            <div class="card-header">Cita</div>
-            <div class="card-body text-success">
-              <p class="card-text">
-                Fecha : {{ cita.fecha | date }} - {{ cita.hora }}
-              </p>
-              <p>Especialidad : {{ cita.especialidad }}</p>
-              <p>Tarifa : ${{ cita.tarifa }}</p>
-            </div>
-            <div class="card-footer bg-transparent border-success">
-              <button
-                type="button"
-                (click)="agendar(cita.id, cita.medico_id)"
-                class="btn btn-outline-success"
-              >
-                Agendar
-              </button>
-            </div>
-          </div>
-        </div> -->
           <table class="table">
             <thead>
               <tr>
