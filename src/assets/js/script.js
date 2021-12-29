@@ -23,7 +23,7 @@ const subscripcion = async () => {
     return outputArray;
   }
 
-  await fetch("https://localhost:7000/api/subscription", {
+  await fetch("https://45.63.109.10:7000/api/subscription", {
     method: "POST",
     body: JSON.stringify(subscription),
     headers: { "Content-Type": "application/json" },
@@ -31,7 +31,7 @@ const subscripcion = async () => {
 };
 
 const message = async (message) => {
-  await fetch("https://localhost:7000/api/new-message", {
+  await fetch("https://45.63.109.10:7000/api/new-message", {
     method: "POST",
     body: JSON.stringify({ message: message }),
     headers: { "Content-Type": "application/json" },

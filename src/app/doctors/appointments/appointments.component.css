@@ -21,7 +21,7 @@
 
 .appointment_container {
   height: 100vh;
-  width: 80vw;
+  width: 100vw;
   text-align: center;
 }
 body {
@@ -36,4 +36,12 @@ body {
   grid-template-columns: repeat(4, minmax(150px, 1fr));
   grid-auto-rows: 250px;
   grid-gap: 15px;
+}
+
+.btn-cita {
+  width: 80px;
+  height: 35px;
+  border: none;
+  background-color: #5dbc63;
+  color: white;
 }

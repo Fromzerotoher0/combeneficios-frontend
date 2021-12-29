@@ -176,6 +176,7 @@
             <th scope="col">certificado</th>
             <th scope="col">fecha obtencion</th>
             <th scope="col">especializacion</th>
+            <th scope="col">tarifa</th>
             <th scope="col">universidad</th>
             <th style="width: 13.66%; text-align: center" scope="col">
               Acciones
@@ -192,6 +193,7 @@
             <td>{{ item.imgUrl }}</td>
             <td>{{ item.fecha_obtencion | date }}</td>
             <td>{{ item.descripcion }}</td>
+            <td>{{ item.tarifa }}</td>
             <td>{{ item.universidad }}</td>
             <td>
               <button
@@ -202,7 +204,8 @@
                     item.universidad,
                     item.medico_id,
                     item.fecha_obtencion,
-                    item.especializaciones_id
+                    item.especializaciones_id,
+                    item.tarifa
                   )
                 "
                 type="button"

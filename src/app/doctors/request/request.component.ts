@@ -40,6 +40,7 @@ export class RequestComponent implements OnInit {
     especializaciones_id: ['', [Validators.required]],
     image: ['', [Validators.required]],
     otra: [''],
+    tarifa: ['', [Validators.required]],
     universidad: ['', [Validators.required]],
     fecha_obtencion: ['', [Validators.required]],
   });
@@ -89,11 +90,13 @@ export class RequestComponent implements OnInit {
       'universidad',
       this.miFormulario.get('universidad')!.value
     );
+    uploadData.append('tarifa', this.miFormulario.get('tarifa')!.value);
     uploadData.append('fecha_obtencion', this.new_date);
 
     this.doctorService.studyrequest(uploadData).subscribe(
       (resp) => {
         alert('solicitud enviada');
+        this.router.navigate(['/app/homepage']);
       },
       (err) => {
         alert(err.error.msg);

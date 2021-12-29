@@ -30,6 +30,7 @@ export class StudyRequestComponent implements OnInit {
     universidad: ['', [Validators.required]],
     fecha_obtencion: ['', Validators.required],
     especializacion: ['', Validators.required],
+    tarifa: ['', Validators.required],
     users_id: ['', Validators.required],
   });
   new_date: any;
@@ -42,7 +43,8 @@ export class StudyRequestComponent implements OnInit {
     universidad: any,
     medico_id: any,
     fecha_obtencion: any,
-    especializacion: any
+    especializacion: any,
+    tarifa: any
   ) {
     this.new_date = this.datepipe.transform(fecha_obtencion, 'yyyy-MM-dd');
     this.miFormulario.controls.users_id.setValue(users_id);
@@ -51,6 +53,7 @@ export class StudyRequestComponent implements OnInit {
     this.miFormulario.controls.universidad.setValue(universidad);
     this.miFormulario.controls.especializacion.setValue(especializacion);
     this.miFormulario.controls.fecha_obtencion.setValue(this.new_date);
+    this.miFormulario.controls.tarifa.setValue(tarifa);
     console.log(this.miFormulario.value);
     this.adminService.aprobarEspecializacion(this.miFormulario.value).subscribe(
       (resp: any) => {

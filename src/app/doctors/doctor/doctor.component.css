@@ -326,6 +326,7 @@ mat-sidenav {
   }
   .specialization-information_3-container {
     margin-left: 20px;
+    margin-top: 10px;
   }
   .specialization-information_3__title {
     color: gray;
@@ -373,10 +374,14 @@ mat-sidenav {
   }
 
   .specialization-information {
-    height: 60vh;
+    height: 67vh;
   }
 }
 @media (min-width: 399px) {
+  .specialization-information {
+    height: 75%;
+  }
+
   .nav_container {
     width: 100%;
   }
@@ -410,7 +415,7 @@ mat-sidenav {
   }
 
   .specialization-information {
-    height: 57%;
+    height: 65%;
   }
 
   .specialization-information_1 img {

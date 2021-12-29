@@ -214,13 +214,17 @@
             <div class="specialization-information_2">
               <div class="specialization-container">
                 <p class="specialization-information_2__title">
-                  <strong>Estudios Realizados</strong>
+                  <strong>Servicios</strong>
                 </p>
                 <div class="size" *ngFor="let item of pregrade">
                   <p>
-                    <strong>{{ item.titulo }}</strong>
+                    <strong
+                      >{{ item.titulo | especializaciones }} :
+                      {{
+                        item.tarifa | currency: "COP":"symbol-narrow":"1.0-0"
+                      }}</strong
+                    >
                   </p>
-                  <p>Costo consulta : {{ item.tarifa }}</p>
                 </div>
               </div>
             </div>
@@ -230,15 +234,18 @@
             >
               <div class="specialization-information_3-container">
                 <p class="specialization-information_3__title">
-                  <strong>Especializaciones Realizadas</strong>
+                  <strong>Especializaciones</strong>
                 </p>
 
                 <div class="size" *ngFor="let item of especialization">
                   <p>
-                    <strong>{{ item.titulo }}</strong>
+                    <strong
+                      >{{ item.titulo }} :
+                      {{
+                        item.tarifa | currency: "COP":"symbol-narrow":"1.0-0"
+                      }}</strong
+                    >
                   </p>
-                  <p>{{ item.universidad }}</p>
-                  <p>{{ item.fecha_obtencion | date: "dd/MM/yyyy" }}</p>
                 </div>
               </div>
             </div>

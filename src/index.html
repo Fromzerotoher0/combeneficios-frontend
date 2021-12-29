@@ -34,7 +34,7 @@
         const asyncPostCall = async () => {
           try {
             const response = await fetch(
-              "https://localhost:7000/api/beneficiaries/mercadopago",
+              "https://45.63.109.10:7000/api/beneficiaries/mercadopago",
               {
                 method: "POST",
                 headers: {
@@ -56,7 +56,7 @@
               },
               render: {
                 container: ".cho-container", // Indica el nombre de la clase donde se mostrará el botón de pago
-                label: "agendar", // Cambia el texto del botón de pago (opcional)
+                label: "Agendar", // Cambia el texto del botón de pago (opcional)
               },
               theme: {
                 elementsColor: "#5DBC63",

@@ -170,7 +170,7 @@
         <button mat-icon-button (click)="sidenav.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
-        <h1>Citas Disponibles</h1>
+        <h1>Agenda Disponibles</h1>
 
         <span class="spacer"></span>
         <button
@@ -196,26 +196,24 @@
             <thead>
               <tr>
                 <th scope="col">Fecha</th>
-                <th scope="col">Especialidad</th>
-                <th scope="col">Tarifa</th>
                 <th scope="col">Modalidad</th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let cita of citas">
-                <th scope="row">{{ cita.fecha | date }} - {{ cita.hora }}</th>
-                <td>{{ cita.especialidad }}</td>
-                <td>${{ cita.tarifa }}</td>
+                <th scope="row">
+                  {{ cita.fecha | date: "yyyy/MM/dd" }} - {{ cita.hora }}
+                </th>
                 <td>{{ cita.modalidad }}</td>
                 <td>
                   <div class="cho-container"></div>
                   <button
                     type="button"
+                    class="btn-cita"
                     [routerLink]="['/medicos/cita', cita.id]"
-                    class="btn btn-outline-success"
                   >
-                    Info
+                    ver mas
                   </button>
                 </td>
               </tr>

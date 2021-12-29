@@ -35,7 +35,6 @@ export class ScheduleComponent {
     fecha: ['', [Validators.required]],
     hora: ['', [Validators.required]],
     especializacion: ['', [Validators.required]],
-    tarifa: ['', [Validators.required]],
     modalidad: ['', Validators.required],
   });
 

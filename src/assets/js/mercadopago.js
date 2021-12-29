@@ -1961,7 +1961,7 @@
                   l = ve;
                 } else {
                   if ((c = N(e, h))) return c;
-                  if (("localhost" == e.host && (e.host = ""), n)) return;
+                  if (("45.63.109.10" == e.host && (e.host = ""), n)) return;
                   (h = ""), (l = ve);
                 }
                 continue;
