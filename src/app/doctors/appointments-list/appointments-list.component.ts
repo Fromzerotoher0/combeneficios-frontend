@@ -56,11 +56,5 @@ export class AppointmentsListComponent implements OnInit {
     window.location.href = url;
   }
 
-  displayedColumns: string[] = [
-    'name',
-    'weight',
-    'nombres',
-    'apellidos',
-    'acciones',
-  ];
+  displayedColumns: string[] = ['name', 'weight', 'medico', 'acciones'];
 }

@@ -11,27 +11,24 @@ import { departamento } from '../interfaces/departamento.interface';
 export class AuthService {
   constructor(private http: HttpClient) {}
   getDepartamentos() {
-    return this.http.get('https://45.63.109.10:7000/api/users/departamentos');
+    return this.http.get('https://localhost:7000/api/users/departamentos');
   }
 
   cargarCiudades(departamento: departamento) {
-    return this.http.post('https://45.63.109.10:7000/api/users/ciudades', {
+    return this.http.post('https://localhost:7000/api/users/ciudades', {
       departamento: departamento,
     });
   }
 
   registro(body: any) {
-    return this.http.post('https://45.63.109.10:7000/api/auth/register', body);
+    return this.http.post('https://localhost:7000/api/auth/register', body);
   }
 
   login(body: LoginBody): Observable<Login> {
-    return this.http.post<Login>(
-      'https://45.63.109.10:7000/api/auth/login',
-      body
-    );
+    return this.http.post<Login>('https://localhost:7000/api/auth/login', body);
   }
 
   cambiarFoto(body: any) {
-    return this.http.put('https://45.63.109.10:7000/api/users/foto', body);
+    return this.http.put('https://localhost:7000/api/users/foto', body);
   }
 }

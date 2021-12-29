@@ -41,5 +41,13 @@ body {
 .hijo {
   width: 50vw;
   height: 60vh;
-  margin-top: 60vh;
+  margin-top: 24vh;
+}
+
+.disclaimer {
+  font-size: 12px;
+}
+
+.th-center {
+  text-align: left;
 }
