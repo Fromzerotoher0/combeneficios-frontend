@@ -179,6 +179,7 @@
             <th scope="col">ciudad</th>
             <th scope="col">direccion</th>
             <th scope="col">modalidad</th>
+            <th scope="col">tarifa</th>
             <th style="width: 10.66%" scope="col">especializacion</th>
             <th style="width: 13.66%; text-align: center" scope="col">
               Acciones
@@ -198,6 +199,7 @@
             <td>{{ item.ciudad }}</td>
             <td>{{ item.direccion }}</td>
             <td>{{ item.modalidad }}</td>
+            <td>{{ item.tarifa }}</td>
             <td>{{ item.especializaciones_id }}</td>
             <td>
               <button
@@ -210,7 +212,8 @@
                     item.especializaciones_id,
                     item.universidad,
                     item.departamento,
-                    item.ciudad
+                    item.ciudad,
+                    item.tarifa
                   )
                 "
                 type="button"

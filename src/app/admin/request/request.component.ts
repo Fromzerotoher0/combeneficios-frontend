@@ -33,7 +33,8 @@ export class RequestComponent implements OnInit {
     especializacion: any,
     universidad: any,
     departamento: any,
-    ciudad: any
+    ciudad: any,
+    tarifa: any
   ) {
     this.adminService
       .aprobarSolicitud(
@@ -44,7 +45,8 @@ export class RequestComponent implements OnInit {
         especializacion,
         universidad,
         departamento,
-        ciudad
+        ciudad,
+        tarifa
       )
       .subscribe(
         (resp: any) => {

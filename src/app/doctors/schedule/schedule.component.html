@@ -211,7 +211,10 @@
 
                 <mat-form-field class="form__input" appearance="fill">
                   <mat-label>especializacion</mat-label>
-                  <mat-select formControlName="especializacion">
+                  <mat-select
+                    formControlName="especializacion"
+                    (selectionChange)="cargarTarifa($any($event).value)"
+                  >
                     <mat-option
                       value="{{ especializacion.titulo }}"
                       *ngFor="let especializacion of especializaciones"
@@ -220,17 +223,6 @@
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
-
-                <mat-form-field class="form__input" appearance="fill">
-                  <mat-label>Tarifa</mat-label>
-                  <input
-                    type="number"
-                    matInput
-                    placeholder="Tarifa"
-                    formControlName="tarifa"
-                  />
-                </mat-form-field>
-
                 <mat-form-field class="form__input" appearance="fill">
                   <mat-label>Modalidad</mat-label>
                   <mat-select formControlName="modalidad">

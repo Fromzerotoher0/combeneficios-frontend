@@ -43,9 +43,17 @@ export class ScheduleComponent {
   especializaciones: any;
   new_date: any;
   modalidad: any;
+  tarifa: any;
   perfil() {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     this.router.navigateByUrl(`/beneficiarios/${token.id}`);
+  }
+
+  cargarTarifa(titulo: any) {
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
+    this.doctorService.getTarifa(token.id, titulo).subscribe((resp: any) => {
+      this.tarifa = resp.result;
+    });
   }
 
   logout() {
@@ -61,7 +69,7 @@ export class ScheduleComponent {
     );
 
     this.doctorService
-      .agenda(this.miFormulario.value, this.new_date, token.id)
+      .agenda(this.miFormulario.value, this.tarifa, this.new_date, token.id)
       .subscribe(
         (resp) => {
           alert('cita añadida a la agenda');

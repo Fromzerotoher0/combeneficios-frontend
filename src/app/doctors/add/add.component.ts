@@ -18,6 +18,7 @@ export class AddComponent {
     universidad: ['', [Validators.required]],
     departamento: ['', [Validators.required]],
     ciudad: ['', [Validators.required]],
+    tarifa: ['', [Validators.required]],
   });
   universidad: any;
   modalidad = ['presencial', 'virtual', 'presencial/virtual'];
@@ -50,8 +51,6 @@ export class AddComponent {
   }
 
   contacto() {
-    console.log(this.miFormulario.value);
-
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     this.doctorService.register(token.id, this.miFormulario.value).subscribe(
       (resp) => {

@@ -46,7 +46,7 @@
 
 .mat-success {
   background-color: green;
-  color: #fff;
+  color: green;
 }
 
 mat-sidenav {
@@ -187,6 +187,7 @@ mat-sidenav {
   }
   .contact_2 {
     width: 45%;
-    height: 80%;
+    height: 89%;
+    margin-top: 6px;
   }
 }

@@ -36,6 +36,7 @@ export class DoctorComponent implements OnInit {
 
     this.doctorService.getPregrade(this.doctor_id).subscribe((resp: any) => {
       this.pregrade = resp.result;
+      console.log(this.pregrade);
     });
 
     this.doctorService
