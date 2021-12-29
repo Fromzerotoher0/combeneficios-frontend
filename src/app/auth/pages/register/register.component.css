@@ -1,25 +1,41 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
+@font-face {
+  font-family: "Myriad Pro Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Myriad Pro Regular"),
+    url(../../../../assets/fonts/MYRIADPRO-REGULAR.woff) format("woff");
+}
+
 * {
-  font-family: Lato;
+  font-family: Myriad Pro Regular;
   font-weight: 400;
   overflow: auto;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
 }
+h3 {
+  font-family: Myriad Pro Regular;
+  color: #4d840c;
+}
 
 .title {
+  color: #4d840c;
   text-align: center;
-  color: white;
 }
 
 .register__container {
   width: 100vw;
   height: 100vh;
-  background-image: linear-gradient(#c6eb8b, #8fdf1e),
-    url("../../../../assets/images/background-3.png");
+  background-image: linear-gradient(
+      rgba(198, 235, 139, 0),
+      rgba(143, 223, 30, 0)
+    ),
+    url("../../../../assets/images/background-6.png");
   background-size: cover;
+  background-position: 30% 60%;
   text-align: center;
   margin: 0;
 }
@@ -29,15 +45,18 @@
 }
 
 mat-label {
-  color: white !important;
+  color: #4d840c !important;
+  font-size: 13px;
 }
 
 span.mat-select-min-line {
-  color: white !important;
+  color: #4d840c !important;
+  font-size: 13px;
 }
 
 .mat-form-field-label {
-  color: white !important;
+  color: #4d840c !important;
+  font-size: 16px;
 }
 
 .file {
@@ -62,6 +81,20 @@ span.mat-select-min-line {
 }
 
 @media (min-width: 1023px) {
+  h3 {
+    color: white;
+  }
+  mat-label {
+    color: white !important;
+  }
+
+  span.mat-select-min-line {
+    color: white !important;
+  }
+
+  .mat-form-field-label {
+    color: white !important;
+  }
   .register__container {
     background-size: 100% 100%;
     background-image: url("../../../../assets/images/register-fixed.png");

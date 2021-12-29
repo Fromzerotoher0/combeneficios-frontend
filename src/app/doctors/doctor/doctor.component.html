@@ -176,10 +176,18 @@
                     <strong>{{ item.nombres }} {{ item.apellidos }}</strong>
                   </p>
                   <p class="medic-information__space">{{ item.descripcion }}</p>
-                  <p>
-                    <strong>calificacion : </strong
-                    >{{ item.calificacion | calificacion }}
-                  </p>
+                  <ng-template #t let-fill="fill">
+                    <span class="star" [class.full]="fill === 100">
+                      <span class="half" [style.width.%]="fill">&starf;</span
+                      >&starf;
+                    </span>
+                  </ng-template>
+                  <ngb-rating
+                    [max]="5"
+                    [starTemplate]="t"
+                    [(rate)]="item.calificacion"
+                    [readonly]="true"
+                  ></ngb-rating>
                 </div>
               </div>
               <p class="medic-price"></p>
@@ -196,10 +204,6 @@
                 <p>{{ item.modalidad_cita }}</p>
               </div>
               <div>
-                <img
-                  src="assets/icons/location_logo.png"
-                  alt="logo ubicacion"
-                />
                 <p></p>
                 <p class="consultas">
                   <strong>consultas realizadas </strong>:

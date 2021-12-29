@@ -64,7 +64,12 @@
         <!--input telefono-->
         <mat-form-field class="form__input" appearance="fill">
           <mat-label>Telefono</mat-label>
-          <input matInput placeholder="telefono" formControlName="telefono" />
+          <input
+            matInput
+            type="number"
+            placeholder="telefono"
+            formControlName="telefono"
+          />
         </mat-form-field>
         <!---input correo-->
         <mat-form-field class="form__input" appearance="fill">
@@ -162,7 +167,7 @@
               *ngFor="let ciudad of ciudades"
               value="{{ ciudad.municipio }}"
             >
-              {{ ciudad.municipio }}
+              {{ ciudad.municipio | uppercase }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -174,10 +179,13 @@
           [disabled]="!miFormulario.valid"
           value="REGISTRARSE"
           mat-raised-button
-          color="basic"
+          color="primary"
         >
           Registrarse
         </button>
+        <br />
+        <br />
+        <p></p>
       </form>
     </div>
   </body>

@@ -172,7 +172,7 @@
 
   .add-beneficiario {
     width: 70%;
-    height: 4%;
+    height: 14%;
     margin-bottom: 20px;
     border-radius: 20px;
     background-color: green;
@@ -226,6 +226,9 @@
     vertical-align: middle;
     width: 50px;
     height: 50px;
+  }
+  .bottom-menu {
+    display: none;
   }
   /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
 }
@@ -283,7 +286,10 @@
 
   .add-beneficiario {
     width: 60%;
-    height: 4%;
+    height: 16%;
+  }
+  .bottom-menu {
+    display: none;
   }
 }
 
@@ -303,6 +309,9 @@
     width: 30vw;
     margin-left: 70px;
   }
+  .bottom-menu {
+    display: none;
+  }
   /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
 }
 
@@ -312,12 +321,18 @@
     width: 30vw;
     margin-left: 100px;
   }
+  .bottom-menu {
+    display: none;
+  }
 }
 @media (min-width: 700px) {
   .btn-beneficiario {
     margin-top: 70px;
     width: 30vw;
     margin-left: 210px;
+  }
+  .bottom-menu {
+    display: none;
   }
 }
 
@@ -369,6 +384,9 @@
     display: flex;
     justify-content: flex-end;
   }
+  .bottom-menu {
+    display: none;
+  }
 }
 
 @media (min-width: 900px) {
@@ -376,6 +394,9 @@
     margin-top: 70px;
     width: 22vw;
     margin-left: 50vw;
+  }
+  .bottom-menu {
+    display: none;
   }
 }
 

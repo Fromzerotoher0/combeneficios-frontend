@@ -400,3 +400,7 @@ body {
 .cho-container button {
   background-color: lightgreen;
 }
+
+.mat-drawer-inner-container {
+  overflow: hidden !important;
+}

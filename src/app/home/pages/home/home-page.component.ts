@@ -12,6 +12,7 @@ import { DoctorsService } from '../../../services/doctors.service';
 export class HomePageComponent implements OnInit {
   ciudades: any = [];
   rol: any;
+  nombre: any;
   constructor(
     private authService: AuthService,
     private jwtHelper: JwtHelperService,
@@ -20,6 +21,7 @@ export class HomePageComponent implements OnInit {
   ) {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('jwt')!);
     this.rol = token.tipo_usuario;
+    this.nombre = token.nombres;
     this.authService.getDepartamentos().subscribe((resp: any) => {
       this.ciudades = resp.result;
       console.log(this.ciudades);

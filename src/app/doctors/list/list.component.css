@@ -12,6 +12,12 @@
   padding: 0;
   overflow: auto;
   font-family: Myriad Pro Regular;
+  margin-left: -1px;
+  overflow: hidden;
+}
+
+p {
+  margin: 0 !important;
 }
 
 .sr-only {
@@ -33,13 +39,13 @@
   color: #d3d3d3;
 }
 .full {
-  color: rgba(5, 79, 154, 255);
+  color: transparent;
 }
 .half {
   position: absolute;
   display: inline-block;
   overflow: hidden;
-  color: rgba(5, 79, 154, 255);
+  color: transparent;
 }
 
 .spacer {
@@ -82,19 +88,26 @@
 
 .Filter__logo {
   margin: 7px;
-  background-color: rgba(5, 79, 154, 255);
+  background-color: transparent;
   border-radius: 25px;
   text-align: center;
+}
+
+.Filter__logo img {
+  width: 146px;
+  height: 150px;
 }
 .Filter__input {
   display: flex;
   flex-flow: column;
+  margin-left: -30px;
+  padding-top: 15px;
 }
 
 .Filter__input select {
   margin: 0 0 8px 0px;
   outline: none;
-  color: green;
+  color: gray;
   border: hidden;
   background-color: transparent;
   border-bottom: 1px solid green;
@@ -127,16 +140,19 @@
   border-radius: 20px;
   display: flex;
   flex-flow: row;
-  gap: 5px;
+  gap: 8px;
   justify-content: flex-start;
+  overflow: hidden;
+  width: 375px;
 }
 
 .medic__photo {
-  height: 90px;
+  height: 100px;
   width: 100px;
   background: #ccc;
   overflow: hidden;
   border-radius: 100px;
+  border: 2px solid green;
 }
 
 .medic__photo img {
@@ -148,15 +164,20 @@
   height: 30px;
   width: 70px;
   border-radius: 50px;
-  background-color: #054d99;
+  background-color: green;
   color: white;
   outline: none;
   border: transparent;
-  margin-top: 150px;
-  margin-left: 70px;
+  position: absolute;
+  margin-top: 65px;
+  margin-left: 282px;
 }
 
 @media (min-width: 374px) {
+  p {
+    margin: 0 0 -5px 5px !important;
+  }
+
   .Filter__input h1 {
     margin: 0 0 0 20px !important;
   }
@@ -164,7 +185,7 @@
     margin: 0 0 8px 15px;
     width: 210px;
     outline: none;
-    color: green;
+    color: gray;
     border: hidden;
     background-color: transparent;
     border-bottom: 1px solid green;
@@ -207,13 +228,14 @@
 
   .Filter__logo {
     margin: 7px;
-    background-color: rgba(5, 79, 154, 255);
+    background-color: transparent;
     border-radius: 25px;
     text-align: center;
   }
   .Filter__input {
     display: flex;
     flex-flow: column;
+    margin-left: -22px;
   }
 
   .Filter__input select {
@@ -232,6 +254,9 @@
 }
 
 @media (min-width: 767px) {
+  .medic-profile {
+    margin-top: 68px;
+  }
   .Filter__content {
     margin-left: 150px;
     margin-bottom: 20px;
@@ -245,13 +270,17 @@
   }
   .List {
     display: grid;
-    grid-template-columns: repeat(3, minmax(270px, 1fr));
-    grid-auto-rows: 270px;
+    grid-template-columns: repeat(3, 366px);
+    grid-auto-rows: 166px;
     grid-gap: 15px;
+    padding-left: 140px;
   }
 }
 
 @media (min-width: 1249px) {
+  .List {
+    padding: 0;
+  }
   .Filter__content {
     margin-left: 35vw;
     margin-bottom: 20px;
