@@ -204,7 +204,7 @@
           confirmar
         </button> -->
         <button
-          *ngIf="element.modalidad === 'virtual'"
+          *ngIf="element.modalidad === 'virtual' && element.estado === 'activo'"
           mat-raised-button
           (click)="cita(element.urlCita)"
           color="basic"
@@ -215,6 +215,7 @@
 
         <button
           mat-raised-button
+          *ngIf="element.estado === 'activo'"
           color="primary"
           (click)="completar(element.agenda_id)"
           class="space"
@@ -223,10 +224,19 @@
         </button>
         <button
           mat-raised-button
+          *ngIf="element.estado === 'activo'"
           (click)="cancelar(element.agenda_id, element.email)"
           color="warn"
         >
           Cancelar
+        </button>
+        <button
+          mat-raised-button
+          *ngIf="element.estado === 'proceso'"
+          color="primary"
+          class="space"
+        >
+          Aceptar
         </button>
       </td>
     </ng-container>
