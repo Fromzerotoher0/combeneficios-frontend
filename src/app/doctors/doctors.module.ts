@@ -19,6 +19,7 @@ import { CalificacionPipe } from '../pipes/calificacion.pipe';
 import { HistorialComponent } from './historial/historial.component';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppointmentComponent } from './appointment/appointment.component';
+import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { AppointmentComponent } from './appointment/appointment.component';
     FlexLayoutModule,
     NgxMaterialTimepickerModule,
     NgbRatingModule,
+    ModalModule,
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, BsModalService],
 })
 export class DoctorsModule {}

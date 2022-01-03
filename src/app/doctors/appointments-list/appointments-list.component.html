@@ -183,9 +183,10 @@
       <th mat-header-cell *matHeaderCellDef>acciones</th>
       <td mat-cell *matCellDef="let element">
         <button
-          (click)="cancelar(element.id, element.medico_id)"
+          (click)="openModal(cancelar, element.id, element.medico_id)"
           mat-raised-button
           color="warn"
+          class="space"
         >
           Cancelar
         </button>
@@ -194,6 +195,7 @@
           (click)="ir(element.urlCita)"
           mat-raised-button
           color="primary"
+          class="space"
         >
           ir a la cita
         </button>
@@ -203,4 +205,26 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+
+  <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">
+    Open modal
+  </button> -->
+
+  <ng-template #cancelar>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">confirmación</h4>
+    </div>
+    <div class="modal-body">
+      Esta a punto de cancelar la cita<br />
+      esta seguro?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="prueba()">
+        si
+      </button>
+      <button type="button" class="btn btn-primary" (click)="modalRef.hide()">
+        no
+      </button>
+    </div>
+  </ng-template>
 </mat-sidenav-container>

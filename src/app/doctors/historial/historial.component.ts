@@ -55,8 +55,6 @@ export class HistorialComponent implements OnInit {
   displayedColumns: string[] = [
     'fecha',
     'hora',
-    'especialidad',
-    'nombre',
     'asistio',
     'calificacion',
     'acciones',

@@ -30,4 +30,25 @@ table {
 
 .space {
   margin-right: 5px;
+  min-width: 97px;
+  margin-top: 5px;
+}
+.yellow {
+  background-color: rgb(255, 203, 0);
+}
+.green {
+  background-color: #4d840c;
+}
+.mat-column-paciente {
+  flex: none;
+  width: 120px;
+}
+.mat-column-weight {
+  flex: none;
+  width: 70px;
+}
+
+.mat-column-name {
+  flex: none;
+  width: 127px;
 }

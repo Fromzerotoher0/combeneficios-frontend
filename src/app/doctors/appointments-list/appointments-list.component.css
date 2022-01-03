@@ -31,3 +31,22 @@ table {
 .align-left {
   text-align: left;
 }
+
+.space {
+  margin-top: 5px;
+  width: 90px;
+}
+
+.mat-column-name {
+  flex: none;
+  width: 112px;
+}
+
+.mat-column-weight {
+  flex: none;
+  width: 70px;
+}
+.mat-column-medico {
+  flex: none;
+  width: 114px;
+}
