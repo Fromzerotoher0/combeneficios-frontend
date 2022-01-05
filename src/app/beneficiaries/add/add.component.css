@@ -1,78 +1,73 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
+@font-face {
+  font-family: "Myriad Pro Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Myriad Pro Regular"),
+    url(../../../assets/fonts/MYRIADPRO-REGULAR.woff) format("woff");
+}
+
 * {
-  font-family: Lato;
+  font-family: Myriad Pro Regular;
   font-weight: 400;
-}
-
-body {
-  background-image: linear-gradient(
-      rgba(126, 213, 111, 0.8),
-      rgba(40, 180, 131, 0.8)
-    ),
-    url("../../../assets/images/background-3.png");
-  background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-position: center;
   overflow: auto;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+h3 {
+  font-family: Myriad Pro Regular;
+  color: #4d840c;
 }
 
-.register__title {
-  font-weight: 500;
+.title {
+  color: #4d840c;
   text-align: center;
-  color: white;
 }
 
-.container__register {
+.register__container {
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(
+      rgba(198, 235, 139, 0),
+      rgba(143, 223, 30, 0)
+    ),
+    url("../../../assets/images/background-6.png");
+  background-size: cover;
+  background-position: 30% 60%;
   text-align: center;
+  margin: 0;
 }
 
 .form__input {
   width: 80%;
 }
 
-.datepicker {
-  margin-top: 10px;
-}
-
-.btn {
-  width: 50%;
-  color: white;
-}
-
-.file {
-  margin-top: 10px;
-  width: 80% !important;
-  margin-left: 40px;
-}
-::ng-deep .mat-select-arrow {
-  color: white;
-}
-
-::ng-deep .mat-select-arrow::after {
-  color: white;
-}
-
 mat-label {
-  color: white !important;
+  color: #4d840c !important;
+  font-size: 13px;
 }
 
 span.mat-select-min-line {
-  color: white !important;
+  color: #4d840c !important;
+  font-size: 13px;
 }
 
 .mat-form-field-label {
-  color: white !important;
+  color: #4d840c !important;
+  font-size: 16px;
 }
 
-/* vista de tablet */
+.file {
+  width: 80% !important;
+  margin-left: 40px;
+  margin-bottom: 10px;
+}
 
 @media (min-width: 767px) {
-  body {
-    background-size: 60% 60% 60% 60%;
+  .register__container {
+    background-size: 100% 100%;
   }
 
   .form__input {
@@ -86,35 +81,45 @@ span.mat-select-min-line {
 }
 
 @media (min-width: 1023px) {
-  .btn {
-    width: 40%;
+  h3 {
+    color: white;
+  }
+  mat-label {
+    color: white !important;
+  }
+
+  span.mat-select-min-line {
+    color: white !important;
+  }
+
+  .mat-form-field-label {
+    color: white !important;
+  }
+  .register__container {
+    background-size: 100% 100%;
+    background-image: url("../../../assets/images/register-fixed.png");
+  }
+  .form__input {
+    width: 35%;
+    margin-left: 10px;
   }
   .file {
-    margin-left: 50px;
-    width: 91% !important;
+    width: 70% !important;
+    margin-left: 150px;
   }
 }
 
-@media (min-width: 1439px) {
-  .btn {
-    width: 20%;
+@media (min-width: 1250px) {
+  .form__input {
+    width: 35%;
   }
-
   .file {
-    margin-left: 75px;
-    width: 91% !important;
+    width: 70% !important;
+    margin-left: 230px;
   }
+}
 
-  body {
-    background-image: linear-gradient(
-      rgba(126, 213, 111, 0.8),
-      rgba(40, 180, 131, 0.8)
-    );
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: 100% 300%;
-    overflow: auto;
-  }
+* {
+  overflow-x: auto;
+  overflow-y: auto;
 }

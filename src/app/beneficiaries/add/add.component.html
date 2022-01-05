@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -14,11 +14,11 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
-    <title>Registro de usuario</title>
+    <title>Registro</title>
   </head>
   <body>
-    <h1 class="register__title">Registro de usuario</h1>
-    <div fxLayout="row" fxLayoutGap="20px" class="container__register">
+    <div class="register__container">
+      <h1 class="title">Registro de usuario</h1>
       <form
         (ngSubmit)="registro()"
         autocomplete="off"
@@ -61,11 +61,15 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-
         <!--input telefono-->
         <mat-form-field class="form__input" appearance="fill">
           <mat-label>Telefono</mat-label>
-          <input matInput placeholder="telefono" formControlName="telefono" />
+          <input
+            matInput
+            type="number"
+            placeholder="telefono"
+            formControlName="telefono"
+          />
         </mat-form-field>
         <!---input correo-->
         <mat-form-field class="form__input" appearance="fill">
@@ -114,6 +118,7 @@
           </mat-error>
         </mat-form-field>
         <!--Foto de perfil-->
+        <h3>Foto de perfil</h3>
         <input
           class="form-control file"
           type="file"
@@ -162,12 +167,10 @@
               *ngFor="let ciudad of ciudades"
               value="{{ ciudad.municipio }}"
             >
-              {{ ciudad.municipio }}
+              {{ ciudad.municipio | uppercase }}
             </mat-option>
           </mat-select>
         </mat-form-field>
-
-        <!---input parentesco-->
         <mat-form-field class="form__input" appearance="fill">
           <mat-label>Parentesco</mat-label>
           <mat-select formControlName="parentesco">
@@ -179,20 +182,21 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+        <br />
         <!---Submit-->
-        <div class="submit">
-          <button
-            type="submit"
-            class="btn"
-            [disabled]="!miFormulario.valid"
-            value="REGISTRARSE"
-            mat-raised-button
-            color="basic"
-          >
-            Registrarse
-          </button>
-        </div>
-        &nbsp;
+        <button
+          type="submit"
+          class="btn"
+          [disabled]="!miFormulario.valid"
+          value="REGISTRARSE"
+          mat-raised-button
+          color="primary"
+        >
+          Agregar
+        </button>
+        <br />
+        <br />
+        <p></p>
       </form>
     </div>
   </body>

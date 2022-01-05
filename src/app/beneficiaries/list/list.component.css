@@ -155,7 +155,8 @@
     width: 90px;
     height: 95px;
     object-fit: cover;
-    border-radius: 30px;
+    border-radius: 60px;
+    border: 2px solid green;
   }
 
   .btn-beneficiario {
@@ -172,7 +173,7 @@
 
   .add-beneficiario {
     width: 70%;
-    height: 20%;
+    height: 12%;
     margin-bottom: 20px;
     border-radius: 20px;
     background-color: green;
@@ -368,7 +369,7 @@
     width: 90px;
     height: 95px;
     object-fit: cover;
-    border-radius: 30px;
+    border-radius: 60px;
   }
 
   .btn-beneficiario {
@@ -451,7 +452,7 @@
   .btn-beneficiario {
     margin-top: 50px;
     width: 10vw;
-    margin-left: 68vw;
+    margin-left: 73vw;
     margin-bottom: 5px;
   }
   /* hi-res laptops and desktops */

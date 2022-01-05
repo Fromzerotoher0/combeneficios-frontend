@@ -183,13 +183,14 @@
     justify-content: center;
   }
   .profile-photo {
-    height: 150px;
-    width: 15s0px;
+    height: 160px;
+    width: 160px;
     background: #ccc;
     overflow: hidden;
     border-radius: 100px;
     margin-top: -50px;
     margin-left: 20px;
+    border: 2px solid green;
   }
   .profile-photo img {
     width: 150px;
@@ -249,12 +250,12 @@
   }
   .profile-photo {
     margin-left: 50px;
-    width: 130px;
-    height: 140px;
+    width: 150px;
+    height: 150px;
   }
   .profile-photo img {
-    width: 130px;
-    height: 140px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
   }
 

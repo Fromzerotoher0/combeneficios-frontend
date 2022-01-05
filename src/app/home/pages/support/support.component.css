@@ -126,7 +126,7 @@
   }
 
   h2 {
-    color: green;
+    color: #4d840c;
   }
   .support {
     width: 90vw;
@@ -155,7 +155,7 @@
     border-radius: 10px;
     margin-left: -55px;
     width: 130px;
-    background-color: green;
+    background-color: #4d840c;
     color: white;
   }
 
@@ -167,13 +167,13 @@
     border-radius: 10px;
     margin-left: -55px;
     width: 130px;
-    background-color: green;
+    background-color: #4d840c;
     color: white;
   }
 
   .support-item {
     box-shadow: 2px 5px 20px 5px silver;
-    color: green;
+    color: #4d840c;
   }
 
   .logo-support-whatsapp img {
@@ -184,7 +184,7 @@
 
   .logo-support-mail img {
     width: 90px;
-    height: 75px;
+    height: 90px;
     margin-top: -5px;
     margin-left: -10px;
   }
@@ -202,7 +202,7 @@
     margin-right: 28%;
   }
   .btn-entrar-2 {
-    margin-left: -27px;
+    margin-left: -60px;
   }
   .bottom-menu {
     display: none;
@@ -267,9 +267,9 @@
     outline: none;
     border: none;
     border-radius: 10px;
-    margin-left: -12px;
+    margin-left: -29px;
     width: 140px;
-    background-color: green;
+    background-color: #4d840c;
     color: white;
   }
 
@@ -279,15 +279,15 @@
     outline: none;
     border: none;
     border-radius: 10px;
-    margin-left: -12px;
+    margin-left: -40px;
     width: 140px;
-    background-color: green;
+    background-color: #4d840c;
     color: white;
   }
 
   .support-item {
     box-shadow: 2px 5px 20px 5px silver;
-    color: green;
+    color: #4d840c;
   }
 
   .logo-support-whatsapp img {
@@ -298,7 +298,7 @@
 
   .logo-support-mail img {
     width: 90px;
-    height: 75px;
+    height: 90px;
     margin-top: -5px;
     margin-left: -10px;
   }
@@ -350,7 +350,7 @@
     border: none;
     margin-left: 188px;
     width: 140px;
-    background-color: green;
+    background-color: #4d840c;
     color: white;
   }
 
@@ -362,13 +362,13 @@
     border-radius: 10px;
     margin-left: 188px;
     width: 140px;
-    background-color: green;
+    background-color: #4d840c;
     color: white;
   }
 
   .support-item {
     box-shadow: 2px 5px 20px 5px silver;
-    color: green;
+    color: #4d840c;
   }
 
   .logo-support-whatsapp {
@@ -383,8 +383,8 @@
 
   .logo-support-mail img {
     width: 90px;
-    height: 75px;
-    margin-top: -5px;
+    height: 90px;
+    margin-top: -28px;
     margin-left: -10px;
   }
 
@@ -440,7 +440,7 @@
     border: none;
     margin-left: 290px;
     width: 150px;
-    background-color: green;
+    background-color: #4d840c;
     color: white;
   }
 
@@ -453,7 +453,7 @@
 
   .support-item {
     box-shadow: 2px 5px 20px 5px silver;
-    color: green;
+    color: #4d840c;
   }
 
   .logo-support-whatsapp img {
@@ -464,8 +464,8 @@
 
   .logo-support-mail img {
     width: 90px;
-    height: 75px;
-    margin-top: -5px;
+    height: 90px;
+    margin-top: -30px;
     margin-left: -10px;
   }
 
@@ -517,7 +517,7 @@
     border: none;
     margin-left: 19vw;
     width: 199px;
-    background-color: green;
+    background-color: #4d840c;
     color: white;
   }
 
@@ -530,7 +530,7 @@
 
   .support-item {
     box-shadow: 2px 5px 20px 5px silver;
-    color: green;
+    color: #4d840c;
   }
 
   .logo-support-whatsapp img {
@@ -541,9 +541,9 @@
 
   .logo-support-mail img {
     width: 90px;
-    height: 75px;
+    height: 91px;
     margin-left: -10px;
-    margin-top: -25px;
+    margin-top: -35px;
   }
 
   .support-item p {
