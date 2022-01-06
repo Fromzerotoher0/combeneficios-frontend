@@ -172,6 +172,9 @@ mat-sidenav {
     height: 10%;
     width: 30%;
   }
+  .contact_container {
+    background-image: none;
+  }
 }
 
 @media (min-width: 1023px) {

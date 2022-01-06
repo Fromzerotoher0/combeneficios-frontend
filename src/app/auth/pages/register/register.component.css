@@ -8,6 +8,10 @@
     url(../../../../assets/fonts/MYRIADPRO-REGULAR.woff) format("woff");
 }
 
+html.swal2-shown,
+body.swal2-shown {
+  overflow: hidden !important;
+}
 * {
   font-family: Myriad Pro Regular;
   font-weight: 400;
@@ -99,6 +103,7 @@ span.mat-select-min-line {
     background-size: 100% 100%;
     background-image: url("../../../../assets/images/register-fixed.png");
   }
+
   .form__input {
     width: 35%;
     margin-left: 10px;

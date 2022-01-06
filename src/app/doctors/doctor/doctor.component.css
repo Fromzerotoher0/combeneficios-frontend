@@ -36,7 +36,7 @@
   color: #d3d3d3;
 }
 .full {
-  color: transparent;
+  color: #4d840c;
 }
 .half {
   position: absolute;
@@ -548,9 +548,10 @@ mat-sidenav {
     margin-right: 73%;
   }
   .specialization-information {
-    height: 62vh;
+    height: 64vh;
     width: 34vw;
     margin-left: 34%;
+    margin-top: -56px;
   }
 
   .specialization-information_1 img {
@@ -559,7 +560,7 @@ mat-sidenav {
   }
   .consultas {
     margin-left: 3.5vw;
-    margin-top: -12px;
+    margin-top: 57px;
   }
 
   .medic-photo {
@@ -579,7 +580,7 @@ mat-sidenav {
   .specialization-information_1 div {
     width: 70%;
     font-size: 9px;
-    height: 88px;
+    height: 179px;
   }
 
   .specialization-information_1 img {

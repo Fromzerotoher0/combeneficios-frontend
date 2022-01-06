@@ -5,6 +5,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { MailService } from 'src/app/services/mail.service';
 import { DoctorsService } from '../../services/doctors.service';
 import { DatePipe } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-schedule',
@@ -71,7 +72,12 @@ export class ScheduleComponent {
       .agenda(this.miFormulario.value, this.tarifa, this.new_date, token.id)
       .subscribe(
         (resp) => {
-          alert('cita añadida a la agenda');
+          Swal.fire({
+            title: 'Cita agendada',
+            text: '',
+            icon: 'success',
+            confirmButtonText: 'ok',
+          });
           this.miFormulario.reset();
         },
         (err) => {

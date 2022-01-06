@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { departamento } from 'src/app/interfaces/departamento.interface';
 import { MediaObserver } from '@angular/flex-layout';
+import Swal from 'sweetalert2';
 
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
@@ -123,14 +124,29 @@ export class RegisterComponent {
     this.authService.registro(uploadData).subscribe(
       (resp: any) => {
         console.log(resp);
-        alert('registro exitoso');
+        Swal.fire({
+          title: 'Registro exitoso',
+          text: '',
+          icon: 'success',
+          confirmButtonText: 'ok',
+        });
         this.router.navigateByUrl(`/auth/login`);
       },
       (err: any) => {
         if (err.error == undefined) {
-          alert('debe diligenciar todos los campos');
+          Swal.fire({
+            title: 'Error!',
+            text: 'debe diligenciar todos los campos',
+            icon: 'error',
+            confirmButtonText: 'ok',
+          });
         } else {
-          alert(err.error.msg);
+          Swal.fire({
+            title: 'Error!',
+            text: `${err.error.msg}`,
+            icon: 'error',
+            confirmButtonText: 'ok',
+          });
         }
       }
     );
