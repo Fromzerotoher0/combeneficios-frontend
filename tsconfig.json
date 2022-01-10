@@ -17,12 +17,14 @@
     "target": "es2017",
     "module": "es2020",
     "lib": ["es2018", "dom"],
-    "emitDecoratorMetadata": false
+    "emitDecoratorMetadata": false,
+    "strictNullChecks": false
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
+    "strictNullChecks": false,
     "strictTemplates": true
   }
 }

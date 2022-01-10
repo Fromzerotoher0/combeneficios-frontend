@@ -40,6 +40,11 @@ const routes: Routes = [
     canActivate: [AuthGuard, AdminGuard],
     canLoad: [AuthGuard, AdminGuard],
   },
+  {
+    path: 'restaurantes',
+    loadChildren: () =>
+      import('./restaurants/restaurants.module').then((m) => m.RestaurantsModule),
+  },
   { path: '**', redirectTo: 'auth' },
 ];
 @NgModule({

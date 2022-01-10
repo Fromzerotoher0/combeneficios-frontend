@@ -1,0 +1,234 @@
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+  crossorigin="anonymous"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+/>
+
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="push">
+    <mat-toolbar color="primary">
+      <span>menu</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <a [routerLink]="['/home']" mat-list-item (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">home</mat-icon
+        ><span>Pagina principal</span></a
+      >
+      <a [routerLink]="['/home']" mat-list-item (click)="perfil()"
+        ><mat-icon mat-list-icon style="color: gray">person</mat-icon
+        ><span>Mi perfil</span></a
+      >
+      <a
+        [routerLink]="['/beneficiarios/lista']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">group</mat-icon
+        ><span>Mis Beneficiarios</span></a
+      >
+
+      <a
+        [routerLink]="['/beneficiarios/tarjeta']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">badge</mat-icon
+        ><span>Mi Tarjeta</span></a
+      >
+
+      <a
+        [routerLink]="['/app/soporte']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">settings</mat-icon
+        ><span>soporte</span></a
+      >
+      <a
+        [routerLink]="['/app/contacto']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">support_agent</mat-icon
+        ><span>contacto</span></a
+      >
+
+      <a
+        [routerLink]="['/medicos/servicios']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">local_hospital</mat-icon
+        ><span>Servicios Medicos</span></a
+      >
+
+      <a
+        *ngIf="rol !== 4"
+        [routerLink]="['/medicos/solicitud']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">question_answer</mat-icon
+        ><span>ser medico</span></a
+      >
+      <a
+        *ngIf="rol == 4"
+        [routerLink]="['/medicos/estudio']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">health_and_safety</mat-icon
+        ><span>Agregar Especializacion</span></a
+      >
+      <a
+        *ngIf="rol == 4"
+        [routerLink]="['/medicos/agenda']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">pending_actions</mat-icon
+        ><span>agendar disponibilidad</span></a
+      >
+      <a
+        *ngIf="rol == 1"
+        [routerLink]="['/admin/solicitudes']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray"
+          >admin_panel_settings</mat-icon
+        ><span>solicitudes</span></a
+      >
+      <a
+        *ngIf="rol == 1"
+        [routerLink]="['/admin/solicitudEstudio']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray"
+          >admin_panel_settings</mat-icon
+        ><span>solicitudes especializacion</span></a
+      >
+      <a
+        *ngIf="rol == 4"
+        [routerLink]="['/medicos/agendaMedico']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">edit_calendar</mat-icon
+        ><span>Mi Agenda</span></a
+      >
+      <a
+        [routerLink]="['/medicos/agendaUsuario']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">schedule</mat-icon
+        ><span>Citas Pendientes</span></a
+      >
+      <a
+        [routerLink]="['/medicos/historial']"
+        mat-list-item
+        (click)="sidenav.toggle()"
+        ><mat-icon mat-list-icon style="color: gray">schedule</mat-icon
+        ><span>Historial de citas</span></a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-toolbar>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span class="spacer"></span>
+    <button
+      mat-icon-button
+      class="example-icon favorite-icon"
+      aria-label="notificaciones"
+    >
+      <mat-icon>notifications</mat-icon>
+    </button>
+    <button mat-icon-button (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <div fxLayout="column" fxLayoutAlign="space-between center">
+      <div class="contact_container">
+        <div class="contact_2">
+          <div class="title_container">
+            <h2 class="contact_title">Agregar Producto</h2>
+          </div>
+          <p></p>
+          <form
+            (ngSubmit)="agregar()"
+            autocomplete="off"
+            [formGroup]="miFormulario"
+          >
+            <div>
+              <mat-form-field class="form__input" appearance="fill">
+                <mat-label>restaurante</mat-label>
+                <mat-select formControlName="restaurante">
+                  <mat-option
+                    *ngFor="let restaurante of restaurantes"
+                    value="{{ restaurante.id }}"
+                  >
+                    {{ restaurante.nombre }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="form__input" appearance="fill">
+                <mat-label>articulo</mat-label>
+                <input
+                  matInput
+                  placeholder="articulo"
+                  formControlName="articulo"
+                />
+              </mat-form-field>
+              &nbsp;
+              <mat-form-field class="form__input" appearance="fill">
+                <mat-label>descripción</mat-label>
+                <input
+                  matInput
+                  placeholder="descripcion"
+                  formControlName="descripcion"
+                />
+              </mat-form-field>
+
+              <mat-form-field class="form__input" appearance="fill">
+                <mat-label>categoria</mat-label>
+                <mat-select formControlName="categoria">
+                  <mat-option
+                    *ngFor="let categoria of categorias"
+                    value="{{ categoria.id }}"
+                  >
+                    {{ categoria.descripcion }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <br />
+            <mat-form-field class="form__input" appearance="fill">
+              <mat-label>valor</mat-label>
+              <input
+                matInput
+                type="number"
+                placeholder="valor"
+                formControlName="valor"
+              />
+            </mat-form-field>
+            <h2>imagen de producto</h2>
+            <input
+              class="form-control file"
+              type="file"
+              id="formFile"
+              formControlName="image"
+              (change)="onFileChange($event)"
+            />
+
+            <button class="submit" type="submit">enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-sidenav-container>
