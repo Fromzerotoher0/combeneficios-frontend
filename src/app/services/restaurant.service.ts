@@ -21,7 +21,7 @@ export class RestaurantService {
   }
   getRestaurantsByTitular(id: any) {
     return this.http.post(
-      'https://localhost:7000/api/restaurants/restaurantsById',
+      'https://api.combeneficios.co:7000/api/restaurants/restaurantsById',
       {
         id: id,
       }
